@@ -102,7 +102,7 @@ Our project utilizes MySQL as the Relational Database Management System (RDBMS) 
 
 The database schema is organized into multiple tables to represent different entities within the system. Key entities include `Users`, `Products`, `Orders`, and `Categories` , etc. Relationships between tables are defined to maintain data integrity and support efficient querying.
 
-![Database Schema](/images/eer.png)
+![Database Schema](./images/eer.png)
 
 #### ${\color{lightgreen}Business \space Rules}$
  
