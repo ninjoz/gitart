@@ -36,12 +36,10 @@ Our frontend design is all about creating a user-friendly and good-looking exper
 	- used for styling and presentation in project.
 	- used to control layout of elements in the different pages.
 	- used to set color scheme and fontsyles.
-	- used for creating responsive design that adapt to various screen-sizes ensuring good user experience.
 - `JavaScript` :
 	- used to add some interactivity and dynamic behavior to website.
 	- used for making forms' validation (ensuring that required fields are filled out correctly before being submitted to server.
-	- helped in user interactions (such as clicking buttons.)
-	- used with AJAX requests (to implement features like asynchronus image uploads without reloading the entire page.)
+	- helped in user interactions (such as clicking buttons.)s
 
 #### ${\color{lightgreen}Pages}$
 
