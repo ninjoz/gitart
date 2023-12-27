@@ -41,7 +41,7 @@ Our frontend design is all about creating a user-friendly and good-looking exper
 	- used for making forms' validation (ensuring that required fields are filled out correctly before being submitted to server.
 	- helped in user interactions (such as clicking buttons.)
 
-#### ${\color{lightgreen}Pages}$
+#### ${\color{lightgreen}Pages \space Details}$
 
 The user is greeted with a *welcome page* which gives them options to login or register if they are new to the website. Our *home page* has many options to help browse the products, user can search for products, filter by type of product, view new products from artists they follow and view favorite designs. The *profile page* is there to display artworks of artists for others to view. Here the user can change their profile and cover photos and remove designs from their own portfolio. Customer designs are set to private and no one can view them. *Product details*, *design details* are pages to display more information about each one. The user can access them by clicking on a product or a design. The *upload page* is the page where artists and customers can upload their designs, enter their details, and select which products to get displayed on. Customer designs are set to private. The *cart page* contains all the products user has added to their cart. It gives the total and the user has an option to proceed to checkout where they can confirm the order. The *orders page* contians all the orders the user has placed and details about them. Here they can confirm that an order has reached him. The website comes with an *admin panel*, only admins are allowed to view. The panel contains sections for stock management, order processing and viewing important numbers of the website.
 
@@ -76,7 +76,9 @@ The backend of our full-stack project serves as the backbone, responsible for ha
 	- A template engine to embed JavaScript directly into HTML enhances the development process. This not only simplifies our code but also boosts efficiency by consolidating logic and presentation in a single file.
  
 - `bcrypt` : 
-	- A library for NodeJs that boosts security by safely encrypting passwords. Its advanced hashing defends against potential threats, ensuring user credentials remain protected. 
+	- A library for NodeJs that boosts security by safely encrypting passwords. Its advanced hashing defends against potential threats, ensuring user credentials remain protected.
+ 
+#### ${\color{lightgreen}Pages \space Details}$
 
 ## ${\color{lightgreen}3. \space Data \space Storage \space and \space Management}$
 
@@ -101,6 +103,8 @@ The database schema is organized into multiple tables to represent different ent
 - Each FinalProduct has exactly one Template, each Template may be used in many FinalProducts.
 - Each Design may be printed on many FinalProducts, each FinalProduct must have only one Design.
 - Each Design must belong to at least one Category, each Category must have at least one Design.
+
+#### ${\color{lightgreen}Data \space Sources}$
 
 ## ${\color{lightgreen}4. \space Conclusion}$
 
