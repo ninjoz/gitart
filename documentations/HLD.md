@@ -39,25 +39,11 @@ Our frontend design is all about creating a user-friendly and good-looking exper
 - `JavaScript` :
 	- used to add some interactivity and dynamic behavior to website.
 	- used for making forms' validation (ensuring that required fields are filled out correctly before being submitted to server.
-	- helped in user interactions (such as clicking buttons.)s
+	- helped in user interactions (such as clicking buttons.)
 
 #### ${\color{lightgreen}Pages}$
 
-- Explore page:
-
-- Login Page:
-
-- Sign up:
-
-- Upload page:
-
-- Artist profile:
-
-- Admin Page:
-
-- Product details:
-
-- Cart:
+The user is greeted with a *welcome page* which gives them options to login or register if they are new to the website. Our *home page* has many options to help browse the products, user can search for products, filter by type of product, view new products from artists they follow and view favorite designs. The *profile page* is there to display artworks of artists for others to view. Here the user can change their profile and cover photos and remove designs from their own portfolio. Customer designs are set to private and no one can view them. *Product details*, *design details* are pages to display more information about each one. The user can access them by clicking on a product or a design. The *upload page* is the page where artists and customers can upload their designs, enter their details, and select which products to get displayed on. Customer designs are set to private. The *cart page* contains all the products user has added to their cart. It gives the total and the user has an option to proceed to checkout where they can confirm the order. The *orders page* contians all the orders the user has placed and details about them. Here they can confirm that an order has reached him. The website comes with an *admin panel*, only admins are allowed to view. The panel contains sections for stock management, order processing and viewing important numbers of the website.
 
 ### ${\color{lightgreen}Database \space Basic \space Design}$
 
@@ -87,7 +73,7 @@ The backend of our full-stack project serves as the backbone, responsible for ha
 	- Improves user experience by fetching and updating data without refreshing the entire page. In Node.js, AJAX enhances data retrieval and updates, making web applications more responsive and efficient.
    
 - `EJS` : 
-	- A template engine to embed JavaScript directly into HTML enhances the development process. This not only simplifies our code but also boosts efficiency by consolidating logic and presentation in a single file
+	- A template engine to embed JavaScript directly into HTML enhances the development process. This not only simplifies our code but also boosts efficiency by consolidating logic and presentation in a single file.
  
 - `bcrypt` : 
 	- A library for NodeJs that boosts security by safely encrypting passwords. Its advanced hashing defends against potential threats, ensuring user credentials remain protected. 
