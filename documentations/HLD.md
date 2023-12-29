@@ -11,7 +11,7 @@ Geometry: a4paper, margin=2.5cm
 
 - [GitArt High-Level Design](#gitart-high-level-design)
     - [Table of Contents](#table-of-contents)
-    - [1. Introduction](#1-GitArt-is-an-online)
+    - [1. Introduction](#GitArt-is-an-online)
     - [2. System Architecture](#2-system-architecture)
         - [Frontend Layer](#frontend-layer)
         - [Database Basic Design](#database-basic-design)
