@@ -11,7 +11,7 @@ Geometry: a4paper, margin=2.5cm
 
 - [GitArt High-Level Design](#gitart-high-level-design)
     - [Table of Contents](#table-of-contents)
-    - [1. Introduction](#1-introduction)
+    - [1. Introduction](#1-GitArt-is-an-online)
     - [2. System Architecture](#2-system-architecture)
         - [Frontend Layer](#frontend-layer)
         - [Database Basic Design](#database-basic-design)
@@ -21,7 +21,7 @@ Geometry: a4paper, margin=2.5cm
 
 ## ${\color{lightgreen}1. \space Introduction}$
 
-GitArt is a online marketplace for print-on-demand products based on user-submitted artwork. This high-level design document introduces the architecture GitArt, focusing on the high-level system design. Our goal is to reproduce the functionalities of the popular website, Redbubble.
+GitArt is an online marketplace for print-on-demand products based on user-submitted artwork. This high-level design document introduces the architecture GitArt, focusing on the high-level system design. Our goal is to reproduce the functionalities of the popular website, Redbubble.
 
 ## ${\color{lightgreen}2. \space System \space Architecture}$
 
