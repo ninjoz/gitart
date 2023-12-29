@@ -53,7 +53,7 @@ erDiagram
 Users }o--|| Designs: "has"
 Orders }|--o{ FinalProduct: "contains"
 Users ||--o{ Orders: "can make"
-Designs }o--|{ FinalProduct: "has"
+Designs ||--|{ FinalProduct: "has"
 Designs ||--o{ Categories: "belongs to"
 FinalProduct }o--|| Templates: "has"
 ```
@@ -77,8 +77,6 @@ The backend of our full-stack project serves as the backbone, responsible for ha
  
 - `bcrypt` : 
 	- A library for NodeJs that boosts security by safely encrypting passwords. Its advanced hashing defends against potential threats, ensuring user credentials remain protected.
- 
-#### ${\color{lightgreen}Pages \space Details}$
 
 ## ${\color{lightgreen}3. \space Data \space Storage \space and \space Management}$
 
