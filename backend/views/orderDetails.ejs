@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>My Orders</title>
+  <link rel="stylesheet" href="/orders.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"> </script>
+  <script src="/orders.js"> </script>
+
+</head>
+
+<body>
+<form method="post" action="/searchOrder">
+
+  <div>
+    <label for="searchCode">Enter order code:</label>
+    <input type="text" id="searchCode" name="searchCode">
+    <input type="submit" value="Search">
+
+  </div>
+  <br>
+  <h1>Order Details</h1>
+
+
+
+
+
+  <div id="container">
+    <div class="order">
+      <div class="details">
+<%if(state=="Delivered"||state=="Shipped"){%>
+        <h2 name="order_code" id="order_code">
+          <%=orderCode%>
+        </h2>
+        <h3 name="user_name" id="user_name">
+          <%=order_username%>
+        </h3>
+        <span name="date" id="dat">
+          <%=dat%>
+        </span>
+
+        <%orderDet.map((orderD)=>{%>
+
+          <ul id="contents" name="contents">
+            <li><a href="/product/<%=orderD.fp_id%>"><span name="design_title" id="design_title">
+                  <%=orderD.design_title%>
+                </span> <span name="product" id="product">
+                  <%=orderD.template_name%>
+                </span></a>
+              <br>
+              <span name="quantity" id="quantity">
+                <%=orderD.quantity%>
+              </span> pieces
+              <span name="sub_price" id="sub_price">
+                $<%=orderD.sub_totPrice%>
+              </span>
+            </li>
+          </ul>
+          <%})%>
+
+
+
+            Total: $<span id="order-total" name="order-total">
+              <%=totPrice%>
+            </span>
+      </div>
+
+
+      <div class="state">
+        <div name="order_state" id="order_state">
+
+          <span id="status">
+            <%=state%>
+          </span>
+          
+          
+        </div>
+        <div>
+          <%if(delDate){%>
+            <span id="delivered_date">
+              <%=delDate%>
+            </span>
+            <%}%>
+            <%if(shipDate){%>
+              <span id="delivered_date">
+                <%=shipDate%>
+              </span>
+              <%}%>
+        </div>
+
+
+
+
+<%}%>
+
+
+
+
+
+<%if(state=="Pending"){%>
+  <h2 name="order_code" id="order_code">
+    <%=orderCode%>
+  </h2>
+  <span name="date" id="dat">
+    <%=delDate%>
+  </span>
+
+  <%orderDet.map((orderD)=>{%>
+
+    <ul id="contents" name="contents">
+      <li><a href="/product/<%=orderD.fp_id%>"><span name="design_title" id="design_title">
+            <%=orderD.design_title%>
+          </span> <span name="product" id="product">
+            <%=orderD.template_name%>
+          </span></a>
+        <br>
+        <span name="quantity" id="quantity">
+          <%=orderD.quantity%>
+        </span> pieces
+      </li>
+    </ul>
+    <%})%>
+
+
+
+      Total: $<span id="order-total" name="order-total">
+        <%=totPrice%>
+      </span>
+</div>
+
+
+<div class="state">
+  <div name="order_state" id="order_state">
+
+    <span id="status">
+      <%=state%>
+    </span>
+  </div>
+
+
+
+
+<%}%>
+
+
+
+
+<%if(state=="Processing"){%>
+  <h2 name="order_code" id="order_code">
+    <%=orderCode%>
+  </h2>
+  <span name="date" id="dat">
+    <%=delDate%>
+  </span>
+
+  <%orderDet.map((orderD)=>{%>
+
+    <ul id="contents" name="contents">
+      <li><a href="/product/<%=orderD.fp_id%>"><span name="design_title" id="design_title">
+            <%=orderD.design_title%>
+          </span> <span name="product" id="product">
+            <%=orderD.template_name%>
+          </span></a>
+        <br>
+        <span name="quantity" id="quantity">
+          <%=orderD.quantity%>
+        </span> pieces
+      </li>
+    </ul>
+    <%})%>
+
+
+
+      Total: $<span id="order-total" name="order-total">
+        <%=totPrice%>
+      </span>
+</div>
+
+
+<div class="state">
+  <div name="order_state" id="order_state">
+
+    <span id="status">
+      <%=state%>
+    </span>
+  </div>
+
+
+
+
+<%}%>
+      </div>
+
+
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</form>
+</body>
+
+</html>

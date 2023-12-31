@@ -1,0 +1,160 @@
+<!-- views/search-results.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>explore</title>
+    <link rel="stylesheet" href="/product_page.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@100;200;300;400;500;600;700&family=Poppins:wght@100;300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="/searchajax.js"></script>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="logo-search">
+                <a href="#" class="logo"><img src="logo.png" alt="GitArt" name="logo_image" width="120px"></a>
+                <form action="/search" method="POST">
+                    <div class="search-box">
+                        <input name="search_query" type="search" placeholder="search for products & designs" id="searchInput">
+                        <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    </div>
+                    <label for="sortOrder">Sort Order:</label>
+<select id="sortOrder" name="sort_order">
+  <option value="asc">Low to High</option>
+  <option value="desc">High to Low</option>
+</select>
+                </form>
+                <div class="icon">
+                    <a href="/designs/Favourites"><i class="fa-regular fa-heart"></i></a>
+                    <a href="/cart"><i class="fa-solid fa-cart-shopping"></i></a>
+                </div>
+            </div>
+
+            <ul>
+              <li class="active"><a href="/designs/Mug" name = "show_mugs">Mugs</a></li>
+              <li class="active"><a href="/designs/Coaster" name = "show_coasters">Coasters</a></li>
+              <li class="active"><a href="/designs/T-Shirt" name = "show_tshirts">T-Shirts</a></li>
+              <li class="active"><a href="/designs/Phone Cover" name = "show_phone_covers">Phone Covers</a></li>
+              <li class="active"><a href="/designs/iPad Case" name = "show_ipad_cases">IPad Cases</a></li>
+              <li class="active"><a href="/designs/Laptop Skin" name = "show_laptop_skin">Laptop Skins</a></li>
+              <li class="active"><a href="/designs/Laptop Sleeve" name = "show_laptop_sleeve">Laptop Sleeves</a></li>
+              <li class="active"><a href="/designs/Tote Bag" name = "show_tote_bags">Tote Bags</a></li>
+              <li class="active"><a href="/designs/Poster" name = "show_posters">Posters</a></li>
+              <li class="active"><a href="/designs/Frame" name = "show_frames">Frames</a></li>
+              <li class="active"><a href="/designs/Sticker" name = "show_stickers">Stickers</a></li>
+              <li class="active"><a href="/designs/Notebook" name = "show_notebooks">Notebooks</a></li>
+              <li class="active"><a href="/designs/A4" name = "show_a4">Art Print</a></li> <!-- A4 template --> 
+            </ul>
+        </nav>
+    </header>
+
+
+    <main>
+      <div class="products" name="products_view">
+        <% finalProductResults.forEach(result => { %>
+          <div class="product" name="product_card">
+            <div class="image_container">
+              <% if (result.template_before) { %>
+                <img name="temp_before_image" src="<%= result.template_before %>" alt="Template Before Image">
+              <% } %>
+              <% if (result.design_path) { %>
+                <img name="design_image" src="<%= result.design_path %>" alt="Design Image">
+              <% } %>
+              <% if (result.template_after) { %>
+                <img name="temp_after_image" src="<%= result.template_after %>" alt="Template After Image">
+              <% } %>
+            </div>
+            <div class="productdata" name="product_data">
+              <div class="titles-container">
+                <a href="/product/<%= result.fp_id %>" name="artist_title">
+                  <%= result.design_title %>
+              </a>
+                
+                <p name="template_name"> <%= result.template_name %></p>
+              </div>
+              <p name="product_price">$<%= result.fp_price %></p>
+            </div>
+            <!--div class="heart-icon" name="fav_button">
+              <i class='bx bx-heart'></i>
+            </div-->
+          </div>
+        <% }); %>
+      </div>
+    </main>
+
+    <button style="display: none;" id="loadMoreBtn" name="<%= searchQuery %>" data-start-index="<%= start_index %>" data-num-record="<%= num_record %>">Load More</button>
+  
+   
+  
+    
+   <!--<script>
+      const post_data = document.querySelector('#products_view');
+      const load_button = document.querySelector('#loadMoreBtn');
+        const searchInput = document.querySelector('#searchInput');
+        let start_index = 0;
+        const num_record = 10;
+  
+        load_button.addEventListener('click', () => {
+            loadMore();
+        });
+  
+        function loadMore() {
+            load_button.innerHTML = 'Wait...';
+            load_button.disabled = true;
+  
+            setTimeout(function() {
+                const request = new XMLHttpRequest();
+                request.open('POST', '/?start_index=' + start_index + '&num_record=' + num_record);
+                request.setRequestHeader('Content-Type', 'application/json');
+                request.onload = () => {
+                    const results = JSON.parse(request.responseText);
+                    let html = '';
+  
+                    if (results.finalProductResults.length > 0) {
+                        results.finalProductResults.forEach(result => {
+                            html += `<li class="list-group-item">
+                                <h5>${result.design_title}</h5>
+                                <p>${result.template_name}</p>`;
+                            if (result.design_path) {
+                                html += `<img src="/Images/${result.design_path}" alt="${result.design_title}" style="max-width: 100%;">`;
+                            }
+                            html += `</li>`;
+                            start_index++;
+                        });
+  
+                        load_button.innerHTML = 'Load More';
+                        load_button.disabled = false;
+                    } else {
+                        html += '<li class="list-group-item active">No More Data Found</li>';
+                        load_button.remove();
+                    }
+                    
+                    
+  
+                    post_data.innerHTML = post_data.innerHTML + html;
+                    window.scrollTo(0, document.body.scrollHeight);
+                };
+  
+                request.send(JSON.stringify({ search: searchInput.value }));
+            }, 1000);
+        }
+  
+        function search() {
+            // Reset start_index when performing a new search
+            start_index = 0;
+            post_data.innerHTML = '';
+            loadMore();
+        }
+    </script>-->
+  
+   
+  </body>
+  
+
+</html>

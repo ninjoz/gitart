@@ -1,0 +1,374 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="addwork.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>add your work</title>
+</head>
+
+<body>
+
+    <header class="header">
+        
+    </header>
+
+    <h1>Upload Your Artwork!</h1>
+
+    <main class="main">
+
+        <div class="uploader">
+
+            <label for="input-file" id="drop-area">
+                <input type="file" name="input_file" accept="image/*" id="input-file" hidden>
+                <div id="img-view">
+                    <img src="icon2.png">
+                </div>
+            </label>
+
+
+        </div>
+
+        <form class="form">
+            <label for="textfield">
+                <h2>Title</h2>
+                <br>
+                <small>use descriptive title that explain your work in 4-8 words</small>
+            </label>
+
+            <input type="text" id="textfield" name="title_field" placeholder="Example:Great wave of trees" required>
+
+            <label for="textarea2">
+                <h2>Tags</h2>
+                <br>
+                <small> Write up to 15 tags (50 character limit per tag) separated by commas,<br> that describe the
+                    content of your art. </small>
+
+            </label>
+            <textarea id="textarea2" name="tags_field" rows="1" cols="40"
+                placeholder="Example:Yellow,cute,tree,arrow,forest,oil paint" required></textarea>
+
+            <label for="textarea3">
+                <h2>Description</h2>
+                <br>
+                <small>Share the story or meaning behind your work.</small>
+
+            </label>
+            <textarea id="textarea3" name="description_field" rows="3" cols="40"
+                placeholder="Example:Drawing i did while camping at the national park" required></textarea>
+
+                
+                
+                <label for="textarea4">
+                    <h2>Price</h2>
+                    <br>
+                    <small>set the price for you design</small>
+    
+                </label>
+                
+                <textarea id="textarea4" name="price_field"
+                placeholder="Example: 5" required></textarea>
+
+
+
+                <div id="private-container">
+                <input type="checkbox" id="private" name="private"> <label for="private">private</label>
+            </div>
+            <button id="save-button" name="save_button">Save!</button>
+        </form>
+    </main>
+
+    
+
+
+    <div class="products">
+<h2>PRODUCTS PREVIEWS</h2>
+<br>
+
+    <div class="cards">
+
+
+        <!--tshirt-->
+        <div class="card" name="tshirt_card">
+            <div class="images-part-container">
+            <div class="images-part">
+                <img src="temps/tshirtBefore.png" name="tshirt_before_image" alt="tshirt_before_image not found">
+                <img name="design-image" class="top-img design-image" alt="not found" >
+                <img  src="temps/tshirtAfter.png" class="top-img" alt="tshirt_After_image not found">
+            </div>
+        </div>
+            <p>T-shirt</p>
+            <div class="slide-container">
+                <input type="range" name="range" min="1" max="100" value="100" class="slider" id="myRange1" oninput="updateOverlaySize(this.value, 'overlay-img1') ">
+               </div>
+            <div class="button">
+                <button class="toggle-button" name="tshirt-button">Enabled</button>
+            </div>
+        </div>
+
+        <!--tote-->
+        <div class="card" name="tote_card">
+            <div class="images-part-container">
+                <div class="images-part">
+                    <img src="temps/toteBefore.png" name="tshirt_before_image" alt="tshirt_before_image not found">
+                    <img name="design-image" class="top-img design-image" alt="not found" >
+                    <img  src="temps/toteAfter.png" class="top-img" alt="tshirt_After_image not found">
+                </div>
+            </div>
+            <p>Tote Bag</p>
+            <div class="slide-container">
+                <input type="range" name="range" min="1" max="100" value="100" class="slider" id="myRange1" oninput="updateOverlaySize(this.value, 'overlay-img1') ">
+               </div>
+            <div class="button">
+                <button class="toggle-button" name="tote-button">Enabled</button>
+            </div>
+        </div>
+
+        <!--sticker-->
+        <div class="card" name="sticker_card">
+            <div class="images-part-container">
+                <div class="images-part">
+                    <img src="temps/stickerBefore.png" name="tshirt_before_image" alt="tshirt_before_image not found">
+                    <img name="design-image" class="top-img design-image" alt="not found" >
+                    <img  src="temps/stickerAfter.png" class="top-img" alt="tshirt_After_image not found">
+                </div>
+            </div>
+            <p>sticker</p>
+            <div class="slide-container">
+                <input type="range" name="range" min="1" max="100" value="100" class="slider" id="myRange1" oninput="updateOverlaySize(this.value, 'overlay-img1') ">
+               </div>
+            <div class="button">
+                <button class="toggle-button" name="sticker-button">Enabled</button>
+            </div>
+        </div>
+
+        <!--poster-->
+        <div class="card" name="poster_card">
+            <div class="images-part-container">
+                <div class="images-part">
+                    <img src="temps/posterBefore.png" name="tshirt_before_image" alt="tshirt_before_image not found">
+                    <img name="design-image" class="top-img design-image" alt="not found" >
+                    <img  src="temps/posterAfter.png" class="top-img" alt="tshirt_After_image not found">
+                </div>
+            </div>
+            <p>T-shirt</p>
+            <div class="slide-container">
+                <input type="range" name="range" min="1" max="100" value="100" class="slider" id="myRange1" oninput="updateOverlaySize(this.value, 'overlay-img1') ">
+               </div>
+            <div class="button">
+                <button class="toggle-button" name="poster-button">Enabled</button>
+            </div>
+        </div>
+
+
+        <!--phoneCover-->
+        <div class="card" name="phoneCover_card">
+            <div class="images-part-container">
+                <div class="images-part">
+                    <img src="temps/phoneCoverBefore.png" name="tshirt_before_image" alt="tshirt_before_image not found">
+                    <img name="design-image" class="top-img design-image" alt="not found" >
+                    <img  src="temps/phoneCoverAfter.png" class="top-img" alt="tshirt_After_image not found">
+                </div>
+            </div>
+            <p>Phone Cover</p>
+            <div class="slide-container">
+                <input type="range" name="range" min="1" max="100" value="100" class="slider" id="myRange1" oninput="updateOverlaySize(this.value, 'overlay-img1') ">
+               </div>
+            <div class="button">
+                <button class="toggle-button" name="phoneCover-button">Enabled</button>
+            </div>
+        </div>
+
+        <!--notebook-->
+        <div class="card" name="notebook_card">
+            <div class="images-part-container">
+                <div class="images-part">
+                    <img src="temps/notebookBefore.png" name="tshirt_before_image" alt="tshirt_before_image not found">
+                    <img name="design-image" class="top-img design-image" alt="not found" >
+                    <img  src="temps/notebookAfter.png" class="top-img" alt="tshirt_After_image not found">
+                </div>
+            </div>
+            <p>notebook</p>
+            <div class="slide-container">
+                <input type="range" name="range" min="1" max="100" value="100" class="slider" id="myRange1" oninput="updateOverlaySize(this.value, 'overlay-img1') ">
+               </div>
+            <div class="button">
+                <button class="toggle-button" name="notebook-button">Enabled</button>
+            </div>
+        </div>
+
+        <!--mug-->
+        <div class="card" name="mug_card">
+            <div class="images-part-container">
+                <div class="images-part">
+                    <img src="temps/mugBefore.png" name="tshirt_before_image" alt="tshirt_before_image not found">
+                    <img name="design-image" class="top-img design-image" alt="not found" >
+                    <img  src="temps/mugAfter.png" class="top-img" alt="tshirt_After_image not found">
+                </div>
+            </div>
+            <p>mug</p>
+            <div class="slide-container">
+                <input type="range" name="range" min="1" max="100" value="100" class="slider" id="myRange1" oninput="updateOverlaySize(this.value, 'overlay-img1') ">
+               </div>
+            <div class="button">
+                <button class="toggle-button" name="mug-button">Enabled</button>
+            </div>
+        </div>
+
+        <!--laptopSleeve-->
+        <div class="card" name="laptopSleeve_card">
+            <div class="images-part-container">
+                <div class="images-part">
+                    <img src="temps/laptopSleeveBefore.png" name="tshirt_before_image" alt="tshirt_before_image not found">
+                    <img name="design-image" class="top-img design-image" alt="not found" >
+                    <img  src="temps/laptopSleeveAfter.png" class="top-img" alt="tshirt_After_image not found">
+                </div>
+            </div>
+            <p>laptop Sleeve</p>
+            <div class="slide-container">
+                <input type="range" name="range" min="1" max="100" value="100" class="slider" id="myRange1" oninput="updateOverlaySize(this.value, 'overlay-img1') ">
+               </div>
+            <div class="button">
+                <button class="toggle-button" name="laptopSleeve-button">Enabled</button>
+            </div>
+        </div>
+
+
+        <!--laptopSkin-->
+        <div class="card" name="laptopSkin_card">
+            <div class="images-part-container">
+                <div class="images-part">
+                    <img src="temps/laptopSkinBefore.png" name="tshirt_before_image" alt="tshirt_before_image not found">
+                    <img name="design-image" class="top-img design-image" alt="not found" >
+                    <img  src="temps/laptopSkinAfter.png" class="top-img" alt="tshirt_After_image not found">
+                </div>
+            </div>
+            <p>laptop Skin</p>
+            <div class="slide-container">
+                <input type="range" name="range" min="1" max="100" value="100" class="slider" id="myRange1" oninput="updateOverlaySize(this.value, 'overlay-img1') ">
+               </div>
+            <div class="button">
+                <button class="toggle-button" name="laptopSkin-button">Enabled</button>
+            </div>
+        </div>
+
+        <!--ipadCase-->
+
+        <div class="card" name="ipadCase_card">
+            <div class="images-part-container">
+                <div class="images-part">
+                    <img src="temps/ipadCaseBefore.png" name="tshirt_before_image" alt="tshirt_before_image not found">
+                    <img name="design-image" class="top-img design-image" alt="not found" >
+                    <img  src="temps/ipadCaseAfter.png" class="top-img" alt="tshirt_After_image not found">
+                </div>
+            </div>
+            <p>ipadCase</p>
+            <div class="slide-container">
+                <input type="range" name="range" min="1" max="100" value="100" class="slider" id="myRange1" oninput="updateOverlaySize(this.value, 'overlay-img1') ">
+               </div>
+            <div class="button">
+                <button class="toggle-button" name="ipadCase-button">Enabled</button>
+            </div>
+        </div>
+
+        <!--frame-->
+        <div class="card" name="frame_card">
+            <div class="images-part-container">
+                <div class="images-part">
+                    <img src="temps/frameBefore.png" name="tshirt_before_image" alt="tshirt_before_image not found">
+                    <img name="design-image" class="top-img design-image" alt="not found" >
+                    <img  src="temps/frameAfter.png" class="top-img" alt="tshirt_After_image not found">
+                </div>
+            </div>
+            <p>frame</p>
+            <div class="slide-container">
+                <input type="range" name="range" min="1" max="100" value="100" class="slider" id="myRange1" oninput="updateOverlaySize(this.value, 'overlay-img1') ">
+               </div>
+            <div class="button">
+                <button class="toggle-button" name="frame-button">Enabled</button>
+            </div>
+        </div>
+
+
+        <!--coaster-->
+        <div class="card" name="coaster_card">
+            <div class="images-part-container">
+                <div class="images-part">
+                    <img src="temps/coasterBefore.png" name="tshirt_before_image" alt="tshirt_before_image not found">
+                    <img name="design-image" class="top-img design-image" alt="not found" >
+                    <img  src="temps/coasterAfter.png" class="top-img" alt="tshirt_After_image not found">
+                </div>
+            </div>
+            <p>coaster</p>
+            <div class="slide-container">
+                <input type="range" name="range" min="1" max="100" value="100" class="slider" id="myRange1" oninput="updateOverlaySize(this.value, 'overlay-img1') ">
+               </div>
+            <div class="button">
+                <button class="toggle-button" name="coaster-button">Enabled</button>
+            </div>
+        </div>
+
+        <!--a4-->
+        <div class="card" name="a4_card">
+            <div class="images-part-container">
+                <div class="images-part">
+                    <img src="temps/a4Before.png" name="tshirt_before_image" alt="tshirt_before_image not found">
+                    <img name="design-image" class="top-img design-image" alt="not found" >
+                    <img  src="temps/a4After.png" class="top-img" alt="tshirt_After_image not found">
+                </div>
+            </div>
+            <p>Art Print</p>
+            <div class="slide-container">
+                <input type="range" name="range" min="1" max="100" value="100" class="slider" id="myRange1" oninput="updateOverlaySize(this.value, 'overlay-img1') ">
+               </div>
+            <div class="button">
+                <button class="toggle-button" name="a4-button">Enabled</button>
+            </div>
+        </div>
+        
+    </div>
+
+    </div>
+ 
+    </section>
+
+    <br>
+    <br>
+    <br>
+    <div id="save-button-container">
+        <button id="save-button" name="save_button">Save!</button>
+    </div>
+
+
+    <br>
+    <br>
+    <script src="addwork.js"></script>
+    <script src="code.jquery.com_jquery-3.7.1.min.js"></script>
+    <script>
+  
+        $(".toggle-button").click(function () {
+            // تحديد العنصر الذي يحتوي على الزر المناسب
+       var $card = $(this).closest(".card");
+    // البحث داخل هذا العنصر عن الصورة المرتبطة بالزر
+       var $imge = $card.find(".imge");
+       var $overlayImage = $card.find(".top-img");
+          if ($(this).text() == "disabled") {
+            $(this).text("enabled");
+            $imge.removeClass("opacity"); 
+            $overlayImage.removeClass("opacity");
+            $(this).css("background", "linear-gradient(to bottom, #57d757, #98ca98)");
+          } else {
+            $(this).text("disabled");
+            $imge.addClass("opacity");
+            $overlayImage.addClass("opacity");
+            $(this).css("background", "red");
+          }
+        });
+        
+ 
+      </script>
+
+</body>
+
+</html>

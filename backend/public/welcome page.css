@@ -1,0 +1,59 @@
+:root {
+    --mint: rgb(132, 232, 203);
+    --white: #ffffff;
+}
+
+
+*{
+ margin: 0;
+ padding: 0;
+ box-sizing: border-box;
+ font-family: 'Open Sans', sans-serif;
+}
+
+.circle {
+    width: 200vw;  
+    height: 200vh;  
+    background-color: var(--mint);
+    border-radius: 50%;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.opening_img {
+    width: 30%;  
+    height: 60%;  
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2; /* Ensure the image is above the circle */
+}
+
+.login {
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    top: 75%;  
+}
+
+.register {
+
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    top: 80%; 
+}
+
+
+.login a, .register a {
+    color: rgb(255, 230, 0);
+    font-size: 32px;
+}
+
+.register p {
+    color: white;
+    font-size: 30px;
+}
+ 

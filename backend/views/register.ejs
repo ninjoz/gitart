@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+    <style> 
+  form {
+  margin:0 auto;
+  width:300px
+}
+input {
+  margin-bottom:3px;
+  padding:10px;
+  width: 100%;
+  border:1px solid #CCC
+}
+button {
+  padding:10px
+}
+p {
+  cursor:pointer
+}
+
+  </style>
+</head>
+<body>
+  <form id='register-form' action="/register" method='post'>
+    <input type="text" name= "new_user_name" class="form-control" placeholder="Username" required>
+    <input type="radio" name="gender" value="male" required> Male
+<input type="radio" name="gender" value="female" required> Female
+<input type="radio" name="accType" value="artist" required> Artist
+<input type="radio" name="accType" value="customer" required> Customer
+
+    <input type="email" class="form-control" name= "new_user_email_address" placeholder="Email" required>
+    <input type="password" name="new_user_password" class="form-control" placeholder="Password" required>
+    <input type="password" class="form-control" name="re_new_user_password" placeholder="Re Password" required>
+    <button type='submit' class="btn btn-primary"  value="Register">Register</button>
+    <p> <%=message%></p>
+    <p>Already Member ?
+      <a href="/login">Sign In Now</a>
+   </p>
+    
+  </form>
+</body>
+</html>

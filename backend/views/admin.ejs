@@ -1,0 +1,313 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/admin.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"> </script>
+    <script  src="/admin.js"> </script>
+    <title>admin</title>
+</head>
+
+<body>
+    <form id="admin" method="post">
+    <header class="header">
+        <div class="navbar">
+
+            <div id="logo">
+                <img src="logo.png" alt="Logo">
+            </div>
+
+            
+
+        </header>
+
+        <div class="part1">
+
+           <div class="boxes">
+            <div class="box1">
+              <span class="text">Number of Artists</span>
+              <span class="numbers" name="number-of-artists"><%=artists%></span>
+           </div>
+            <div class="box2">
+               <span class="text">Number of Customers</span>
+               <span class="numbers" name="number-of-customers"><%=customers%></span>
+                
+            </div>
+            <div class="box3">
+                <span class="text">Orders placed</span>
+                <span class="numbers" name="Orders-placed"><%=orderNum%></span>
+                
+            </div>
+            <div class="box4">
+                <span class="text">Total Earnings</span>
+                <span class="numbers" name="total-earnings"><%=earnings%></span>
+                
+            </div>
+            </div>
+            </div>
+            <br>
+            <br>
+            <br>
+            <br>
+
+            <div class="part2">
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Product Name</th>
+                            <th>Quantity</th>
+                            <th>for adding</th>
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Mug</td>
+                            <td id="mug_quantity" name="mug_quantity"><%=mug%></td>
+                            <td>  <div>
+                                <input type="number" id="Mug-newQuantity" name="Mug-newQuantity" min="1" placeholder="new quantity" required>
+                                <button type="submit"   name="mug-add-button" >Add</button>
+                            </div>
+                        </td>
+                        </tr>
+                        <tr>
+                            <td>Coaster</td>
+                            <td id="coaster_quantity"><%=coaster%></td>
+                            <td>  <div>
+                                <input type="number" id="Coaster-newQuantity" name="Coaster-newQuantity" min="1" placeholder="new quantity">
+                                <button name="coaster-add-button" type="submit" >Add</button>
+                                
+                            </div>
+                        </td>
+                        </tr>
+                        <tr>
+                            <td>Phone Cover</td>
+                            <td id="phone_cover_quantity"><%=phone_cover%></td>
+                            <td>  <div>
+                                <input type="number" id="PhoneCover-newQuantity" name="PhoneCover-newQuantity" min="1" placeholder="new quantity">
+                                <button name="Phonecover-add-button" type="submit" >Add</button>
+                             </div>
+                        </td>
+                        </tr>
+                        <tr>
+                            <td>Ipad case</td>
+                            <td id="ipad_case_quantity"><%=ipad_case%></td>
+                            <td>  <div>
+                                <input type="number" id="Ipadcase-newQuantity" name="Ipadcase-newQuantity" min="1" placeholder="new quantity">
+                                <button name="Ipadcase-add-button" type="submit" >Add</button>
+                                
+                            </div>
+                        </td>
+                        </tr>
+                        <tr>
+                            <td>Laptop sleeve</td>
+                            <td id="laptop_sleeve_quantity"><%=laptop_sleeve%></td>
+                            <td>  <div>
+                                <input type="number" id="Laptopsleeve-newQuantity" name="Laptopsleeve-newQuantity" min="1" placeholder="new quantity">
+                                <button name="laptopsleeve-add-button"  type="submit" >Add</button>
+                                
+                            </div>
+                        </td>
+                        </tr>
+                        <tr>
+                            <td>Tote bag</td>
+                            <td id="tote_bag_quantity"><%=tote_bag%></td>
+                            <td>  <div>
+                                <input type="number" id="Totebag-newQuantity" name="Totebag-newQuantity" min="1" placeholder="new quantity">
+                                <button name="totebag-add-button" type="submit" >Add</button>
+                                
+                            </div>
+                        </td>
+                        </tr>
+                        <tr>
+                            <td>T shirt</td>
+                            <td id="tshirt_quantity"><%=t_shirt%></td>
+                            <td>  <div>
+                                <input type="number" id="Tshirt-newQuantity" name="Tshirt-newQuantity" min="1" placeholder="new quantity">
+                                <button name="tshirt-add-button" type="submit" >Add</button>
+                                
+                            </div>
+                        </td>
+                        </tr>
+                        <tr>
+                            <td>Notebook</td>
+                            <td id="notebook_quantity"><%=notebook%></td>
+                            <td>  <div>
+                                <input type="number" id="Notebook-newQuantity" name="Notebook-newQuantity" min="1" placeholder="new quantity">
+                                <button name="notebook-add-button" type="submit" >Add</button>
+                                
+                            </div>
+                        </td>
+                        </tr>
+                        <tr>
+                            <td>Laptop skin</td>
+                            <td id="laptop_skin_quantity"><%=laptop_skin%></td>
+                            <td>  <div>
+                                <input type="number" id="Laptopskin-newQuantity" name="Laptopskin-newQuantity" min="1" placeholder="new quantity">
+                                <button name="laptopskin-add-button" type="submit" >Add</button>
+                                
+                            </div>
+                        </td>
+                        </tr>
+                        <tr>
+                            <td>Poster</td>
+                            <td id="poster_quantity"><%=poster%></td>
+                            <td>  <div>
+
+                                <input type="number" id="Poster-newQuantity" name="Poster-newQuantity" min="1" placeholder="new quantity">
+                                <button name="poster-add-button" type="submit" >Add</button>
+                                
+                            </div>
+                        </td>
+                        </tr>
+                        <tr>
+                            <td>Frame</td>
+                            <td id="frame_quantity"><%=frame%></td>
+                            <td>  <div>
+
+                                <input type="number" id="Frame-newQuantity" name="Frame-newQuantity" min="1" placeholder="new quantity">
+                                <button name="frame-add-button" type="submit" >Add</button>
+                                
+                            </div>
+                        </td>
+                        </tr>
+                        <tr>
+                            <td>A4</td>
+                            <td id="a4_quantity"><%=A4%></td>
+                            <td>  <div>
+                                <input type="number" id="A4-newQuantity" name="a4-newQuantity" min="1" placeholder="new quantity">
+                                <button name="a4-add-button" type="submit" >Add</button>
+                              
+                            </div>
+                        </td>
+                        </tr>
+                        <tr>
+                            <td>Sticker</td>
+                            <td id="sticker_quantity" name="sticker_quantity"><%=sticker%></td>
+                            <td>  <div>
+                                <input type="number" id="Sticker-newQuantity" name="Sticker-newQuantity" min="1" placeholder="new quantity" required>
+                                <button type="button" name="sticker-add-button" type="submit" >Add</button>
+                                
+                            </div>
+                        </td>
+                        </tr>
+                        
+                    </tbody>
+                </table>
+             
+              </div>
+
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+
+
+              <div id="orders-tables-container">
+
+                <div class="table-container">
+                <table>
+                    <tr>
+                        <th>Pending</th>
+                        <th>Waiting for</th>
+                    </tr>
+                    <%if(pendingOrders.length>0){%>
+                        <%pendingOrders.map((pendingOrder)=>{%>
+                    <tr id="pending-order">
+                        <td><a href="/order<%=pendingOrder.code%>" name="pending_order_code" ><%=pendingOrder.code%></a></td>
+                        <td id="missed-stuff" name="missed_stuff">
+                            <%if(pendingOrder.missedQuantities.length>0){%>
+                                <%pendingOrder.missedQuantities.map((missedQuantity)=>{%>
+                            <div><%=missedQuantity%></div>
+                            <%})%>
+                            <%}%>
+                        </td>
+                    </tr>
+                    <%})%>
+                    <%}%>
+                    
+                </table>
+            </div>
+
+                <div class="table-container">
+                <table id="processing">
+                    <tr>
+                        <th>Processing</th>
+                        <th>Confirm</th>
+                    </tr>
+                    <%if(processingOrders.length>0){%>
+                        <%processingOrders.map((processingOrder)=>{%>
+                    <tr id="processing-order">
+                        <td><a href="/order<%=processingOrder.code%>" name="processing_order_code" ><%=processingOrder.code%></a></td>
+                        <td><button class="<%=joining_date%>" name="<%=processingOrder.code%>" id="order_done_button">Done</button></td>
+                    </tr>
+                    <%})%>
+                    <%}%>
+                    
+                </table>
+            </div>
+
+            <div class="table-container">
+                <table id="shipped">
+                    <tr>
+                        <th>Shipped Orders</th>
+                        <th>Date</th>
+                    </tr>
+                    <%if(shippedOrders.length>0){%>
+                        <%shippedOrders.map((shippedOrder)=>{%>
+                    <tr id="<%=shippedOrder.code%>" name="shipped-order">
+                        <td><a href="/order<%=shippedOrder.code%>" name="shipped-order-code" ><%=shippedOrder.code%></a></td>
+                        <td name="delivered_date" id="shipment_date"><%=shippedOrder.shipment_date%></td>
+                    </tr>
+                    <%})%>
+                    <%}%>
+                </table>
+
+            </div>
+
+            <div class="table-container">
+                <table id="delivered">
+                    <tr>
+                        <th>Delivered Orders</th>
+                        <th>Date</th>
+                    </tr>
+                    <%if(deliveredOrders.length>0){%>
+                                <%deliveredOrders.map((deliveredOrder)=>{%>
+                    <tr id="delivered-order" name="delivered-order">
+                        <td><a href="/order<%=deliveredOrder.code%>" name="delivered-order-code" ><%=deliveredOrder.code%></a></td>
+                        <td name="delivered_date" id="delievered_date"><%=deliveredOrder.delivering_date%></td>
+                    </tr>
+                    <%})%>
+                    <%}%>
+
+
+
+                </table>
+
+            </div>
+
+
+
+              </div>
+
+              <br>
+              <br>
+              <br>
+              <script>
+               function handleAdd(inputId) {
+             // محو قيمة حقل النص الذي يلي الزر
+             var quantityField = document.getElementById(inputId);
+              
+               quantityField.value ="";
+         
+    }
+              </script>
+           
+        </form>
+            </body>
+</html>

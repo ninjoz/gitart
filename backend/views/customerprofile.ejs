@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    <link rel="stylesheet" href="/customerprofile.css" />
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"> </script>
+    <script src="/customerprof.js"> </script>
+
+
+
+    <script type="text/javascript">
+
+
+    </script>
+</head>
+
+<body>
+
+        <header>
+            <nav>
+
+            </nav>
+        </header>
+
+
+
+
+        <div id="cover">
+            
+            <img name="artist_cover_image" src="/<%=cover_photo%>" href="#" alt="cover image not found">
+            <form id="coverButton" method="post" enctype="multipart/form-data" action="/coverPic">
+            <%if(hisProfile){%>
+<input class="coverBtn" type="file" id="changeCover" name="changeCover" accept="image/png, image/jpeg" onchange="form.submit()">
+                
+                <%}%>
+            </form>
+        </div>
+        <div id="profile">
+            <div id="profile-photo-container">
+                <img name="artist_profile_photo" src="/<%=profile_photo%>" href="#" alt="profile image not found" />
+                <form id="profileButton" method="post" enctype="multipart/form-data" action="/profilePic">
+                <%if(hisProfile){%>
+
+                    <input  type="file" id="changeProfile" name="changeProfile" accept="image/png, image/jpeg" onchange="form.submit()">
+                    <%}%>
+                </form>
+            </div>
+            <div id="profile-data-container">
+                <h2 name="artist_name" id="username">@<%=user_name %>
+                </h2>
+                <div name="artist_data" id="artist-data">
+                    <%if(hisProfile){%>
+                    <span name="artworks_number" id="artworks_number">
+                        <%=blogs.length%>
+
+                    </span> Artworks • <span id="followingsNumber" name="followings_number">
+                        <%=followings%>
+                    </span> Followings
+                    <%}%>
+                    <%if(!hisProfile){%>
+                        <span name="artworks_number" id="artworks_number">
+                            <%=blogs.length%>
+                        </span> Artworks • <span id="followersNumber" name="followers_number">
+                            <%=followers%>
+                        </span> Followers
+                        <%}%>
+                </div>
+                <br>
+                <%if((!hisProfile)&&isFollowing===true){%>
+
+                    <button name="unfollow" id="follow-button" type="button" value="<%=artist_id%>">unfollow</button>
+                    <%}%>
+                        <%if((!hisProfile)&&isFollowing==false){%>
+                            <button name="follow" id="follow-button" type="button"
+                                value="<%=artist_id%>">Follow</button>
+                            <%}%>
+
+
+            </div>
+
+        </div>
+
+
+
+
+        <main>
+
+            <div id="artworks-header">Artworks</div>
+            <hr color="silver">
+            <br>
+
+
+
+            <%if(blogs.length>0){%>
+                <%if(hisProfile){%>
+                    <div class="artworks" name="artworks_view">
+
+                        <%blogs.map((blog)=>{%>
+
+                            <div class="artwork" name="artwork_card" id="<%=blog.design_id%>">
+<button id="remove" name="<%=blog.design_id%>" onclick="return confirm('Are you sure?')">x</button>
+                                <div class="image_container">
+
+
+                                    <img name="design_image" class="design" src="/<%=blog.design_path%>" href="#"
+                                        alt="design image not found" class="design_image">
+
+
+                                </div>
+                                
+
+
+
+                                <div class="artwork-data" name="product_data">
+                                    <h4 name="artwork_title">
+                                        <%=blog.design_title%>
+                                    </h4>
+                                    
+                                </div>
+                            </div>
+
+                            <%})%>
+                    </div>
+
+
+                    <% }%>
+                        <%if(!(hisProfile)){%>
+                            <div class="artworks" name="artworks_view">
+                                <%blogs.forEach((blog)=>{%>
+
+                                    <div class="artwork" name="artwork_card">
+
+                                        <div class="image_container">
+
+
+                                            <img name="design_image" class="design" src="/<%=blog.design_path%>"
+                                                href="#" alt="design image not found" class="design_image">
+
+
+                                        </div>
+                                        <%if(likedDesigns.indexOf(blog.design_id)!==-1){%>
+                                            <div class="heart-icon" name="fav_button">
+                                                <span id="<%=blog.design_id%>">
+                                                    <%if(parseInt(blog.likes)>0){%>
+                                                        <%=blog.likes%>
+
+                                                            <%} %>
+                                                                <%if(!(parseInt(blog.likes)>0)){%>
+                                                                    0
+                                                                    <%} %>
+
+
+                                                </span>
+                                                <span>Likes</span>
+                                                <button name="liked" class='bx bx-heart' id="<%=blog.design_id%>"
+                                                    value="Liked" style="color:Tomato;"> </button>
+
+
+
+                                            </div>
+
+                                            <%}%>
+                                                <%if(likedDesigns.indexOf(blog.design_id)===-1){%>
+                                                    <div class="heart-icon" name="fav_button">
+                                                        <span id="<%=blog.design_id%>">
+                                                            <%if(parseInt(blog.likes)>0){%>
+                                                                <%=blog.likes%>
+
+                                                                    <%} %>
+                                                                        <%if(!(parseInt(blog.likes)>0)){%>
+                                                                            0
+                                                                            <%} %>
+                                                        </span>
+                                                        <span>Likes</span>
+
+                                                        <button name="notliked" class='bx bx-heart'
+                                                            id="<%=blog.design_id%>" value="notLiked"
+                                                            style="color:rgb(191, 201, 223);">
+                                                        </button>
+
+
+
+                                                    </div>
+
+                                                    <%}%>
+
+
+
+                                                        <div class="artwork-data" name="product_data">
+                                                            <h4 name="artwork_title">
+                                                                <%=blog.design_title%>
+                                                            </h4>
+                                                            <p name="artwork_price">
+                                                                <%=blog.design_price%>$
+                                                            </p>
+                                                        </div>
+                                    </div>
+
+                                    <%})%>
+                            </div>
+
+
+
+                            <%}%>
+
+                                <%}%>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </main>
+
+
+
+        <br>
+        <br>
+        <br>
+        <br>
+
+
+
+
+
+</body>
+
+</html>

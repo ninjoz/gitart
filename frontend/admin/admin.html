@@ -1,0 +1,382 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="admin.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>admin page</title>
+</head>
+
+<body>
+    <header class="header">
+        <div class="navbar">
+
+            <div id="logo">
+                <img src="logo.png" alt="Logo">
+            </div>
+
+            
+
+        </header>
+
+        <div class="part1">
+
+           <div class="boxes">
+            <div class="box1">
+              <span class="text">Number of Artists</span>
+              <span class="numbers" name="number-of-artists">100</span>
+           </div>
+            <div class="box2">
+               <span class="text">Number of Customers</span>
+               <span class="numbers" name="number-of-customers">100</span>
+                
+            </div>
+            <div class="box3">
+                <span class="text">Orders placed</span>
+                <span class="numbers" name="Orders-placed">100</span>
+                
+            </div>
+            <div class="box4">
+                <span class="text">Total Earnings</span>
+                <span class="numbers" name="total-earnings">100</span>
+                
+            </div>
+            </div>
+            </div>
+            <br>
+            <br>
+            <br>
+            <br>
+
+            <div class="part2">
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Product Name</th>
+                            <th>Quantity</th>
+                            <th>for adding</th>
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Mug</td>
+                            <td name="mug_quantity">10</td>
+                            <td>  <div>
+                                <input type="number" id="Mug-newQuantity" name="Mug-newQuantity" min="1" placeholder="new quantity">
+                                <button name="mug-add-button" onclick="handleAdd( 'Mug-newQuantity')">Add</button>
+                            </div>
+                        </td>
+                        </tr>
+                        <tr>
+                            <td>Coaster</td>
+                            <td name="coaster_quantity">5</td>
+                            <td>  <div>
+                                <input type="number" id="Coaster-newQuantity" name="Coaster-newQuantity" min="1" placeholder="new quantity">
+                                <button name=" coaster-add-button" onclick="handleAdd( 'Coaster-newQuantity')">Add</button>
+                                
+                            </div>
+                        </td>
+                        </tr>
+                        <tr>
+                            <td>Phone Cover</td>
+                            <td name="phone_cover_quantity">10</td>
+                            <td>  <div>
+                                <input type="number" id="PhoneCover-newQuantity" name="PhoneCover-newQuantity" min="1" placeholder="new quantity">
+                                <button name=" Phonecover-add-button" onclick="handleAdd('PhoneCover-newQuantity')">Add</button>
+                             </div>
+                        </td>
+                        </tr>
+                        <tr>
+                            <td>Ipad case</td>
+                            <td name="ipad_case_quantity">10</td>
+                            <td>  <div>
+                                <input type="number" id=" Ipadcase-newQuantity" name=" Ipadcase-newQuantity" min="1" placeholder="new quantity">
+                                <button name=" Ipadcase-add-button" onclick="handleAdd('Ipadcase-newQuantity')">Add</button>
+                                
+                            </div>
+                        </td>
+                        </tr>
+                        <tr>
+                            <td>Laptop sleeve</td>
+                            <td name="laptop_sleeve_quantity">10</td>
+                            <td>  <div>
+                                <input type="number" id="Laptopsleeve-newQuantity" name="Laptopsleeve-newQuantity" min="1" placeholder="new quantity">
+                                <button name="laptopsleeve-add-button" onclick="handleAdd('Laptopsleeve-newQuantity')">Add</button>
+                                
+                            </div>
+                        </td>
+                        </tr>
+                        <tr>
+                            <td>Tote bag</td>
+                            <td name="tote_bag_quantity">10</td>
+                            <td>  <div>
+                                <input type="number" id="Totebag-newQuantity" name="Totebag-newQuantity" min="1" placeholder="new quantity">
+                                <button name="totebag-add-button"onclick="handleAdd('Totebag-newQuantity')">Add</button>
+                                
+                            </div>
+                        </td>
+                        </tr>
+                        <tr>
+                            <td>T shirt</td>
+                            <td name="tshirt_quantity">10</td>
+                            <td>  <div>
+                                <input type="number" id="Tshirt-newQuantity" name="Tshirt-newQuantity" min="1" placeholder="new quantity">
+                                <button name="tshirt-add-button" onclick="handleAdd(' Tshirt-newQuantity')">Add</button>
+                                
+                            </div>
+                        </td>
+                        </tr>
+                        <tr>
+                            <td>Notebook</td>
+                            <td name="notebook_quantity">10</td>
+                            <td>  <div>
+                                <input type="number" id="Notebook-newQuantity" name="Notebook-newQuantity" min="1" placeholder="new quantity">
+                                <button name="notebook-add-button" onclick="handleAdd( 'Notebook-newQuantity')">Add</button>
+                                
+                            </div>
+                        </td>
+                        </tr>
+                        <tr>
+                            <td>Laptop skin</td>
+                            <td name="laptop_skin_quantity">10</td>
+                            <td>  <div>
+                                <input type="number" id="Laptopskin-newQuantity" name="Laptopskin-newQuantity" min="1" placeholder="new quantity">
+                                <button name="laptopskin-add-button" onclick="handleAdd(' Laptopskin-newQuantity')">Add</button>
+                                
+                            </div>
+                        </td>
+                        </tr>
+                        <tr>
+                            <td>Poster</td>
+                            <td name="poster_quantity">10</td>
+                            <td>  <div>
+
+                                <input type="number" id="Poster-newQuantity" name="Poster-newQuantity" min="1" placeholder="new quantity">
+                                <button name="poster-add-button" onclick="handleAdd(' Poster-newQuantity')">Add</button>
+                                
+                            </div>
+                        </td>
+                        </tr>
+                        <tr>
+                            <td>Frame</td>
+                            <td name="frame_quantity">10</td>
+                            <td>  <div>
+
+                                <input type="number" id="Frame-newQuantity" name="Frame-newQuantity" min="1" placeholder="new quantity">
+                                <button name="frame-add-button" onclick="handleAdd('Frame-newQuantity' )">Add</button>
+                                
+                            </div>
+                        </td>
+                        </tr>
+                        <tr>
+                            <td>A4</td>
+                            <td name="a4_quantity">10</td>
+                            <td>  <div>
+                                <input type="number" id="A4-newQuantity" name="a4-newQuantity" min="1" placeholder="new quantity">
+                                <button name="a4-add-button" onclick="handleAdd('A4-newQuantity ')">Add</button>
+                              
+                            </div>
+                        </td>
+                        </tr>
+                        <tr>
+                            <td>Sticker</td>
+                            <td name="sticker_quantity">10</td>
+                            <td>  <div>
+                                <input type="number" id="Sticker-newQuantity" name="Sticker-newQuantity" min="1" placeholder="new quantity">
+                                <button type="button" name="sticker-add-button" onclick="handleAdd('Sicker-newQuantity')">Add</button>
+                                
+                            </div>
+                        </td>
+                        </tr>
+                        
+                    </tbody>
+                </table>
+             
+              </div>
+              <br>
+              <br>
+              <br>
+
+
+              <div id="orders-tables-container">
+
+                <div class="table-container">
+                <table>
+                    <tr>
+                        <th>Pending</th>
+                        <th>Waiting for</th>
+                    </tr>
+
+                    <tr id="pending-order">
+                        <td><a href="/this order page" name="pending_order_code" >12121212</a></td>
+                        <td id="missed-stuff" name="missed_stuff"><div>mugs</div>
+                            <div>stickers</div></td>
+                    </tr>
+
+                    
+                </table>
+            </div>
+
+                <div class="table-container">
+                <table id="processing">
+                    <tr>
+                        <th>Processing</th>
+                        <th>Confirm</th>
+                    </tr>
+
+                    <tr id="processing-order">
+                        <td><a href="/this order page" name="processing_order_code" >12121212</a></td>
+                        <td><button name="order_done_button" id="order_done_button">Done</button></td>
+                    </tr>
+
+                    
+                </table>
+            </div>
+
+            <div class="table-container">
+                <table id="shipped">
+                    <tr>
+                        <th>Shipped Orders</th>
+                        <th>Date</th>
+                    </tr>
+
+                    <tr id="shipped-order" name="shipped-order">
+                        <td><a href="/this order page" name="shipped-order-code" >12121212</a></td>
+                        <td name="delivered_date" id="delievered_date">2023-09-08</td>
+                    </tr>
+
+
+                    <tr id="shipped-order" name="shipped-order">
+                        <td><a href="/this order page" name="shipped-order-code" >12121212</a></td>
+                        <td name="delivered_date" id="delievered_date">2023-09-08</td>
+                    </tr>
+
+                    <tr id="shipped-order" name="shipped-order">
+                        <td><a href="/this order page" name="shipped-order-code" >12121212</a></td>
+                        <td name="delivered_date" id="delievered_date">2023-09-08</td>
+                    </tr>
+
+                    <tr id="shipped-order" name="shipped-order">
+                        <td><a href="/this order page" name="shipped-order-code" >12121212</a></td>
+                        <td name="delivered_date" id="delievered_date">2023-09-08</td>
+                    </tr>
+
+
+                    <tr id="shipped-order" name="shipped-order">
+                        <td><a href="/this order page" name="shipped-order-code" >12121212</a></td>
+                        <td name="delivered_date" id="delievered_date">2023-09-08</td>
+                    </tr>
+
+                    <tr id="shipped-order" name="shipped-order">
+                        <td><a href="/this order page" name="shipped-order-code" >12121212</a></td>
+                        <td name="delivered_date" id="delievered_date">2023-09-08</td>
+                    </tr>
+
+                    <tr id="shipped-order" name="shipped-order">
+                        <td><a href="/this order page" name="shipped-order-code" >12121212</a></td>
+                        <td name="delivered_date" id="delievered_date">2023-09-08</td>
+                    </tr>
+
+
+                    <tr id="shipped-order" name="shipped-order">
+                        <td><a href="/this order page" name="shipped-order-code" >12121212</a></td>
+                        <td name="delivered_date" id="delievered_date">2023-09-08</td>
+                    </tr>
+
+                    <tr id="shipped-order" name="shipped-order">
+                        <td><a href="/this order page" name="shipped-order-code" >12121212</a></td>
+                        <td name="delivered_date" id="delievered_date">2023-09-08</td>
+                    </tr>
+
+                    <tr id="shipped-order" name="shipped-order">
+                        <td><a href="/this order page" name="shipped-order-code" >12121212</a></td>
+                        <td name="delivered_date" id="delievered_date">2023-09-08</td>
+                    </tr>
+
+
+                    <tr id="shipped-order" name="shipped-order">
+                        <td><a href="/this order page" name="shipped-order-code" >12121212</a></td>
+                        <td name="delivered_date" id="delievered_date">2023-09-08</td>
+                    </tr>
+
+                    <tr id="shipped-order" name="shipped-order">
+                        <td><a href="/this order page" name="shipped-order-code" >12121212</a></td>
+                        <td name="delivered_date" id="delievered_date">2023-09-08</td>
+                    </tr>
+
+                    <tr id="shipped-order" name="shipped-order">
+                        <td><a href="/this order page" name="shipped-order-code" >12121212</a></td>
+                        <td name="delivered_date" id="delievered_date">2023-09-08</td>
+                    </tr>
+
+
+                    <tr id="shipped-order" name="shipped-order">
+                        <td><a href="/this order page" name="shipped-order-code" >12121212</a></td>
+                        <td name="delivered_date" id="delievered_date">2023-09-08</td>
+                    </tr>
+
+                    <tr id="shipped-order" name="shipped-order">
+                        <td><a href="/this order page" name="shipped-order-code" >12121212</a></td>
+                        <td name="delivered_date" id="delievered_date">2023-09-08</td>
+                    </tr>
+
+                    <tr id="shipped-order" name="shipped-order">
+                        <td><a href="/this order page" name="shipped-order-code" >12121212</a></td>
+                        <td name="delivered_date" id="delievered_date">2023-09-08</td>
+                    </tr>
+
+
+                    <tr id="shipped-order" name="shipped-order">
+                        <td><a href="/this order page" name="shipped-order-code" >12121212</a></td>
+                        <td name="delivered_date" id="delievered_date">2023-09-08</td>
+                    </tr>
+
+                    <tr id="shipped-order" name="shipped-order">
+                        <td><a href="/this order page" name="shipped-order-code" >12121212</a></td>
+                        <td name="delivered_date" id="delievered_date">2023-09-08</td>
+                    </tr>
+                </table>
+
+            </div>
+
+            <div class="table-container">
+                <table id="delivered">
+                    <tr>
+                        <th>Delivered Orders</th>
+                        <th>Date</th>
+                    </tr>
+
+                    <tr id="delivered-order" name="delivered-order">
+                        <td><a href="/this order page" name="delivered-order-code" >12121212</a></td>
+                        <td name="delivered_date" id="delievered_date">2023-09-08</td>
+                    </tr>
+
+
+
+                </table>
+
+            </div>
+
+
+
+              </div>
+
+              <br>
+              <br>
+              <br>
+              <script>
+               function handleAdd(inputId) {
+             // محو قيمة حقل النص الذي يلي الزر
+             var quantityField = document.getElementById(inputId);
+              
+               quantityField.value = " ";
+         
+    }
+              </script>
+           
+            
+            </body>
+</html>

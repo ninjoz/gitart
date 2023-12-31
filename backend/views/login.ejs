@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/login.css">
+        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+        <title>
+          Login Page
+        </title>
+    </head>
+
+    <body > 
+        
+        <div class="circle1">
+            <div class="content">
+                <small>Welcome to our</small>
+                <h1>World<br> Creative studio</h1>
+                </div>
+        </div>
+        <div class="circle3">
+        </div>   
+     <header class="header">    
+     <div class="navbar">
+
+        <div id="logo">
+            <img src="logo.png" alt="Logo">
+        </div>
+
+        <div id="search-bar">
+            <table class="elements"> 
+                <tr>
+                    <td><input type="text" placeholder="Search"></td>
+                   <td><a href="#" ><i class='bx bx-search'></i> </td>
+               </tr>
+          
+            </table>
+        </div> 
+       
+  
+        <div id="sign-button">
+            <button type="button" class="btn1">Sign Up</button>
+            <button type="button" class="btn1">Log In</button>
+            <button type="button" class="btn1">Sell Your Art</button>
+        </div>
+     </div>
+    </header>
+
+    <button type="button" class="takeatour">Take a Tour</button>
+
+    
+    
+    <div class="circle2">
+        </div>
+      
+
+     <div class="login_box">
+        <h2>Login</h2>
+        <form id="login-form" action="/login" method="post">
+            <div class="text_field">
+                <input type="email" name= "user_email_address"  required>
+                <i class='bx bxs-user'></i> 
+                <label>Username</label>
+
+            </div>
+            <div class="text_field">
+                <input type="password" name="user_password"   required>
+                <i class='bx bxs-lock'></i>
+                <label>Password</label>
+
+            </div>
+
+            <div class="remember">
+                <label>
+                    <input type="checkbox" id="rememberMe" name="rememberMe">
+                    Remember me
+                </label>
+            <a href="#">Forget password?</a>
+                 </div>
+             <button type="submit" value="Login" class="btn">Login</button>
+             
+                
+                  
+                        <p> <%= message %></p>
+                   
+                 
+            
+             <div class="register">
+                <p>Don't Have an Account?
+                    <a href="/register">Register</a>
+                 </p>
+                </div>
+
+
+             
+
+
+
+        </form>
+     </div>   
+     
+    </body>
+    

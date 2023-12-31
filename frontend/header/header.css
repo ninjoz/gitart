@@ -1,0 +1,48 @@
+body {
+    margin: 0px;
+    font-size: 1.4em;
+}
+
+
+header {
+
+height: 50px;
+border-bottom: 1px solid gray;
+display: flex;
+flex-wrap: wrap;
+justify-content: space-between;
+padding: 15px;
+
+}
+
+
+#logo {
+    width: 140px;
+}
+
+#icons-container a {
+    text-decoration: none;
+    color: #10c49d;
+    padding: 10px;
+}
+
+#links-container {
+    display: flex;
+   flex-wrap: wrap;
+   justify-content: space-between;
+   width: 400px;
+}
+
+#upload-button {
+    background-color: #10c49d;
+    border-radius: 20px;
+    text-decoration: none;
+    color: white;
+    padding: 10px;
+}
+
+#logout-button {
+    text-decoration: none;
+    color: rgb(124, 124, 124);
+    padding: 10px;
+}

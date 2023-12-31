@@ -1,0 +1,342 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+   }
+
+
+   h1 {
+    text-align: center;
+   }
+    .header{
+       position: fixed;
+       width: 100%;
+       top: 0;
+       left: 0;
+       padding: 0px 12%;
+       background-color: rgb(72, 215, 172);
+      border-bottom: 1px solid #adadad;
+      justify-content: center;
+      z-index: 1000;
+    }
+    .navbar {
+       display: flex;
+       justify-content: space-between;
+       align-items: center;
+   }
+   
+   #search-bar{
+   
+       width: 50%;
+       height: 45px;
+       border: 2px solid #09080829;
+       outline: none;
+       border-radius: 50px;
+       padding: 0 10px;
+       margin-left: -15%;
+       background: white;
+        
+       
+   
+   }
+   .elements{
+   
+    vertical-align: middle;
+    width: 100%;
+    height: 100%;
+
+
+
+}
+
+.elements i{
+    position: absolute;
+    top: 41%;
+    left: 69%; 
+}
+
+ 
+
+ 
+  
+ 
+#search-bar input{
+    width: 100%;
+    height: 100%;
+    padding: 8px 5px;
+    background: white;
+    border: none;
+    outline: none;
+    border-radius: 50px;
+    font-size: 16px;
+    font-family: "Nun i to";
+    font-weight: 500;
+    color: #424242;
+
+}
+
+
+.btn i{
+    width: 100px;
+    height: 100;
+    position: absolute;
+    top: 35%;
+    right: 10px;
+    left:  95%;
+    transform:translate(-60%);
+    font-size: 35px;
+    color: black;
+}
+
+
+.main{
+
+    width: 100%;
+    height: 95%;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    background-color: rgba(255, 255, 255, 0.851);
+    border-bottom: 1px solid #adadadd0;
+}
+
+.uploader{
+
+ position : absolute;
+ left : 13%;
+ top : 23%;
+    
+}
+
+#drop-area{
+
+    width: 440px;
+    height: 490px;
+    padding: 30px;
+    background-color: #ffff;
+     text-align: center;
+    border-radius: 20px;
+    display: block; 
+}
+
+#img-view {
+    width: 100%; 
+    height: 100%; 
+    border-radius: 20px;
+    border: 2px dashed #bbb5ff;
+    background: #f7f8ff;
+    display: flex; /* Use flexbox to center the image vertically and horizontally */
+    justify-content: center;
+    align-items: center;
+}
+
+#img-view img {
+    max-width: 100%; 
+    max-height: 100%;  
+    border-radius: 20px; /* Apply border-radius to the image */
+}
+#preview-img {
+   
+    width: 300px;
+    height: auto;
+  
+    border: 1px solid #ddd;
+    margin-top: 10px;
+}
+
+.form {
+    width : 600px;
+    margin-left: 200px;
+    /* Adjust the margin as needed */
+    
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+textarea {
+    width: 100%;
+    height: 60px; /* Adjust the height as needed */
+    box-sizing: border-box;
+    margin-bottom: 40px;
+    padding: 8px;
+    border-radius: 10px;
+    border: 3px solid #ccc; /* Set the default border color */
+    transition: border-color 0.3s; /* Add a smooth transition for border color changes */
+}
+
+ 
+
+input{
+    width: 100%;
+    height:40px;
+    margin-bottom: 40px ;
+    padding-left: 8px;
+    border-radius: 10px;
+    border: 3px solid #ccc; /* Set the default border color */
+    transition: border-color 0.3s; /* Add a smooth transition for border color changes */
+
+}
+textarea:focus,
+input:focus {
+    border-color: rgba(138, 159, 228, 0.832); /* Set the border color when the element is focused */
+}
+
+#textarea3{
+     height: 80px;
+}
+
+
+.sec{
+    padding: 10px 5%;
+    width : 70%;
+    margin: 0 auto; 
+      
+}
+h1 {
+    text-align: center;  
+    margin: 5%;  
+}
+
+
+.products{
+padding: 30px;
+width: 90%;
+margin:50px auto;
+}
+.products h2{
+    font-size: 40px;
+    text-align: center;
+    margin: 30px 0;
+}
+.cards{
+
+display: flex;
+gap: 20px;
+flex-wrap: wrap;
+align-items: center;
+justify-content: center;
+
+}
+ 
+
+.card{
+position: relative;
+width: max-content;
+width: 30%;
+padding: 10px;
+box-shadow: rgba(99 ,99 ,99 ,0.2) 0px 2px 8px 0px;
+display: flex;
+flex-direction: column;
+gap: 10px;
+
+}
+
+.imge{
+    position: relative;
+    width: 100%;
+    height: 300px;
+    background-color:white;
+}
+.imge img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+.card p{
+text-align: center;
+    font-size: 28px;
+}
+.card .button button{
+ 
+width: 100%;
+cursor: pointer;
+display: inline-block;
+  padding: 15px 30px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  background: linear-gradient(to bottom, #57d757, #98ca98); /* Gradient خاضر */
+}
+
+.card .button button:hover {
+  background: linear-gradient(to bottom, #98ca98, #57d757); /* تغيير الألوان عند التحويم */
+}
+
+.card .slide-container{
+    width: 100%;
+    cursor: pointer;
+    display: inline-block;
+    margin-bottom: -28px;
+    margin-top: 5px;
+     
+   
+
+
+
+
+
+}
+
+
+
+
+.opacity {
+    opacity: 0.4;
+}
+.overlay-image {
+position: absolute;
+top: 20%;
+left: 36%;
+width: 30%; /* تعيين عرض أصغر للـ overlay-image بالنسبة للـ card */
+height: 30%; /* تعيين ارتفاع أصغر للـ overlay-image بالنسبة للـ card */
+display: flex;
+align-items: center;
+justify-content: center;
+ 
+}
+
+.overlay-image img {
+    width: 80%;
+    height: 100%;
+   /*bject-fit: cover;*/ /* تأكيد تمدد الصورة لتغطية الـ overlay-image بالكامل */
+   object-fit: contain;
+}
+
+ 
+.afterimage {
+    position: absolute;
+    width: 200px;
+    margin-left: auto;
+    margin-right: auto;
+    display:block;
+
+}
+
+.afterimage img{
+    position: absolute;
+    width: 100%;
+
+}
+ 
+ 
+
+ 
+#save-button {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 300px;
+    height: 50px;
+    background-color:#bbb5ff;
+}
+ 

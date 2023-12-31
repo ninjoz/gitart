@@ -1,0 +1,309 @@
+:root {
+    --mint: rgb(132, 232, 203);
+    --white: #ffffff;
+}
+
+
+*{
+ margin: 0;
+ padding: 0;
+ box-sizing: border-box;
+ font-family: 'Open Sans', sans-serif;
+}
+ .header{
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    padding: 0px 12%;
+    background-color: white;
+   border-bottom: 1px solid #adadad;
+   justify-content: center;
+ }
+ .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#search-bar{
+
+    width: 50%;
+    height: 45px;
+    border: 2px solid #09080829;
+    outline: none;
+    border-radius: 50px;
+    padding: 0 10px;
+    margin-left: -15%;
+    background: white;
+     
+    
+
+}
+
+.elements{
+   
+    vertical-align: middle;
+    width: 100%;
+    height: 100%;
+
+
+
+}
+
+ 
+
+ #sign-button .btn1{
+  
+    width: 110px;
+    height: 35px;
+    font-weight: 500;
+    color: rgb(255, 255, 255);
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    margin: 10px;
+    margin-left: auto;
+    background: var(--mint);
+    
+  }
+
+  
+ 
+#search-bar input{
+    width: 100%;
+    height: 100%;
+    padding: 0 5px;
+    background: white;
+    border: none;
+    outline: none;
+    border-radius: 50px;
+    font-size: 16px;
+    font-family: "Nun i to";
+    font-weight: 500;
+    color: #424242;
+
+}
+
+ 
+
+.circle1 {
+    width: 950px;
+    height: 950px;
+    background-color: var(--mint); /* Set the background color */
+    border-radius: 50%; /* Create a circle by setting border-radius to 50% */
+    position: fixed;
+    top: 10%;
+    left: -5%;
+    
+
+}
+.content{
+    color: #ffffff;
+    position: absolute;
+    top: 70%;
+    left: 25%;
+    transform: translateY(-50%);
+    z-index: 2;
+   
+    }
+   
+    h1{
+       font-size: 50px;
+       margin: 10px 0 20px;
+       line-height: 60px;
+      
+    
+    }
+
+    .takeatour{
+
+        width: 110px;
+        height: 35px;
+        font-weight: 500;
+        color: rgb(30, 26, 26);
+        font-size: 14px;
+        border: none;
+        border-radius: 30px;
+        cursor: pointer;
+        position:absolute;
+        top: 85%;
+        left: 13%;
+        background: rgb(255, 255, 255);
+
+
+    }
+
+    .circle2{
+        width: 1000px;
+        height: 500px;
+        background-color: var(--mint); /* Set the background color */
+        border-top-left-radius: 500px; /* Create a circle by setting border-radius to 50% */
+        border-top-right-radius: 500px;
+        position: fixed;
+        top: 65%;
+        left: 45%;
+        
+
+  }
+
+
+  .circle3{
+
+    width: 400px;
+    height: 200px;
+    background-color:  var(--mint); /* Set the background color */
+    border-bottom-left-radius: 200px; /* Create a circle by setting border-radius to 50% */
+    border-bottom-right-radius: 200px;
+    position: fixed;
+    top: 14%;
+    left: 80%;
+  
+
+
+  }
+
+
+  .login_box{
+
+    position:absolute;
+    top:30%;
+    left:60%;
+    width: 500px;
+    height: 58vh;
+    background: white;
+    border-radius: 10px;
+    border: 2px solid rgba(236, 225, 225, 0.512)
+    
+ }
+
+ .login_box h2{
+
+ text-align: center;
+ padding: 20px 0 20px 0;
+ border-bottom: 1px solid silver;
+
+
+ }
+
+  .login_box form{
+
+    padding: 0px 40px;
+    box-sizing: border-box;
+
+  }
+
+  form .text_field{
+    position: relative;
+    border-bottom: 2px solid #adadad;
+    margin: 30px 0;
+  
+}
+
+ 
+
+.text_field input{
+
+    width: 100%;
+    padding:0 5px;
+    height: 40px;
+    font-size: 16px;
+    outline: none;
+    border: none;
+}
+
+.text_field label{
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    color: #adadad;
+    transform: translateY(-50%);
+    font-size: 16px;
+    pointer-events: none;
+    transition: 0.5s;
+}
+
+.text_field i{
+    position: absolute;
+    top: 40%;
+    right: 10px;
+    left:  95%;
+    transform:translate(-50%);
+    font-size:20px;
+}
+
+ 
+.text_field input:focus ~ label,
+.text_field input:valid ~ label{
+    top: -5px;
+
+}
+
+.remember{
+    display: flex;
+    justify-content: space-between;
+    margin: 30px 20px   ;
+    cursor: pointer;
+}
+
+.remember label{
+    accent-color: rgb(29, 19, 19);
+    margin-right: 20px;
+}
+
+.remember a{
+   text-decoration: none;
+    color: rgba(42, 39, 39, 0.393);
+    font-weight: bold;
+}
+
+.remember a:hover{
+    text-decoration: underline;
+    color: blue;
+}
+
+ .btn{
+
+
+    width: 100%;
+    height: 40px;
+    border: none;
+    outline: none;
+    border-radius: 40px;
+   background: var(--mint);
+    cursor: pointer;
+    font-size: 16px;
+    color: rgb(255, 255, 255);
+    font-weight :bold;
+    margin-bottom: 20px;
+ }
+ 
+ .form .register{
+    font-size: 14px;
+    text-align:center;
+    margin : 30px ;
+ }
+ 
+ .register a{
+    text-decoration: none;
+    color: rgba(40, 37, 37, 0.392);
+    font-weight: bold;
+ }
+ 
+ .register a:hover{
+    text-decoration: underline;
+    color: blue;
+ }
+
+ 
+ 
+
+ 
+   
+
+    
+ 
+
+
+
+ 

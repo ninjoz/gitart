@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>My Orders</title>
+    <link rel="stylesheet" href="/orders.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"> </script>
+    <script src="/orders.js"> </script>
+
+</head>
+
+<body>
+    <br>
+    <h1>My Orders</h1>
+
+
+    
+    <%if(sameOrder.length==0){%>
+<div>
+    <h3>There are no Orders :(</h3>
+</div>
+
+        <%}%>
+        <%if(sameOrder.length>0){%>
+                <%sameOrder.map((order)=>{%>
+                <div id="container">
+                <div class="order">
+                    <div class="details">
+
+                        <h2 name="order_code" id="order_code"><%=order.code%></h2>
+                        <span name="date" id="dat"><%=order.order_date%></span>
+                        
+                            <%if(orders.length>0){%>
+                                <%orders.map((orderline)=>{%>
+                                    <%if(orderline.order_id==order.idOrder){%>
+                                        <ul id="contents" name="contents">
+                            <li><a href="/product/<%=orderline.fp_id%>"><span name="design_title"
+                                        id="design_title"><%=orderline.design_title%></span> <span name="product" id="product"><%=orderline.template_name%></span></a>
+                                <br>
+                                <span name="quantity" id="quantity"><%=orderline.quantity%></span> pieces
+                            </li>
+                        </ul>
+                            <%}%>
+                            <% })%>
+                            <% }%>
+                        
+
+                        Total: $<span id="order-total" name="order-total"><%=order.total_price%></span>
+                    </div>
+
+
+                    <div class="state">
+                        <div name="order_state" id="order_state">
+                            
+                            <span id="status<%=order.code%>"><%=order.order_status%></span>
+                        </div>
+
+                        <%if(order.order_status=="Shipped"&&order.delivering_date==null){%>
+                            <div name="delivered_date">
+                                <span name="<%=joining_date%>" id="<%=order.code%>"></span>
+                            </div>
+                        <div name="button_container" id="button_container">
+                            <button type="button" id="confirm_button" name="<%=order.code%>">confirm delivery</button>
+                        </div>
+                            <%}%>
+
+                            <%if(order.order_status=="Delivered"&&order.delivering_date!=null){%>
+                                <div name="delivered_date">
+                                    <span name="date" id="<%=order.code%>"><%=joining_date%></span>
+                                </div>
+
+                                <div name="button_container" id="button_container">
+                                    <button type="button" id="confirm_button" name="<%=order.code%>" disabled>confirmed</button>
+                                </div>
+                                    <%}%>
+
+                        
+
+
+                    </div>
+
+
+
+                </div>
+            </div>
+                <% })%>
+                <% }%>
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>

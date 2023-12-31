@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8"/>
+        <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+        <link rel="stylesheet" href="artistprofile.css" />
+        <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+        <script>
+            function handleFollow(){
+                var state = document.querySelector('#follow-button').textContent;
+                if(state == "Follow"){
+                    console.log('followed artist');
+                    document.querySelector('#follow-button').textContent = 'unfollow';
+                    document.getElementById('follow-button').style.color = "rgb(150, 150, 150)";
+                }else if(state == "unfollow"){
+                    console.log('unfollowed artist');
+                    document.querySelector('#follow-button').textContent = 'Follow';
+                    document.getElementById('follow-button').style.color = "rgb(0,0,0)";
+                }
+            }
+        </script>
+    </head>
+<body>
+    <header>
+        <nav>
+            
+        </nav>
+    </header>
+
+
+
+
+    <div id="cover">
+    <img name="artist_cover_image" src="cover2.jpg" href="#" alt="cover image not found">
+    <input name="change_cover" type="file">
+    </div>
+    <div id="profile">
+    <div id="profile-photo-container">
+        <img name="artist_profile_photo" src="profile3.jpg" href="#" alt="profile photo not found">   
+    </div>
+        <div id="profile-data-container">
+        <h2 name="artist_name" id="username">No Face</h2>
+        <div name="artist_data" id="artist-data"><span name="artworks_number">2</span> Artworks • <span name="followers_number">3</span> Followers</div>
+        <br>
+        <button name="follow_unfollow_button" id="follow-button" onclick="handleFollow()" type="button">Follow</button>
+        </div> 
+    
+    </div>
+
+
+
+
+    <main>
+
+        <div id="artworks-header">Artworks</div>
+        <hr color="silver">
+        <br>
+        <div class="artworks" name="artworks_view">
+            <div class="artwork" name="artwork_card">
+    
+                <div class="image_container">
+    
+                
+                <img name="design_image" class = "design" src="flowergardenblack.png" href="#" alt="design image not found" class="design_image">
+                
+                
+                </div>
+                <div class="heart-icon" name="fav_button">
+                    <i class='bx bx-heart'></i>
+                </div>
+                
+    
+                <div class="artwork-data" name="product_data">
+                    <h4 name="artwork_title">flowers</h4>
+                    <p name="artwork_price">$1</p>
+                </div>
+            </div>
+
+            <div class="artwork" name="artwork_card">
+    
+                <div class="image_container">
+    
+                
+                <img name="design_image" class = "design" src="lineflower.png" href="#" alt="design image not found" class="design_image">
+                
+                
+                </div>
+                <div class="heart-icon" name="fav_button">
+                    <i class='bx bx-heart'></i>
+                </div>
+                
+    
+                <div class="artwork-data" name="product_data">
+                    <h4 name="artwork_title">flower</h4>
+                    <p name="artwork_price">$1</p>
+                </div>
+            </div>
+
+
+            
+    
+        </div>
+
+        
+
+
+
+
+
+
+
+    </main>
+
+
+
+    <br>
+    <br>
+    <br>
+    <br>
+
+
+
+
+
+
+
+</body>
+</html>

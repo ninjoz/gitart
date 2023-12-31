@@ -1,0 +1,28 @@
+<!-- views/partials/product-cards.ejs -->
+
+<% finalProductResults.forEach(result => { %>
+    <div class="product" name="product_card">
+      <div class="image_container">
+        <% if (result.template_before) { %>
+          <img name="temp_before_image" src="<%= result.template_before %>" alt="Template Before Image">
+        <% } %>
+        <% if (result.design_path) { %>
+          <img name="design_image" src="<%= result.design_path %>" alt="Design Image">
+        <% } %>
+        <% if (result.template_after) { %>
+          <img name="temp_after_image" src="<%= result.template_after %>" alt="Template After Image">
+        <% } %>
+      </div>
+      <div class="productdata" name="product_data">
+        <div class="titles-container">
+          <p name="product_title"> <%= result.design_title %></p>
+          <p name="template_name"> <%= result.template_name %></p>
+        </div>
+        <p name="product_price">$<%= result.fp_price %></p>
+      </div>
+      <div class="heart-icon" name="fav_button">
+        <i class='bx bx-heart'></i>
+      </div>
+    </div>
+  <% }); %>
+  

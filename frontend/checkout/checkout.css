@@ -1,0 +1,119 @@
+::-webkit-scrollbar {
+    display: none;
+}
+
+
+body {
+    font-size: 24pt;
+    font-family: 'Courier New', Courier, monospace;
+    margin: 0px;
+}
+
+
+
+#flex-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+#products-container {
+    overflow-y:scroll;
+    overflow-x: hidden; 
+    width: 49%;
+    height:100vh;
+    padding-left: 20px;
+}
+
+#details-container {
+ width: 50%;
+ height: 100vh;
+ display: flex;
+ justify-content: center;
+ background-color: rgb(0, 233, 190);
+ box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.222), 0 6px 30px 0 rgba(0, 0, 0, 0.314);
+    
+
+}
+
+
+
+
+
+
+
+
+
+
+
+#confirm-form {
+    width: 60%;
+    margin:auto;
+    text-align: center;
+    border: black solid 1px;
+    padding: 20px;
+    border-radius: 30px;
+    background-color: white;
+
+}
+
+
+
+  form .text_field{
+    position: relative;
+    border-bottom: 2px solid #adadad;
+    margin: 30px 0;
+  
+}
+
+ 
+
+.text_field input{
+
+    width: 100%;
+    padding:0 5px;
+    height: 40px;
+    font-size: 24pt;
+    
+
+    outline: none;
+    border: none;
+
+}
+
+.text_field label{
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    color: #adadad;
+    transform: translateY(-50%);
+    font-size: 20pt;
+    pointer-events: none;
+    transition: 0.5s;
+}
+
+
+
+
+
+
+
+ .text_field input:focus ~ label,
+.text_field input:valid ~ label{
+    top: -5px;
+
+}
+
+
+#confirm-button {
+    border: 1px solid black;
+    border-radius: 30px;
+    background-color: rgb(0, 233, 190);
+    height: 55px;
+    font-size: 18pt;
+    width: 50%;
+}
+
+#confirm-button:hover{
+
+    background-color: rgb(113, 255, 229);    
+}

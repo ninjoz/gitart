@@ -1,0 +1,172 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+   }
+
+   ::-webkit-scrollbar {
+    display: none;
+}
+
+
+
+
+   a{
+    text-decoration: none;
+    color:rgb(85, 85, 85)
+   }
+
+
+   .header {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#logo img {
+    max-width: 100%;
+    height: auto;
+}
+
+#search-bar {
+    margin-left: 10px; /* Adjust the margin as needed */
+}
+
+.elements {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.elements td {
+    padding: 8px;
+}
+
+ 
+
+
+   .part1{
+
+    width : 90%;
+    margin-left: auto;
+    margin-right: auto;
+    
+    
+
+
+   }
+
+   .boxes{
+    display: flex;
+    gap: 5%;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+     height: 65%;
+    
+     
+    
+  }
+
+   .box1, .box2, .box3, .box4 {
+    display: flex;
+    flex-direction: column;
+    gap: 20%;
+    justify-content: center;
+    align-items: center;
+    box-shadow: rgba(66, 64, 64, 0.2) 0px 2px 8px 0px;
+    padding: 15px 20px;
+    margin: 3%;
+    text-align: center;
+    border-radius: 10px; 
+    width: 40%;
+    height: 30%;
+    
+
+}
+.text {
+    color: #333;
+    font-size: 18px; 
+    font-weight: bold;
+    white-space: nowrap;  
+     
+}
+
+.numbers {
+    color: #00deae;
+    font-size: 40px;
+    font-weight: 500;  
+    
+}
+
+
+.part2{
+     
+    width : 90%;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: rgba(66, 64, 64, 0.2) 0px 2px 8px 0px; 
+}
+
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+     
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+th {
+    background-color: #a4a4a4;
+}
+
+input {
+    padding: 5px;
+    width: 70%;
+}
+
+button {
+    padding: 5px 10px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+#orders-tables-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 90%;
+    margin: auto;
+    
+    
+}
+.table-container{
+    height: 500px;
+    overflow: scroll;
+
+}
+
+#orders-tables-container table tr:nth-child(odd) {background-color: #f2f2f2;}
+ 
+#orders-tables-container table {
+    width: 400px;
+    height: fit-content;
+   
+    
+ }
+
+ #missed-stuff {
+    color: rgb(148, 0, 0);
+ }
+
+ 

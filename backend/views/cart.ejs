@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>explore</title>
+    <link rel="stylesheet" href="cart.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+</head>
+
+<body>
+
+    <br><br>
+    <h1>Cart</h1>
+
+    <div id="cart-items-container">
+        <% cartItems.forEach(function(item) { %>
+            <div id="cart-item-<%= item.fp_id %>" class="cart-item">
+                <div class="images-part-container">
+                    <div class="images-part">
+                        <img src="/temps/<%= item.template_before %>" alt="product before image not found"
+                            name="product_before_image">
+                        <img class="top-img" src="/Images/<%= item.design_path %>" alt="design image not found"
+                            name="design_image">
+                        <img class="top-img" src="/temps/<%= item.template_after %>" alt="product after image not found"
+                            name="product_after_image">
+                    </div>
+                </div>
+                <div class="product-data">
+                    <div class="product-name">
+                        <a href="/product/<%= item.fp_id %>"><span name="design_title">
+                                <%= item.design_title %>
+                            </span> <a href="/product/<%= item.fp_id %>"><span name="template_name">  <%= item.template_name %></span></a>
+                    </div>
+                    <div class="product-price" style="font-size: 17pt;">
+                        $<span name="product-price">
+                            <%= item.fp_price %>
+                        </span>
+                    </div>
+                    <div style="font-size: 17pt;"><span name="quantity">
+                            <%= item.quantity %>
+                        </span> pieces</div>
+                </div>
+                <div class="remove">
+                    <button name="remove_button" id="remove-button" data-fpid="<%= item.fp_id %>"
+                        data-price="<%= item.fp_price %>" data-quantity="<%= item.quantity %>">X</button>
+
+                </div>
+            </div>
+            <% }); %>
+    </div>
+    <br>
+    <br>
+    <br>
+
+    <div id="cart-data">
+        <h2>Order Summary</h2>
+        <div>Sub-total ................$<span name="cart-total">
+                <%= cartTotal %>
+            </span></div>
+        <div>Shipment ...............$20</div>
+        <hr style="width: 250px; margin-left: 0px;">
+        <div>Total ......................$<span name="cart+shipment">
+                <%= cartTotal +20%>
+            </span></div>
+    </div>
+    <br>
+    <div>
+        <button name="checkout-button" id="checkout">
+            Checkout
+        </button>
+    </div>
+
+    <br>
+
+    <script>
+        $(document).ready(function () {
+    
+            function removeItem(fpId, fpPrice, quantity) {
+                $.ajax({
+                    type: 'POST',
+                    url: '/removeItem',
+                    data: { fpId: fpId },
+                    success: function (response) {
+                        if (response.success) {
+    
+                            $('#cart-item-' + fpId).remove();
+                            updateTotals(response.removedItemPrice, quantity);
+                        } else {
+                            alert('Error removing item. Please try again.');
+                        }
+                    },
+                    error: function () {
+                        alert('Error communicating with the server. Please try again.');
+                    }
+                });
+            }
+    
+            function updateTotals(removedItemPrice, removedQuantity) {
+    
+                var subtotal = parseFloat($('[name="cart-total"]').text()) - (removedItemPrice * removedQuantity);
+    
+                if (subtotal <= 0) {
+                    $('[name="cart-total"]').text('0.00');
+                    $('[name="cart+shipment"]').text('0.00');
+                } else {
+                    var total = subtotal+20;
+                    $('[name="cart-total"]').text(subtotal.toFixed(2));
+                    $('[name="cart+shipment"]').text(total.toFixed(2));
+                }
+    
+            }
+    
+            // Check if the cart is initially empty and update the display
+            var initialCartTotal = parseFloat($('[name="cart-total"]').text());
+            if (initialCartTotal <= 0) {
+                $('[name="cart-total"]').text('0.00');
+                $('[name="cart+shipment"]').text('0.00');
+            }
+    
+            $(document).on('click', '[name="remove_button"]', function () {
+                var fpId = $(this).data('fpid');
+                var fpPrice = parseFloat($(this).data('price'));
+                var quantity = parseInt($(this).data('quantity'));
+    
+                removeItem(fpId, fpPrice, quantity);
+            });
+    
+            $('#checkout').on('click', function () {
+                window.location.href = '/checkout';
+            });
+        });
+    </script>
+    
+    
+
+
+
+
+
+
+</body>
+
+</html>
