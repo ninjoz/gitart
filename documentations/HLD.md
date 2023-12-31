@@ -103,6 +103,22 @@ The database schema is organized into multiple tables to represent different ent
 - Each Design must belong to at least one Category, each Category must have at least one Design.
 
 #### ${\color{lightgreen}Data \space Sources}$
+We used the public API of the Art Institute of Chicago as the main source for artworks. The API contains artwork images, titles and other data we scrapped and used in this project. You can find more information about the API [here](https://api.artic.edu/docs/#introduction).
+
+We used a simple [scraper](data_processing/data_scraper.js) to extract titles, image codes, descriptions of the artworks and search tags from the [data dump](https://github.com/art-institute-of-chicago/api-data/tree/master). The scraper basically reads JSON files one by one, then writes extracted attributes to a file. For example, this is a [file](data_processing/image_codes.txt) containing a sample of images codes scraped.
+
+After that, the content of these files is formatted to sql insertion statements in a [spreadsheet](https://docs.google.com/spreadsheets/d/1gUla3A6qMdjd78JRPIcwKTgs9-XzYs1CV3SpVdhZuoM/edit?usp=drive_link), then inserted in our database.
+
+The image codes scraped are used to get direct [IIIF URLs](https://iiif.io/api/image/2.0/) to the artwork images.\
+for example, an image with the code: `8307059e-a394-4329-04ee-9158c09b0cc7`\
+can be accessed using this IIIF URL: https://www.artic.edu/iiif/2/8307059e-a394-4329-04ee-9158c09b0cc7/full/400,/0/default.jpg \
+*notice that the URL contains the code, so we can change the image displayed by just changing the code\
+
+Then we used these URLs to display images in our HTML pages.
+
+
+Also, some of the artworks used in this project are made by artists in our team. The rest of them are random artworks we found on pinterest. 
+
 
 ## ${\color{lightgreen}4. \space Conclusion}$
 
