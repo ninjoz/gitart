@@ -50,11 +50,11 @@ The user is greeted with a *welcome page* which gives them options to login or r
 ```mermaid
 erDiagram
 
-Users }o--|| Designs: "has"
-Orders }|--o{ FinalProduct: "contains"
+Users ||--o{ Designs: "has"
+Orders }o--|{ FinalProduct: "contains"
 Users ||--o{ Orders: "can make"
 Designs ||--|{ FinalProduct: "has"
-Designs ||--o{ Categories: "belongs to"
+Designs }|--|{ Categories: "belongs to"
 FinalProduct }o--|| Templates: "has"
 ```
 The database stores information such as user profiles, designs details, procuts details,authentication credentials and order logs.
