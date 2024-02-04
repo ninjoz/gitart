@@ -27,7 +27,7 @@ CREATE TABLE IF NOT EXISTS Designs( design_id INT AUTO_INCREMENT,
 				    design_path VARCHAR(100) NOT NULL,
 				    design_likes INT DEFAULT 0,
 				    design_privacy ENUM("Public", "Private") DEFAULT "Public",
-				    design_source ENUM("local", "API") DEFAULT "local",
+				    design_source ENUM("local", "API") DEFAULT "API",
 				    PRIMARY KEY(design_id),
 				    FOREIGN KEY(user_id) REFERENCES Users(user_id) ON DELETE CASCADE ON UPDATE CASCADE
 );
@@ -44,6 +44,7 @@ CREATE TABLE IF NOT EXISTS Orders( order_id INT AUTO_INCREMENT,
 				   total_price DECIMAL(6, 2) DEFAULT 0,
 				   shipment_date TIMESTAMP,
 				   delivering_date TIMESTAMP,
+                        	   postal_code VARCHAR(50) NOT NULL,
 				   code INT,
 				   PRIMARY KEY(order_id),
 				   FOREIGN KEY(user_id) REFERENCES Users(user_id) ON DELETE SET NULL ON UPDATE CASCADE,
@@ -129,10 +130,4 @@ CREATE TABLE IF NOT EXISTS CartItem( user_id INT NOT NULL,
 				     PRIMARY KEY(user_id, fp_id),
 				     FOREIGN KEY (user_id ) REFERENCES Users(user_id) ON DELETE CASCADE ON UPDATE CASCADE,
 				     FOREIGN KEY (fp_id ) REFERENCES FinalProduct(fp_id) ON DELETE CASCADE ON UPDATE CASCADE
-);
-
-CREATE TABLE IF NOT EXISTS PostalCodes( order_id INT NOT NULL,
-                                       postal_code VARCHAR(50) NOT NULL,
-                                       PRIMARY KEY(order_id),
-                                       FOREIGN KEY(order_id) REFERENCES Orders(order_id) ON DELETE CASCADE ON UPDATE CASCADE
 );
