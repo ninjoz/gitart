@@ -1,8 +1,10 @@
 const express = require('express');
 const app = express();
+const adimnApp = express();
 const path = require("path");
 const database = require('./database');
 app.set('view engine', 'ejs');
+adimnApp.set('view engine', 'ejs');
 const session = require('express-session');
 const bcrypt = require('bcrypt');
 const saltRound = 10;
@@ -51,6 +53,25 @@ app.use(express.static(path.join(__dirname, '/public')));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
+
+
+adimnApp.use(session({
+  secret: 'Hmmm..',
+  saveUninitialized: true,
+  cookie: { maxAge: oneWeek },
+  resave: true
+}))
+
+adimnApp.listen(2000);
+adimnApp.use(express.static(path.join(__dirname, '/public')));
+
+adimnApp.use(bodyParser.json());
+adimnApp.use(bodyParser.urlencoded({ extended: true }));
+
+
+
+
 //app.use(express.urlencoded({ extended: true }));
 const loginRoutes = require('./routes/loginRoutes');
 app.use('/', loginRoutes);
@@ -70,6 +91,9 @@ app.use('/', homeRoutes);
 
 const registerRoutes = require('./routes/registerRoutes');
 app.use('/', registerRoutes);
+
+const adminRoutes = require('./routes/adminRoutes');
+adimnApp.use('/', adminRoutes);
 
 const profileRoutes = require('./routes/profileRoutes');
 app.use('/', profileRoutes);

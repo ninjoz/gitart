@@ -29,6 +29,58 @@ getUsername = (user_id) => {
     });
   });
 };
+insertIntoCart =  (userId, productId, joining_date, quantity) => {
+  return new Promise((resolve, reject) => {
+    database.query(`INSERT INTO cartitem (user_id, fp_id, fp_adding_date,quantity) VALUES (?, ?, ?,?)
+`, [userId, productId, joining_date, quantity], (error, data) => {
+      if (error) {
+        return reject(error);
+      }
+      return resolve(data);
+    });
+  });
+};
+
+deleteFromCart =  (userId, productId, quantity) => {
+  return new Promise((resolve, reject) => {
+    database.query(`DELETE FROM gitart.cartitem
+    WHERE user_id="${userId}" and fp_id="${productId}" and quantity="${quantity}"`, (error, data) => {
+      if (error) {
+        return reject(error);
+      }
+      return resolve(data);
+    });
+  });
+};
+insertReview =  (user_id, fp_id, joining_date, review_text) => {
+  return new Promise((resolve, reject) => {
+    database.query('INSERT INTO Reviews (user_id, fp_id, review_date,  review_text) VALUES (?, ?, ?, ?)',[user_id, fp_id, joining_date, review_text], (error, data) => {
+      if (error) {
+        return reject(error);
+      }
+      return resolve(data);
+    });
+  });
+};
+
+
+getcategory =  (category) => {
+  return new Promise((resolve, reject) => {
+    database.query(`SELECT *, t.template_before, t.template_after
+    FROM gitart.FinalProduct fp
+    JOIN gitart.Templates t ON fp.template_id = t.template_id
+    JOIN gitart.designs des ON fp.template_id = des.design_id
+    WHERE t.template_name ="${category}"
+`, (error, data) => {
+      if (error) {
+        return reject(error);
+      }
+      return resolve(data);
+    });
+  });
+};
+
+
 getdesigns = () => {
   return new Promise((resolve, reject) => {
     database.query('SELECT * FROM designs where design_privacy="Public"', (error, data) => {
@@ -59,6 +111,68 @@ gettemplates = (template_id) => {
     });
   });
 };
+
+getFavoritesss = (user_id) => {
+  return new Promise((resolve, reject) => {
+    database.query(`select * from gitart.favorites f join gitart.designs d on f.user_id = d.user_id join gitart.finalproduct fp on d.design_id = fp.design_id join gitart.templates temp on fp.template_id =temp.template_id where f.user_id  ="${user_id}";`, (error, data) => {
+      if (error) {
+        return reject(error);
+      }
+      return resolve(data);
+    });
+  });
+};
+getFollowingsss = (user_id) => {
+  return new Promise((resolve, reject) => {
+    database.query(`select * from gitart.followings f join gitart.designs d on f.following = d.user_id join gitart.finalproduct fp on d.design_id = fp.design_id join gitart.templates temp on fp.template_id =temp.template_id   where f.follower  ="${user_id}";`, (error, data) => {
+      if (error) {
+        return reject(error);
+      }
+      return resolve(data);
+    });
+  });
+};
+
+getReviews = (productId) => {
+  return new Promise((resolve, reject) => {
+    database.query(`SELECT r.*, u.user_name FROM Reviews r JOIN Users u ON r.user_id = u.user_id WHERE r.fp_id  ="${productId}";`, (error, data) => {
+      if (error) {
+        return reject(error);
+      }
+      return resolve(data);
+    });
+  });
+};
+
+getPD = (productId) => {
+  return new Promise((resolve, reject) => {
+    database.query(`SELECT
+    fp.fp_id,
+    fp.size,
+    fp.fp_price,
+    fp.design_id,
+    t.template_id,
+    t.template_before,
+    t.template_after,
+    d.description,
+    d.design_title,
+    d.design_path,
+    u.user_name
+FROM
+    FinalProduct fp
+    JOIN Templates t ON fp.template_id = t.template_id
+    JOIN Designs d ON fp.design_id = d.design_id
+    JOIN Users u ON d.user_id = u.user_id
+WHERE
+    fp.fp_id ="${productId}";`, (error, data) => {
+      if (error) {
+        return reject(error);
+      }
+      return resolve(data);
+    });
+  });
+};
+
 router.get("/home", async (request, response) => {
   if (request.session.user_id) {
     let getUsername1 = await getUsername(request.session.user_id)
@@ -81,7 +195,7 @@ router.get("/home", async (request, response) => {
 
             array[i] = fp_id;
             array2[i] = fp_price;
-            console.log(array[i]);
+           
 
             blogs[i] = {
               "design_id": getdesignsTable[i].design_id,
@@ -119,51 +233,54 @@ router.get("/home", async (request, response) => {
 
 });
 
+iterateData =  (getFavorites1) => {
+  return new Promise((resolve, reject) => {
+    let blogs = [];
+    for (let count = 0; count < getFavorites1.length; count += 1) {
 
+      
+      blogs[count] = {
+        "design_path": getFavorites1[count].design_path, "design_id": getFavorites1[count].design_id, "design_title": getFavorites1[count].design_title, "design_price": getFavorites1[count].design_price, "design_likes": getFavorites1[count].design_likes
+        , "design_source": getFavorites1[count].design_source,
+        "fp_id": getFavorites1[count].fp_id,
+        "description": getFavorites1[count].description,
+        "template_id": getFavorites1[count].template_id,
+        "fp_price": getFavorites1[count].fp_price,
+        "size": getFavorites1[count].size,
+        "template_before": getFavorites1[count].template_before,
+        "template_after": getFavorites1[count].template_after
+
+      };
+    }
+
+      return resolve(blogs);
+    
+  });
+};
 router.get("/designs/Favourites", async (request, response) => {
   if (request.session.user_id) {
     let getUsername1 = await getUsername(request.session.user_id)
     user_name = getUsername1[0].user_name;
+    let blogs = [];
 
+    let getFavorites1 = await getFavoritesss(request.session.user_id)
+console.log(getFavorites1);
+    
+      if (getFavorites1.length > 0) {
+        blogs = await iterateData(getFavorites1);
+        
 
-
-    database.query(`select * from gitart.favorites f join gitart.designs d on f.user_id = d.user_id join gitart.finalproduct fp on d.design_id = fp.design_id join gitart.templates temp on fp.template_id =temp.template_id where f.user_id  ="${request.session.user_id}";`, (error, data) => {
-      console.log(data);
-      if (error) {
-        console.error('Error fetching data:', error);
-        response.status(500).send('Internal Server Error');
-        return;
-      }
-
-      if (data.length > 0) {
-        //
-        let blogs = data.map((row) => {
-          return {
-            "design_title": row.design_title,
-            "design_path": row.design_path,
-            "fp_id": row.fp_id,
-            "design_likes": row.design_likes,
-            "description": row.description,
-            "design_price": row.design_price,
-            "design_id": row.design_id,
-            "template_id": row.template_id,
-            "fp_price": row.fp_price,
-            "size": row.size,
-            "template_before": row.template_before,
-            "template_after": row.template_after
-          };
-        });
-        setTimeout(() => {
+      console.log(blogs)
           response.render('home', { user_name, blogs, cart: request.session.cart });
 
-        }, 100)
+     
 
       } else {
-        console.log("iiiiiiiiiiii")
+       
         // Handle case when no favorites are found
         response.render('home', { user_name, blogs: [], cart: request.session.cart });
       }
-    });
+    
   }
   else {
     res.render('welcome');
@@ -171,23 +288,21 @@ router.get("/designs/Favourites", async (request, response) => {
 
   }
 });
+
+
 
 router.get("/designs/Following", async (request, response) => {
   if (request.session.user_id) {
     let getUsername1 = await getUsername(request.session.user_id)
     user_name = getUsername1[0].user_name;
     let blogs = [];
-    const query = `select * from gitart.followings f join gitart.designs d on f.following = d.user_id join gitart.finalproduct fp on d.design_id = fp.design_id join gitart.templates temp on fp.template_id =temp.template_id   where f.follower  = ${request.session.user_id};`;
+    
+    let getFollowings1 = await getFollowingsss(request.session.user_id)
 
-    database.query(query, (error, result) => {
-      if (error) {
-        console.error('Error fetching data:', error);
-        response.status(500).send('Internal Server Error');
-        return;
-      }
+     
 
-      if (result.length > 0) {
-        blogs = result.map((row) => {
+      if (getFollowings1.length > 0) {
+        blogs = getFollowings1.map((row) => {
           return {
             "design_title": row.design_title,
             "fp_id": row.fp_id,
@@ -204,11 +319,9 @@ router.get("/designs/Following", async (request, response) => {
           };
         });
       }
-      setTimeout(() => {
+     
         response.render('home', { user_name, blogs, cart: request.session.cart });
-      }, 100)
-
-    });
+      
 
   }
   else {
@@ -217,87 +330,59 @@ router.get("/designs/Following", async (request, response) => {
 
   }
 });
+
+
+
 let fp_id = ';'
-router.get('/product/:id', (req, res, next) => {
+router.get('/product/:id', async(req, res, next) => {
   if (req.session.user_id) {
     fp_id = '';
     const productId = req.params.id;
     fp_id = productId;
     let reviews = '';
-    database.query('SELECT r.*, u.user_name FROM Reviews r JOIN Users u ON r.user_id = u.user_id WHERE r.fp_id = ?', [productId], (error, results) => {
-      if (error) {
-        console.error('Error fetching reviews:', error);
-        res.status(500).send('Internal Server Error');
-        return;
-      }
-      else {
-        if (results.length > 0) {
-          reviews = results;
+
+    let getReviews1 = await getReviews(productId)
+
+   
+        if (getReviews1.length > 0) {
+          reviews = getReviews1;
 
         }
 
-      }
-    })
+      
+  
 
 
-    // Query to fetch product details, template_id, template_before, and template_after
-    const query = `
-        SELECT
-            fp.fp_id,
-            fp.size,
-            fp.fp_price,
-            fp.design_id,
-            t.template_id,
-            t.template_before,
-            t.template_after,
-            d.description,
-            d.design_title,
-            d.design_path,
-            u.user_name
-        FROM
-            FinalProduct fp
-            JOIN Templates t ON fp.template_id = t.template_id
-            JOIN Designs d ON fp.design_id = d.design_id
-            JOIN Users u ON d.user_id = u.user_id
-        WHERE
-            fp.fp_id = ?
-    `;
+    let getPD1 = await getPD(productId)
 
-    // Execute Query
-    database.query(query, [productId], (error, results) => {
-      if (error) {
-        console.error('Error fetching product details:', error);
-        res.status(500).send('Internal Server Error');
-        return;
-      }
+    
 
-      if (results.length === 0) {
+      if (getPD1.length === 0) {
         next();
         return;
       }
 
       const product = {
-        "design_title": results[0].design_title,
-        "artist": results[0].user_name,
-        "size": results[0].size,
-        "price": results[0].fp_price,
-        "description": results[0].description,
-        "design_path": results[0].design_path,
-        "template_before": results[0].template_before,
-        "template_after": results[0].template_after
+        "design_title": getPD1[0].design_title,
+        "artist": getPD1[0].user_name,
+        "size": getPD1[0].size,
+        "price": getPD1[0].fp_price,
+        "description": getPD1[0].description,
+        "design_path": getPD1[0].design_path,
+        "template_before": getPD1[0].template_before,
+        "template_after": getPD1[0].template_after
       };
 
-      console.log(product);
-      console.log(product.design_path);
+      
 
       // Render the product details page with the retrieved data
-      setTimeout(() => {
+    
         res.render('product', {
           product, cart: req.session.cart, productId,
           reviews
         });
-      }, 1000)
-    });
+     
+    
 
   }
   else {
@@ -305,22 +390,17 @@ router.get('/product/:id', (req, res, next) => {
   }
 
 });
-router.post('/reviews', (req, res) => {
+router.post('/reviews', async (req, res) => {
   if (req.session.user_id) {
     //constant values
     const user_id = req.session.user_id;
     const { review_text } = req.body;
+    let insertReview1 = await insertReview(user_id, fp_id, joining_date, review_text)
 
-    const insertQuery = 'INSERT INTO Reviews (user_id, fp_id, review_date,  review_text) VALUES (?, ?, ?, ?)';
-    database.query(insertQuery, [user_id, fp_id, joining_date, review_text], (error, results) => {
-      if (error) {
-        console.error('Error inserting review:', error);
-        res.status(500).send('Internal Server Error');
-        return;
-      }
+   
 
       res.redirect(`/product/${fp_id}`);
-    });
+  
 
 
 
@@ -330,22 +410,6 @@ router.post('/reviews', (req, res) => {
   }
 
 });
-getcategory =  (category) => {
-  return new Promise((resolve, reject) => {
-    database.query(`SELECT *, t.template_before, t.template_after
-    FROM gitart.FinalProduct fp
-    JOIN gitart.Templates t ON fp.template_id = t.template_id
-    JOIN gitart.designs des ON fp.template_id = des.design_id
-    WHERE t.template_name ="${category}"
-`, (error, data) => {
-      if (error) {
-        return reject(error);
-      }
-      return resolve(data);
-    });
-  });
-};
-
 
 
 router.get("/designs/:category", async (request, response, next) => {
@@ -354,13 +418,7 @@ router.get("/designs/:category", async (request, response, next) => {
     user_name = getUsername1[0].user_name;
     let blogs = [];
     const category = request.params.category;
-    const query = `
-    SELECT *, t.template_before, t.template_after
-    FROM gitart.FinalProduct fp
-    JOIN gitart.Templates t ON fp.template_id = t.template_id
-    JOIN gitart.designs des ON fp.template_id = des.design_id
-    WHERE t.template_name = ?;
-    `;
+    
 
     let getcategory1 = await getcategory(category);
     if (getcategory1.length > 0) {
@@ -385,6 +443,7 @@ router.get("/designs/:category", async (request, response, next) => {
          
         };
       });
+      console.log(blogs)
       response.render('home', { user_name, blogs, cart: request.session.cart });
 
     }
@@ -400,48 +459,30 @@ router.get("/designs/:category", async (request, response, next) => {
   }
 
 });
-router.post('/cart', (req, res, next) => {
+
+router.post('/cart', async (req, res, next) => {
   if (req.session.user_id) {
     const productId = req.body.proId;
     const userId = req.session.user_id;
     const quantity = req.body.quantity;
     const AddorRemove = req.body.AddorRemove;
-    console.log(userId)
-    console.log(productId)
-    console.log(quantity)
-    console.log(AddorRemove)
+    
 
     if (AddorRemove == "Remove") {
-      console.log("remove")
-      const insertQuery = 'INSERT INTO cartitem (user_id, fp_id, fp_adding_date,quantity) VALUES (?, ?, ?,?)';
-
-      database.query(insertQuery, [userId, productId, joining_date, quantity], (error, result) => {
-        if (error) {
-          console.error('Error inserting into cart:', error);
-          res.status(500).send('Internal Server Error');
-          return;
-        }
+      let insertIntoCart1 = await insertIntoCart(userId, productId, joining_date, quantity)
 
         res.redirect(`/product${productId}`);
-      });
+      
 
       //delete
     }
     else if (AddorRemove == "Add") {
-      console.log("add")
+      let deleteFromCart1 = await deleteFromCart(userId, productId, quantity)
 
-      const insertQuery = 'INSERT INTO cartitem (user_id, fp_id, fp_adding_date,quantity) VALUES (?, ?, ?,?)';
-
-      database.query(`DELETE FROM gitart.cartitem
-      WHERE user_id="${userId}" and fp_id="${productId}" and quantity="${quantity}"`, (error, result) => {
-        if (error) {
-          console.error('Error inserting into cart:', error);
-          res.status(500).send('Internal Server Error');
-          return;
-        }
+    
 
         res.redirect(`/product${productId}`);
-      });
+     
 
 
     }

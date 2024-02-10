@@ -24,58 +24,8 @@
         }
  */
 $(document).ready(function () {
-     var enabledProducts = [];
-   $(".toggle-button").on('click', function () {
-    var $button = $(this);
-    var templateName = $button.attr("name");
-    var templateID = $button.attr("id");
-    var currentState = $button.data("enabled");
-
-    if (currentState === "disabled") {
-        $button.text("Enabled");
-        $button.css("background", "red");
-        $button.data("enabled", "enabled");
-        enabledProducts.push({ id: templateID }); // Store as an object
-    } else {
-        $button.text("Disabled");
-        $button.css("background", "linear-gradient(to bottom, #57d757, #98ca98)");
-        $button.data("enabled", "disabled");
-        enabledProducts = enabledProducts.filter(function(item) {
-            return item.id !== templateID; // Compare by ID
-        });
-    }
-});
-
-
-    $("#uploadForm").on('submit', function (event) {
-        event.preventDefault();
-
-        // Create a FormData object to hold the file data and form inputs
-        var formData = new FormData(this);
-        formData.append('enabledProducts', JSON.stringify(enabledProducts)); // Add enabled products to the form data
-
-        // Perform the file upload and product saving in one request
-        $.ajax({
-            type: "POST",
-            url: "/upload", // Update the URL to the correct endpoint
-            data: formData,
-            processData: false, // Prevent jQuery from processing the data
-            contentType: false, // Prevent jQuery from setting the content type
-            success: function (response) {
-                console.log(response);
-                alert("File and products saved successfully!");
-            },
-            error: function (error) {
-                console.error(error);
-                alert("Error saving file and products!");
-            }
-        });
-    });
-
-//Display image
-//Display image
-//$(document).ready(function () {
-     // Event listener for the file input change
+   
+    
     $('#input-file').on('change', function() {
         // Check if files are selected and the first file is an image
         if (this.files && this.files[0]) {
@@ -89,6 +39,89 @@ $(document).ready(function () {
                 previewImg.attr('src', e.target.result);
                 // Make the image visible by changing the display style
                 previewImg.show();
+
+                var previewImg = $('#tshirt-image');
+                // Set the src of the image to the read file data
+                previewImg.attr('src', e.target.result);
+                // Make the image visible by changing the display style
+                previewImg.show();
+
+                var previewImg = $('#tshirt-image');
+                // Set the src of the image to the read file data
+                previewImg.attr('src', e.target.result);
+                // Make the image visible by changing the display style
+                previewImg.show();
+
+                var previewImg = $('#tote-image');
+                // Set the src of the image to the read file data
+                previewImg.attr('src', e.target.result);
+                // Make the image visible by changing the display style
+                previewImg.show();
+                
+                var previewImg = $('#sticker-image');
+                // Set the src of the image to the read file data
+                previewImg.attr('src', e.target.result);
+                // Make the image visible by changing the display style
+                previewImg.show();
+                var previewImg = $('#poster-image');
+                // Set the src of the image to the read file data
+                previewImg.attr('src', e.target.result);
+                // Make the image visible by changing the display style
+                previewImg.show();
+
+                var previewImg = $('#phoneCover-image');
+                // Set the src of the image to the read file data
+                previewImg.attr('src', e.target.result);
+                // Make the image visible by changing the display style
+                previewImg.show();
+
+                var previewImg = $('#notebook-image');
+                // Set the src of the image to the read file data
+                previewImg.attr('src', e.target.result);
+                // Make the image visible by changing the display style
+                previewImg.show();
+                
+                var previewImg = $('#mug-image');
+                // Set the src of the image to the read file data
+                previewImg.attr('src', e.target.result);
+                // Make the image visible by changing the display style
+                previewImg.show();
+                var previewImg = $('#laptopSleeve-image');
+                // Set the src of the image to the read file data
+                previewImg.attr('src', e.target.result);
+                // Make the image visible by changing the display style
+                previewImg.show();
+
+                var previewImg = $('#laptopSkin-image');
+                // Set the src of the image to the read file data
+                previewImg.attr('src', e.target.result);
+                // Make the image visible by changing the display style
+                previewImg.show();
+
+                var previewImg = $('#ipadCase-image');
+                // Set the src of the image to the read file data
+                previewImg.attr('src', e.target.result);
+                // Make the image visible by changing the display style
+                previewImg.show();
+                
+                var previewImg = $('#frame-image');
+                // Set the src of the image to the read file data
+                previewImg.attr('src', e.target.result);
+                // Make the image visible by changing the display style
+                previewImg.show();
+                var previewImg = $('#coaster-image');
+                // Set the src of the image to the read file data
+                previewImg.attr('src', e.target.result);
+                // Make the image visible by changing the display style
+                previewImg.show();
+                var previewImg = $('#a4-image');
+                // Set the src of the image to the read file data
+                previewImg.attr('src', e.target.result);
+                // Make the image visible by changing the display style
+                previewImg.show();
+
+
+
             };
             
             // Read the selected file as a Data URL

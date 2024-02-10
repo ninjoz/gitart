@@ -33,10 +33,12 @@
 
 
 <div id="reviews-container">
-    <%if(reviews.length>0){%>
-    <% reviews.map((review) => { %>
+    
       <div id="review">
+        
         <div name="reviewssss" ><h3>Reviews</h3></div><br>
+        <%if(reviews.length>0){%>
+          <% reviews.map((review) => { %>
         <div name="username" id="username"><b><%= review.user_name %></b></div>
         <div name="review_text" id="review_text"><%= review.review_text %></div>
       </div><br><br>

@@ -145,7 +145,7 @@ getUsersByName = (name) => {
 };
 getDesigns = (id) => {
   return new Promise((resolve, reject) => {
-    database.query('SELECT * FROM gitart.designs WHERE user_id= ?', [id], (error, data) => {
+    database.query('SELECT * FROM gitart.designs WHERE user_id= ? ORDER BY design_id DESC', [id], (error, data) => {
       if (error) {
         return reject(error);
       }
@@ -264,7 +264,7 @@ router.get('/:id', async (req, res, next) => {
               };
             }
           }
-
+console.log(blogs)
           res.render('artistprofile', {
             user_name,
             artist_id,

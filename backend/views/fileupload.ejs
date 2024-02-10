@@ -25,7 +25,7 @@
         <form enctype="multipart/form-data" action="/fileupload" method="post" id="uploadForm">
             <div class="uploader">
                 <label for="input-file" id="drop-area">
-                    <input type="file" name="sample" accept="image/*" id="input-file"  hidden />
+                    <input type="file" name="uploadDesign" accept="image/*" id="input-file"  hidden required/>
                <!--  <input type="submit" name="submit" class="btn btn-success" value="Upload image" />-->  
               
              
@@ -79,7 +79,7 @@
                     <img src="tshirtBefore.png" name="tshirt_before_image" alt="tshirt_before_image not found">
                 </div>
                 <div class="overlay-image" id="overlay-img1">
-                    <img name="design-image" alt="design image not found">
+                    <img id="tshirt-image" alt="design image not found">
                 </div>
                 <div class="afterimage">
                     <img src="tshirtAfter.png" name="tshirt_after_image" alt="tshirt_After_image not found">
@@ -89,8 +89,9 @@
                 <input type="range" name="range" min="1" max="100" value="100" class="slider" id="myRange1" oninput="updateOverlaySize(this.value, 'overlay-img1') ">
                </div>
              
-               <div class="button">
-                 <button class="toggle-button" name="tshirt" id="1"  data-enabled="disabled">Disabled</button>
+               <div class="checkbox">
+                <input type="checkbox" id="1" name="tshirt" >
+                
 
                 </div>
 
@@ -105,17 +106,18 @@
                 <img src="toteBefore.png" name="tote_before_image" alt="tote_before_image not found">
             </div>
             <div class="overlay-image"  id="overlay-img1">
-                <img name="design-image" alt="design image not found">
+                <img id="tote-image" alt="design image not found">
             </div>
             <div class="afterimage">
                 <img src="toteAfter.png" name="tote_after_image" alt="tote_After_image not found">
             </div>
-            <p>T-shirt</p>
+            <p>Tote Bag</p>
             <div class="slide-container">
                 <input type="range" name="range" min="1" max="100" value="100" class="slider" id="myRange1" oninput="updateOverlaySize(this.value, 'overlay-img1') ">
                </div>
-            <div class="button">
-                <button class="toggle-button" id="2" name="totebag" data-enabled="disabled">Disabled</button>
+            <div class="checkbox">
+                <input type="checkbox" id="2" name="totebag" >
+                
             </div>
         </div>
         </div>
@@ -128,18 +130,20 @@
                 <img src="stickerBefore.png" name="sticker_before_image" alt="sticker_before_image not found">
             </div>
             <div class="overlay-image"  id="overlay-img1">
-                <img name="design-image" alt="design image not found">
+                <img id="sticker-image" alt="design image not found">
             </div>
             <div class="afterimage">
                 <img src="stickerAfter.png" name="sticker_after_image" alt="sticker_After_image not found">
             </div>
-            <p>T-shirt</p>
+            <p>Sticker</p>
             <div class="slide-container">
                 <input type="range" name="range" min="1" max="100" value="100" class="slider" id="myRange1" oninput="updateOverlaySize(this.value, 'overlay-img1') ">
                </div>
-            <div class="button">
-                <button class="toggle-button"  id="3" name="sticker" data-enabled="disabled">Disabled</button>
+               <div class="checkbox">
+                <input type="checkbox" id="3" name="sticker" >
+                
             </div>
+            
         </div>
 
 
@@ -149,18 +153,20 @@
                 <img src="posterBefore.png" name="poster_before_image" alt="poster_before_image not found">
             </div>
             <div class="overlay-image"  id="overlay-img1">
-                <img name="design-image" alt="design image not found">
+                <img id="poster-image" alt="design image not found">
             </div>
             <div class="afterimage">
                 <img src="posterAfter.png" name="poster_after_image" alt="poster_After_image not found">
             </div>
-            <p>T-shirt</p>
+            <p>Poster</p>
             <div class="slide-container">
                 <input type="range" name="range" min="1" max="100" value="100" class="slider" id="myRange1" oninput="updateOverlaySize(this.value, 'overlay-img1') ">
                </div>
-            <div class="button">
-                <button class="toggle-button"  id="4" name="poster" data-enabled="disabled">Disabled</button>
+               <div class="checkbox">
+                <input type="checkbox" id="4" name="poster" >
+                
             </div>
+            
         </div>
 
 
@@ -172,18 +178,20 @@
                 <img src="phoneCoverBefore.png" name="phoneCover_before_image" alt="phoneCover_before_image not found">
             </div>
             <div class="overlay-image"  id="overlay-img1">
-                <img name="design-image" alt="design image not found">
+                <img id="phoneCover-image" alt="design image not found">
             </div>
             <div class="afterimage">
                 <img src="phoneCoverAfter.png" name="phoneCover_after_image" alt="phoneCover_After_image not found">
             </div>
-            <p>T-shirt</p>
+            <p>Phone Cover</p>
             <div class="slide-container">
                 <input type="range" name="range" min="1" max="100" value="100" class="slider" id="myRange1" oninput="updateOverlaySize(this.value, 'overlay-img1') ">
                </div>
-            <div class="button">
-                <button class="toggle-button"  id="5" name="phoneCover" data-enabled="disabled">Disabled</button>
+               <div class="checkbox">
+                <input type="checkbox" id="5" name="phoneCover" >
+                
             </div>
+           
         </div>
 
 
@@ -193,7 +201,7 @@
                 <img src="notebookBefore.png" name="notebook_before_image" alt="notebook_before_image not found">
             </div>
             <div class="overlay-image"  id="overlay-img1">
-                <img name="design-image" alt="design image not found">
+                <img id="notebook-image" alt="design image not found">
             </div>
             <div class="afterimage">
                 <img src="notebookAfter.png" name="notebook_after_image" alt="notebook_After_image not found">
@@ -202,9 +210,11 @@
             <div class="slide-container">
                 <input type="range" name="range" min="1" max="100" value="100" class="slider" id="myRange1" oninput="updateOverlaySize(this.value, 'overlay-img1') ">
                </div>
-            <div class="button">
-                <button class="toggle-button"  id="6" name="notebook" data-enabled="disabled">Disabled</button>
+               <div class="checkbox">
+                <input type="checkbox" id="6" name="notebook" >
+                
             </div>
+           
         </div>
 
          <!--mug-->
@@ -213,7 +223,7 @@
                 <img src="mugBefore.png" name="mug_before_image" alt="mug_before_image not found">
             </div>
             <div class="overlay-image"  id="overlay-img1">
-                <img name="design-image" alt="design image not found">
+                <img id="mug-image" alt="design image not found">
             </div>
             <div class="afterimage">
                 <img src="mugAfter.png" name="mug_after_image" alt="mug_After_image not found">
@@ -222,9 +232,11 @@
             <div class="slide-container">
                 <input type="range" name="range" min="1" max="100" value="100" class="slider" id="myRange1" oninput="updateOverlaySize(this.value, 'overlay-img1') ">
                </div>
-            <div class="button">
-                <button class="toggle-button"  id="7" name="mug" data-enabled="disabled"> disabled</button>
+               <div class="checkbox">
+                <input type="checkbox" id="7" name="mug" >
+                
             </div>
+            
         </div>
                    <!--laptopsleeve-->
         <div class="card" name="laptopSleeve_card">
@@ -232,7 +244,7 @@
                 <img src="laptopSleeveBefore.png" name="laptopSleeve_before_image" alt="laptopSleeve_before_image not found">
             </div>
             <div class="overlay-image"  id="overlay-img1">
-                <img name="design-image" alt="design image not found">
+                <img id="laptopSleeve-image" alt="design image not found">
             </div>
             <div class="afterimage">
                 <img src="laptopSleeveAfter.png" name="laptopSleeve_after_image" alt="laptopSleeve_After_image not found">
@@ -241,9 +253,12 @@
             <div class="slide-container">
                 <input type="range" name="range" min="1" max="100" value="100" class="slider" id="myRange1" oninput="updateOverlaySize(this.value, 'overlay-img1') ">
                </div>
-            <div class="button">
-                <button class="toggle-button"  id="8" name="laptopSleeve"data-enabled="disabled"> disabled</button>
+
+               <div class="checkbox">
+                <input type="checkbox" id="8" name="laptopSleeve" >
+                
             </div>
+            
         </div>
 
         <!--laptopSkin-->
@@ -252,7 +267,7 @@
                 <img src="laptopSkinBefore.png" name="laptopSkin_before_image" alt="laptopSkin_before_image not found">
             </div>
             <div class="overlay-image"  id="overlay-img1">
-                <img name="design-image" alt="design image not found">
+                <img id="laptopSkin-image" alt="design image not found">
             </div>
             <div class="afterimage">
                 <img src="laptopSkinAfter.png" name="laptopSkin_after_image" alt="laptopSkin_After_image not found">
@@ -261,9 +276,12 @@
             <div class="slide-container">
                 <input type="range" name="range" min="1" max="100" value="100" class="slider" id="myRange1" oninput="updateOverlaySize(this.value, 'overlay-img1') ">
                </div>
-            <div class="button">
-                <button class="toggle-button" id="9" name="laptopSkin-button"data-enabled="disabled"> disabled</button>
+
+               <div class="checkbox">
+                <input type="checkbox" id="9" name="laptopSkin" >
+                
             </div>
+            
         </div>
 
         <!--ipadCase-->
@@ -273,7 +291,7 @@
                 <img src="ipadCaseBefore.png" name="ipadCase_before_image" alt="ipadCase_before_image not found">
             </div>
             <div class="overlay-image"  id="overlay-img1">
-                <img name="design-image" alt="design image not found">
+                <img id="ipadCase-image" alt="design image not found">
             </div>
             <div class="afterimage">
                 <img src="ipadCaseAfter.png" name="ipadCase_after_image" alt="ipadCase_After_image not found">
@@ -282,9 +300,11 @@
             <div class="slide-container">
                 <input type="range" name="range" min="1" max="100" value="100" class="slider" id="myRange1" oninput="updateOverlaySize(this.value, 'overlay-img1') ">
                </div>
-            <div class="button">
-                <button class="toggle-button"  id="10" name="ipadCase"data-enabled="disabled"> disabled</button>
+               <div class="checkbox">
+                <input type="checkbox" id="10" name="ipadCase" >
+                
             </div>
+            
         </div>
 
         <!--frame-->
@@ -293,7 +313,7 @@
                 <img src="frameBefore.png" name="frame_before_image" alt="frame_before_image not found">
             </div>
             <div class="overlay-image"  id="overlay-img1">
-                <img name="design-image" alt="design image not found">
+                <img id="frame-image" alt="design image not found">
             </div>
             <div class="afterimage">
                 <img src="frameAfter.png" name="frame_after_image" alt="frame_After_image not found">
@@ -302,9 +322,11 @@
             <div class="slide-container">
                 <input type="range" name="range" min="1" max="100" value="100" class="slider" id="myRange1" oninput="updateOverlaySize(this.value, 'overlay-img1') ">
                </div>
-            <div class="button">
-                <button class="toggle-button"  id="11" name="frame"data-enabled="disabled"> disabled</button>
+               <div class="checkbox">
+                <input type="checkbox" id="11" name="frame" >
+                
             </div>
+            
         </div>
 
 
@@ -314,7 +336,7 @@
                 <img src="coasterBefore.png" name="coaster_before_image" alt="coaster_before_image not found">
             </div>
             <div class="overlay-image"  id="overlay-img1">
-                <img name="design-image" alt="design image not found">
+                <img id="coaster-image" alt="design image not found">
             </div>
             <div class="afterimage">
                 <img src="coasterAfter.png" name="coaster_after_image" alt="coaster_After_image not found">
@@ -323,9 +345,11 @@
             <div class="slide-container">
                 <input type="range" name="range" min="1" max="100" value="100" class="slider" id="myRange1" oninput="updateOverlaySize(this.value, 'overlay-img1') ">
                </div>
-            <div class="button">
-                <button class="toggle-button" id="12" name="coaster"data-enabled="disabled"> disabled</button>
+               <div class="checkbox">
+                <input type="checkbox" id="12" name="coaster" >
+                
             </div>
+            
         </div>
 
         <!--a4-->
@@ -334,7 +358,7 @@
                 <img src="a4Before.png" name="a4_before_image" alt="a4_before_image not found">
             </div>
             <div class="overlay-image"  id="overlay-img1">
-                <img name="design-image" alt="design image not found">
+                <img id="a4-image" alt="design image not found">
             </div>
             <div class="afterimage">
                 <img src="a4After.png" name="a4_after_image" alt="a4_After_image not found">
@@ -343,9 +367,11 @@
             <div class="slide-container">
                 <input type="range" name="range" min="1" max="100" value="100" class="slider" id="myRange1" oninput="updateOverlaySize(this.value, 'overlay-img1') ">
                </div>
-            <div class="button">
-                <button class="toggle-button" id="13" name="a4"data-enabled="disabled"> disabled</button>
+               <div class="checkbox">
+                <input type="checkbox" id="13" name="a4" >
+                
             </div>
+           
         </div>
         
     </div>
@@ -355,7 +381,8 @@
     <br>
    
 
-<input type="submit" id="saveButton" class="btn btn-success" value="Save" />
+<input type="submit" id="saveButton"  onclick="if(!$('#input-file').val()) return alert('Please Choose A File First Before Submitting')" class="btn btn-success" value="Save" />
+<p id="warning"></p>
 
     <br>
     <br>

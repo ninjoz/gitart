@@ -98,11 +98,11 @@
 <button id="remove" name="<%=blog.design_id%>" onclick="return confirm('Are you sure?')">x</button>
                                 <div class="image_container">
 
-                                    <%if(!(blog.design_source=="local")){%>
+                                    <%if((blog.design_source=="local")){%>
                                     <img name="design_image" class="design" src="/<%=blog.design_path%>" href="#"
                                         alt="design image not found" class="design_image">
                                         <%}%>
-                                        <%if((blog.design_source=="local")){%>
+                                        <%if((blog.design_source=="API")){%>
                                             <img name="design_image" class="design" src="https://www.artic.edu/iiif/2/<%=blog.design_path%>/full/843,/0/default.jpg" href="#"
                                                 alt="design image not found" class="design_image">
                                                 <%}%>
