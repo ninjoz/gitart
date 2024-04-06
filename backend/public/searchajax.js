@@ -1,4 +1,6 @@
 $(document).ready(function () {
+ 
+
   let start_index = $("#loadMoreBtn").data("start-index");
   let num_record = $("#loadMoreBtn").data("num-record");
   let searchQuery = $("#loadMoreBtn").attr("name");

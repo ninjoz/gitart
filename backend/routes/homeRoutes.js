@@ -19,6 +19,7 @@ router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({ extended: true }));
 const saltRound = 10;
 const session = require('express-session');
+let likedDesigns = [];
 getUsername = (user_id) => {
   return new Promise((resolve, reject) => {
     database.query(`select user_name from users where user_id ="${user_id}"`, (error, data) => {
@@ -66,10 +67,9 @@ insertReview =  (user_id, fp_id, joining_date, review_text) => {
 
 getcategory =  (category) => {
   return new Promise((resolve, reject) => {
-    database.query(`SELECT *, t.template_before, t.template_after
-    FROM gitart.FinalProduct fp
+    database.query(`SELECT * FROM gitart.FinalProduct fp
     JOIN gitart.Templates t ON fp.template_id = t.template_id
-    JOIN gitart.designs des ON fp.template_id = des.design_id
+    JOIN gitart.designs des ON fp.design_id = des.design_id
     WHERE t.template_name ="${category}"
 `, (error, data) => {
       if (error) {
@@ -81,9 +81,9 @@ getcategory =  (category) => {
 };
 
 
-getdesigns = () => {
+getdesigns = (start_index,num_record) => {
   return new Promise((resolve, reject) => {
-    database.query('SELECT * FROM designs where design_privacy="Public"', (error, data) => {
+    database.query(`SELECT * FROM designs where design_privacy="Public" LIMIT ${start_index}, ${num_record}`, (error, data) => {
       if (error) {
         return reject(error);
       }
@@ -114,7 +114,7 @@ gettemplates = (template_id) => {
 
 getFavoritesss = (user_id) => {
   return new Promise((resolve, reject) => {
-    database.query(`select * from gitart.favorites f join gitart.designs d on f.user_id = d.user_id join gitart.finalproduct fp on d.design_id = fp.design_id join gitart.templates temp on fp.template_id =temp.template_id where f.user_id  ="${user_id}";`, (error, data) => {
+    database.query(`select  d.user_id,f.design_id,d.design_price,d.description,d.posting_date,d.design_title,d.design_path,d.design_path,d.design_likes,d.design_source,fp.fp_id,temp.template_name,temp.template_after,temp.template_before,fp.fp_price,fp.size from gitart.favorites f join gitart.designs d on d.design_id = f.design_id join gitart.finalproduct fp on d.design_id = fp.design_id join gitart.templates temp on fp.template_id =temp.template_id where f.user_id  ="${user_id}";`, (error, data) => {
       if (error) {
         return reject(error);
       }
@@ -157,6 +157,7 @@ getPD = (productId) => {
     d.description,
     d.design_title,
     d.design_path,
+    d.design_source,
     u.user_name
 FROM
     FinalProduct fp
@@ -172,17 +173,49 @@ WHERE
     });
   });
 };
-
+getFavorites = (id) => {
+  return new Promise((resolve, reject) => {
+    database.query('SELECT * FROM gitart.favorites where user_id= ?', [id], (error, data) => {
+      if (error) {
+        return reject(error);
+      }
+      return resolve(data);
+    });
+  });
+};
+let resType="";
+let num_record=0;
+let start_index=0;
 router.get("/home", async (request, response) => {
+  resType="Explore";
+  
+  likedDesigns = [];
+  blogs=[];
+  blogs.length = 0;
   if (request.session.user_id) {
+    let favoritesTable = await getFavorites(request.session.user_id);
+          if (favoritesTable.length > 0) {
+
+            for (let count = 0; count < favoritesTable.length; count += 1) {
+              likedDesigns[count] = favoritesTable[count].design_id;
+
+            }
+
+          }
+           userId = request.session.user_id;
+       start_index = request.query.start_index || request.body.start_index || 0;
+       num_record = request.query.num_record || request.body.num_record || 15;
+      console.log(start_index);
+      console.log(num_record);
     let getUsername1 = await getUsername(request.session.user_id)
     user_name = getUsername1[0].user_name;
-    let getdesignsTable = await getdesigns();
+    let getdesignsTable = await getdesigns(parseInt(start_index),parseInt(num_record));
     if (getdesignsTable.length > 0) {
-      const blogs = [];
+      
       const array = [];
       const array2 = [];
       for (let i = 0; i < getdesignsTable.length; i++) {
+        blogs.length = getdesignsTable.length;
         let getfinalproductTable = await getfinalproduct(getdesignsTable[i].design_id);
         if (getfinalproductTable.length > 0) {
           const fp_id = getfinalproductTable[0].fp_id;
@@ -198,11 +231,14 @@ router.get("/home", async (request, response) => {
            
 
             blogs[i] = {
+              "user_id": getdesignsTable[i].user_id,
               "design_id": getdesignsTable[i].design_id,
               "design_path": getdesignsTable[i].design_path,
               "design_price": getdesignsTable[i].design_price,
               "design_title": getdesignsTable[i].design_title,
+              "likes":getdesignsTable[i].design_likes,
               "fp_id": array[i],
+              "design_source":getdesignsTable[i].design_source,
               "fp_price": array2[i],
               "template_before": template_before,
               "template_after": template_after
@@ -211,24 +247,33 @@ router.get("/home", async (request, response) => {
 
         }
       }
+      if (request.xhr) {
+      
+       
+          response.render('partials/homeCard', {start_index,num_record, resType,"user_id": request.session.user_id, user_name, blogs,likedDesigns, cart: request.session.cart });
+      
+      
+    
+    }
+      else{
+        if (blogs.length > 0) {
+          response.render('home', {start_index,num_record, resType,"user_id": request.session.user_id, user_name, blogs,likedDesigns, cart: request.session.cart });
+      }
+    
+      }
+    
 
-      response.render('home', { user_name, blogs, cart: request.session.cart });
+     
 
     }
-    else {
-
-      response.render('home', { user_name, blogs: [], cart: request.session.cart });
-
-    }
+    
+  
 
 
-
-    /* res.render('home', {
-       user_name
-     });*/
-  }
+  
+}
   else {
-    response.render('welcome');
+    response.redirect('/');
   }
 
 });
@@ -240,7 +285,7 @@ iterateData =  (getFavorites1) => {
 
       
       blogs[count] = {
-        "design_path": getFavorites1[count].design_path, "design_id": getFavorites1[count].design_id, "design_title": getFavorites1[count].design_title, "design_price": getFavorites1[count].design_price, "design_likes": getFavorites1[count].design_likes
+        "design_path": getFavorites1[count].design_path, "design_id": getFavorites1[count].design_id, "design_title": getFavorites1[count].design_title, "design_price": getFavorites1[count].design_price, "likes": getFavorites1[count].design_likes
         , "design_source": getFavorites1[count].design_source,
         "fp_id": getFavorites1[count].fp_id,
         "description": getFavorites1[count].description,
@@ -258,32 +303,41 @@ iterateData =  (getFavorites1) => {
   });
 };
 router.get("/designs/Favourites", async (request, response) => {
+  resType="Favorites";
+  likedDesigns = [];
   if (request.session.user_id) {
+    let favoritesTable = await getFavorites(request.session.user_id);
+          if (favoritesTable.length > 0) {
+
+            for (let count = 0; count < favoritesTable.length; count += 1) {
+              likedDesigns[count] = favoritesTable[count].design_id;
+
+            }
+
+          }
     let getUsername1 = await getUsername(request.session.user_id)
     user_name = getUsername1[0].user_name;
     let blogs = [];
 
     let getFavorites1 = await getFavoritesss(request.session.user_id)
-console.log(getFavorites1);
     
       if (getFavorites1.length > 0) {
         blogs = await iterateData(getFavorites1);
         
 
-      console.log(blogs)
-          response.render('home', { user_name, blogs, cart: request.session.cart });
+          response.render('home', {start_index,num_record,likedDesigns,resType, "user_id": request.session.user_id,user_name, blogs, cart: request.session.cart });
 
      
 
       } else {
        
         // Handle case when no favorites are found
-        response.render('home', { user_name, blogs: [], cart: request.session.cart });
+        response.render('home', {start_index,num_record,resType,"user_id": request.session.user_id, user_name,likedDesigns, blogs: [], cart: request.session.cart });
       }
     
   }
   else {
-    res.render('welcome');
+    response.redirect('/');
 
 
   }
@@ -292,7 +346,18 @@ console.log(getFavorites1);
 
 
 router.get("/designs/Following", async (request, response) => {
+  resType="Followings";
+  likedDesigns = [];
   if (request.session.user_id) {
+    let favoritesTable = await getFavorites(request.session.user_id);
+          if (favoritesTable.length > 0) {
+
+            for (let count = 0; count < favoritesTable.length; count += 1) {
+              likedDesigns[count] = favoritesTable[count].design_id;
+
+            }
+
+          }
     let getUsername1 = await getUsername(request.session.user_id)
     user_name = getUsername1[0].user_name;
     let blogs = [];
@@ -307,9 +372,11 @@ router.get("/designs/Following", async (request, response) => {
             "design_title": row.design_title,
             "fp_id": row.fp_id,
             "design_path": row.design_path,
-            "design_likes": row.design_likes,
+            "likes": row.design_likes,
             "description": row.description,
             "design_price": row.design_price,
+            "design_source":row.design_source,
+            "user_id":row.user_id,
             "design_id": row.design_id,
             "template_id": row.template_id,
             "fp_price": row.fp_price,
@@ -320,12 +387,12 @@ router.get("/designs/Following", async (request, response) => {
         });
       }
      
-        response.render('home', { user_name, blogs, cart: request.session.cart });
+        response.render('home', {start_index,num_record,resType,"user_id": request.session.user_id, user_name,likedDesigns, blogs, cart: request.session.cart });
       
 
   }
   else {
-    res.render('welcome');
+    response.redirect('/');
 
 
   }
@@ -364,6 +431,7 @@ router.get('/product/:id', async(req, res, next) => {
 
       const product = {
         "design_title": getPD1[0].design_title,
+        "design_source":getPD1[0].design_source,
         "artist": getPD1[0].user_name,
         "size": getPD1[0].size,
         "price": getPD1[0].fp_price,
@@ -391,6 +459,7 @@ router.get('/product/:id', async(req, res, next) => {
 
 });
 router.post('/reviews', async (req, res) => {
+  
   if (req.session.user_id) {
     //constant values
     const user_id = req.session.user_id;
@@ -413,13 +482,24 @@ router.post('/reviews', async (req, res) => {
 
 
 router.get("/designs/:category", async (request, response, next) => {
+  
+  likedDesigns = [];
   if (request.session.user_id) {
+    let favoritesTable = await getFavorites(request.session.user_id);
+          if (favoritesTable.length > 0) {
+
+            for (let count = 0; count < favoritesTable.length; count += 1) {
+              likedDesigns[count] = favoritesTable[count].design_id;
+
+            }
+
+          }
     let getUsername1 = await getUsername(request.session.user_id)
     user_name = getUsername1[0].user_name;
     let blogs = [];
     const category = request.params.category;
     
-
+    resType=category;
     let getcategory1 = await getcategory(category);
     if (getcategory1.length > 0) {
       blogs = getcategory1.map((row) => {
@@ -427,11 +507,13 @@ router.get("/designs/:category", async (request, response, next) => {
 
           "design_title": row.design_title,
           "design_path": row.design_path,
+          "design_source":row.design_source,
           "fp_id": row.fp_id,
-          "design_likes": row.design_likes,
+          "likes": row.design_likes,
           "description": row.description,
           "design_price": row.design_price,
           "design_id": row.design_id,
+          "user_id":row.user_id,
           "template_id": row.template_id,
           "fp_price": row.fp_price,
           "size": row.size,
@@ -443,8 +525,7 @@ router.get("/designs/:category", async (request, response, next) => {
          
         };
       });
-      console.log(blogs)
-      response.render('home', { user_name, blogs, cart: request.session.cart });
+      response.render('home', {start_index,num_record,resType,"user_id": request.session.user_id, user_name,likedDesigns, blogs, cart: request.session.cart });
 
     }
     else {
@@ -455,11 +536,45 @@ router.get("/designs/:category", async (request, response, next) => {
 
   }
   else {
-    request.render('404');
+    response.render('404');
   }
 
 });
+router.post('/heartedDesign', async (req, res) => {
 
+  let design_id = req.body.design_id;
+  let isLiked = req.body.isLiked;
+
+  let getDesignsByDesignIdTable = await getDesignsByDesignId(design_id);
+  let profileId =  getDesignsByDesignIdTable[0].user_id;
+  let usersTableById = await getUsersById(profileId);
+  let profileName = usersTableById[0].user_name;
+  //console.log(design_id);
+  //console.log(isLiked);
+  if (isLiked == 'notLiked') {
+    let deleteFavoritesTable = await deleteFavorites(design_id, req.session.user_id)
+
+  }
+  else if (isLiked == 'Liked') {
+    let insertFavoritesTable = await insertFavorites(design_id, req.session.user_id);
+
+
+
+  }
+
+
+
+
+
+  res.redirect(`/home`)
+
+
+
+
+
+
+
+})
 router.post('/cart', async (req, res, next) => {
   if (req.session.user_id) {
     const productId = req.body.proId;
@@ -493,10 +608,52 @@ router.post('/cart', async (req, res, next) => {
 
   }
   else {
-    req.render('404');
+    res.render('404');
   }
 
 
 });
+getDesignsByDesignId = (design_id) => {
+  return new Promise((resolve, reject) => {
+    database.query('SELECT * FROM gitart.designs WHERE design_id= ?', [design_id], (error, data) => {
+      if (error) {
+        return reject(error);
+      }
+      return resolve(data);
+    });
+  });
+};
+getUsersById = (id) => {
+  return new Promise((resolve, reject) => {
+    database.query('SELECT * FROM gitart.users WHERE user_id= ?', [id], (error, data) => {
+      if (error) {
+        return reject(error);
+      }
+      return resolve(data);
+    });
+  });
+};
+deleteFavorites = (design_id, user_id) => {
+  return new Promise((resolve, reject) => {
+    database.query(`DELETE FROM favorites
+      WHERE design_id="${design_id}" and user_id="${user_id}"`, (error, data) => {
+      if (error) {
+        return reject(error);
+      }
+      return resolve(data);
+    });
+  });
+};
+insertFavorites = (design_id, user_id) => {
+  return new Promise((resolve, reject) => {
+    database.query(`INSERT INTO favorites (design_id,user_id) VALUES ("${design_id}","${user_id}")`, (error, data) => {
+      if (error) {
+        return reject(error);
+      }
+      return resolve(data);
+    });
+  });
+};
+
 
 module.exports = router;

@@ -23,20 +23,25 @@ p {
 }
 
   </style>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"> </script>
+<script  src="/register.js"> </script>
 </head>
 <body>
-  <form id='register-form' action="/register" method='post'>
-    <input type="text" name= "new_user_name" class="form-control" placeholder="Username" required>
-    <input type="radio" name="gender" value="male" required> Male
-<input type="radio" name="gender" value="female" required> Female
-<input type="radio" name="accType" value="artist" required> Artist
-<input type="radio" name="accType" value="customer" required> Customer
+  <form id='register-form' method='post'>
+    <input type="text" id= "new_user_name" name= "new_user_name" class="form-control" placeholder="Username" required>
+    <input type="radio" class="gender" name="gender" value="male" required> Male
+<input type="radio" class="gender" name="gender" value="female" required> Female
+<input type="radio" class="accType" name="accType" value="artist" required> Artist
+<input type="radio" class="accType" name="accType" value="customer" required> Customer
 
-    <input type="email" class="form-control" name= "new_user_email_address" placeholder="Email" required>
-    <input type="password" name="new_user_password" class="form-control" placeholder="Password" required>
-    <input type="password" class="form-control" name="re_new_user_password" placeholder="Re Password" required>
+    <input type="email" class="form-control" id= "new_user_email_address" name= "new_user_email_address" placeholder="Email" required>
+    <input type="password" id="new_user_password" name="new_user_password" class="form-control" placeholder="Password" required>
+    <input type="password" class="form-control"  id="re_new_user_password" name="re_new_user_password" placeholder="Re Password" required>
     <button type='submit' class="btn btn-primary"  value="Register">Register</button>
-    <p> <%=message%></p>
+    <h4 id="message"></h4>
+    <br>
     <p>Already Member ?
       <a href="/login">Sign In Now</a>
    </p>

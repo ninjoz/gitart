@@ -4,6 +4,7 @@ const mysql = require('mysql');
 const database = require('../database');
 const axios = require('axios');
 let bodyParser = require('body-parser')
+let likedDesigns = [];
 //app.use(bodyParser.json());
 //app.use(bodyParser.urlencoded({ extended: true }));
 function executeQuery(query, params) {
@@ -18,6 +19,47 @@ function executeQuery(query, params) {
   });
 }
 
+getDesignsByDesignId = (design_id) => {
+  return new Promise((resolve, reject) => {
+    database.query('SELECT * FROM gitart.designs WHERE design_id= ?', [design_id], (error, data) => {
+      if (error) {
+        return reject(error);
+      }
+      return resolve(data);
+    });
+  });
+};
+getUsersById = (id) => {
+  return new Promise((resolve, reject) => {
+    database.query('SELECT * FROM gitart.users WHERE user_id= ?', [id], (error, data) => {
+      if (error) {
+        return reject(error);
+      }
+      return resolve(data);
+    });
+  });
+};
+deleteFavorites = (design_id, user_id) => {
+  return new Promise((resolve, reject) => {
+    database.query(`DELETE FROM favorites
+      WHERE design_id="${design_id}" and user_id="${user_id}"`, (error, data) => {
+      if (error) {
+        return reject(error);
+      }
+      return resolve(data);
+    });
+  });
+};
+insertFavorites = (design_id, user_id) => {
+  return new Promise((resolve, reject) => {
+    database.query(`INSERT INTO favorites (design_id,user_id) VALUES ("${design_id}","${user_id}")`, (error, data) => {
+      if (error) {
+        return reject(error);
+      }
+      return resolve(data);
+    });
+  });
+};
 
 
 
@@ -28,11 +70,34 @@ router.get('/', (req, res) => {
 
 
 
-
+getFavorites = (id) => {
+  return new Promise((resolve, reject) => {
+    database.query('SELECT * FROM gitart.favorites where user_id= ?', [id], (error, data) => {
+      if (error) {
+        return reject(error);
+      }
+      return resolve(data);
+    });
+  });
+};
+let searchQuery='';
 router.post('/', async (req, res) => {
+  likedDesigns = [];
   if (req.session.user_id) {
+    let favoritesTable = await getFavorites(req.session.user_id);
+          if (favoritesTable.length > 0) {
+
+            for (let count = 0; count < favoritesTable.length; count += 1) {
+              likedDesigns[count] = favoritesTable[count].design_id;
+
+            }
+
+          }
+
     try {
-      let searchQuery = req.body.search_query || req.query.search_query;
+      
+      searchQuery = req.body.search_query || req.query.search_query;
+      if(searchQuery){
       const userId = req.session.user_id;
       const start_index = req.query.start_index || req.body.start_index || 0;
       const num_record = req.query.num_record || req.body.num_record || 15;
@@ -93,6 +158,10 @@ router.post('/', async (req, res) => {
         t.template_before, 
         t.template_after, 
         d.design_path,
+        d.design_source,
+        d.design_privacy,
+        d.design_likes,
+        d.user_id,
         d.design_title,
         t.template_name
       FROM finalproduct fp
@@ -105,17 +174,18 @@ router.post('/', async (req, res) => {
 
         const queryParams = [designIds];
 
-        console.log('Final Product Query:', finalProductQuery);
+       // console.log('Final Product Query:', finalProductQuery);
 
         const finalProductResults = await executeQuery(finalProductQuery, queryParams);
 
-        console.log('Final Product Results:', finalProductResults);
+        //console.log('Final Product Results:', finalProductResults);
 
         console.log(searchQuery)
         if (req.xhr) {
           // If it's an AJAX request and there are results, send only the product cards
           if (finalProductResults.length > 0) {
-            res.render('partials/product-cards', {
+            res.render('partials/product-cards', {likedDesigns,
+              "user_id":req.session.user_id,
               finalProductResults,
               start_index: start_index + num_record,
               num_record: num_record,
@@ -123,12 +193,13 @@ router.post('/', async (req, res) => {
             });
           } else {
             // If there are no results, send an empty response
-            res.render({ finalProductResults: [], start_index: start_index });
+            res.render({likedDesigns,"user_id":req.session.user_id, finalProductResults: [], start_index: start_index });
           }
         } else {
 
           if (finalProductResults.length > 0) {
-            res.render('search-results', {
+            res.render('search-results', {likedDesigns,
+              "user_id":req.session.user_id,
               finalProductResults,
               start_index: start_index + num_record,
               num_record: num_record,
@@ -136,7 +207,8 @@ router.post('/', async (req, res) => {
             });
           } else {
             // If there are no results, render the page without results
-            res.render('search-results', {
+            res.render('search-results', {likedDesigns,
+              "user_id":req.session.user_id,
               finalProductResults: [],
               start_index: start_index,
               num_record: num_record,
@@ -146,11 +218,13 @@ router.post('/', async (req, res) => {
         }
       } else {
         // If there are no designIds, send an empty response
-        res.json({ finalProductResults: [], start_index: start_index });
+        res.json({ likedDesigns, "user_id":req.session.user_id,finalProductResults: [], start_index: start_index });
       }
+    }
+    
     } catch (error) {
-      console.error(error);
-      res.status(500).send('Internal Server Error');
+     // console.error(error);
+      res.render('404');
     }
 
 
@@ -160,8 +234,41 @@ router.post('/', async (req, res) => {
   }
 
 });
+router.post('/heartedDesign', async (req, res) => {
+
+  let design_id = req.body.design_id;
+  let isLiked = req.body.isLiked;
+
+  let getDesignsByDesignIdTable = await getDesignsByDesignId(design_id);
+  let profileId =  getDesignsByDesignIdTable[0].user_id;
+  let usersTableById = await getUsersById(profileId);
+  let profileName = usersTableById[0].user_name;
+  //console.log(design_id);
+  //console.log(isLiked);
+  if (isLiked == 'notLiked') {
+    let deleteFavoritesTable = await deleteFavorites(design_id, req.session.user_id)
+
+  }
+  else if (isLiked == 'Liked') {
+    let insertFavoritesTable = await insertFavorites(design_id, req.session.user_id);
 
 
+
+  }
+
+
+
+
+
+  res.redirect(`/`)
+
+
+
+
+
+
+
+})
 
 
 

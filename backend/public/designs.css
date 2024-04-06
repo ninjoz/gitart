@@ -1,0 +1,67 @@
+.design {
+  /* Add shadows to create the "card" effect */
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    max-height: 600px;
+    max-width: 400px;
+    
+}
+
+/* On mouse-over, add a deeper shadow */
+.design:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+/* Add some padding inside the card container */
+ 
+
+.designI {
+  top:100px;
+  
+} 
+.product{
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+ 
+   position: relative;
+   
+   
+  max-height : 400px;
+  max-width : 300px;
+}
+.products{
+  justify-content: center;
+    align-items: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(350px,250px));
+  gap:4rem;
+}
+.product img{
+   
+  height: auto;
+  transition: all .40s;
+  position: absolute;
+  max-width: 100%; 
+  display: block; 
+ 
+
+
+}
+
+ 
+.product:hover{
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+
+}
+
+.image_containerr {
+ 
+  height : 400px;
+  
+   
+
+}

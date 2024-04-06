@@ -47,8 +47,7 @@ getEmailDetails = (user_email_address) => {
 router.post('/login', async (req, res)  => {
   let user_email_address = req.body.user_email_address;
   let user_password = req.body.user_password;
-  rememberMe = '';
-  rememberMe = req.body.rememberMe;
+  
   if (user_email_address && user_password) {
 
     

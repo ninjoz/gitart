@@ -90,17 +90,20 @@ $.ajax({
       design_id= $(this).attr('id');
       let likes = parseInt($(`#${design_id}`).text());
       console.log(likes)
+      console.log(likes)
       if (isLiked == 'notLiked') {
         likes+=1;
         
         $(this).attr("value", "Liked");
-        $(this).attr("style", "color:Tomato;");
+        $(this).attr("style", "border: none; outline: none;background-color: transparent; color:Tomato;");
+        $(`#${design_id}`).text(likes)
 
       }
       else {
         likes-=1;
         $(this).attr("value", "notLiked");
-        $(this).attr("style", "color:rgb(191, 201, 223);");
+        $(this).attr("style", "border: none; outline: none;background-color: transparent;color:rgb(0, 5, 15);");
+        $(`#${design_id}`).text(likes)
       }
 
       $.ajax({
@@ -116,7 +119,7 @@ $.ajax({
           "isLiked": $(this).val()
         }),
         success: (res) => {
-          $(`#${design_id}`).text(likes)
+          
         }
       })
     }

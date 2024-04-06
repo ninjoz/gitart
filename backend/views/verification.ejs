@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"> </script>
+  <script src="/verification.js"> </script>
+
+
+
+  <script type="text/javascript">
+
+
+  </script>
+
+</head>
+<body>
+  <form id='verification-form' method='post' action="/verify">
+    <h2>PLease Enter Verification Code</h2>
+    <br><br>
+    <input type="number" id="vcode" name="vcode" required>
+    <button type='submit' id="verify" class="btn btn-primary" value=<%=otp%>  >Submit</button>
+    <br><br>
+    <h4 id="v"></h4>
+   
+  </form>
+</body>
+</html>

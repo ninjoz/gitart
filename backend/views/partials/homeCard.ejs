@@ -1,0 +1,83 @@
+<%if(blogs.length>0){%>
+  <% blogs.map((blog)=>{%>
+
+      <div class="product" name="product_card">
+          <div class="image_container">
+              <img name="temp_before_image" src="/<%= blog.template_before %>"
+                  alt="before image not found">
+                  <% if (blog.design_source=='local') { %>
+              <img name="temp_design" class="design" src="/<%= blog.design_path %>"
+                  alt="design image not found" class="design_image">
+                  <% } %>
+                  <% if (blog.design_source=='API') { %>
+                      <img name="temp_design" class="design" src="https://www.artic.edu/iiif/2/<%=blog.design_path%>/full/843,/0/default.jpg"
+                  alt="design image not found" class="design_image">
+                        
+                      
+                      <% } %>
+
+              <img name="temp_after_image" src="/<%= blog.template_after %>"
+                  alt="after image not found">
+          </div>
+          
+          <%if(likedDesigns.indexOf(blog.design_id)!==-1){%>
+             
+              <div class="heart-icon" name="fav_button">
+                  <span id="<%=blog.design_id%>" style=" color:#000000;pointer-events: none;">
+                      <%if(parseInt(blog.likes)>0){%>
+                          <%=blog.likes%>
+
+                              <%} %>
+                                  <%if(!(parseInt(blog.likes)>0)){%>
+                                      0
+                                      <%} %>
+
+
+                  </span>
+                  <%if(user_id!=blog.user_id){%>
+                  <button onclick="likedone()" name="liked" class='bx bx-heart' id="<%=blog.design_id%>"
+                      value="Liked" style="border: none; outline: none;background-color: transparent; color:Tomato;"> </button>
+<%}%>
+
+
+              </div>
+
+              <%}%>
+                  <%if(likedDesigns.indexOf(blog.design_id)===-1){%>
+                      <div class="heart-icon" name="fav_button">
+                          <span id="<%=blog.design_id%>" style="color:#000000;pointer-events: none;">
+                              <%if(parseInt(blog.likes)>0){%>
+                                  <%=blog.likes%>
+
+                                      <%} %>
+                                          <%if(!(parseInt(blog.likes)>0)){%>
+                                              0
+                                              <%} %>
+                          </span>
+                          
+                          <%if(user_id!=blog.user_id){%>
+                          <button onclick="likedone()" name="notliked" class='bx bx-heart'
+                              id="<%=blog.design_id%>" value="notLiked"
+                              style="border: none; outline: none;background-color: transparent;color:rgb(0, 5, 15);">
+                          </button>
+                          <%}%>
+
+
+                      </div>
+
+                      <%}%>
+                     
+
+
+          <div class="productdata" name="product_data">
+              
+              <h4><a href="/product/<%= blog.fp_id %>" name="artist_title">
+                      <%= blog.design_title %>
+                  </a></h4>
+              <p name="design_price">$<%= blog.fp_price %>
+              </p>
+              
+          </div>
+      </div><br>
+      <%})%>
+          <%}%>

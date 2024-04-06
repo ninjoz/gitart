@@ -55,17 +55,17 @@
                 </form>
             </div>
             <div id="profile-data-container">
-                <h2 name="artist_name" id="username">@<%=user_name %>
+                <h2 name="artist_name" id="username" style="pointer-events: none;">@<%=user_name %>
                 </h2>
-                <div name="artist_data" id="artist-data"><span name="artworks_number" id="artworks_number">
+                <div style="pointer-events: none;" name="artist_data" id="artist-data"><span style="pointer-events: none;" name="artworks_number" id="artworks_number">
                         <%=blogs.length%>
-                    </span> Artworks • <span id="followersNumber" name="followers_number">
+                    </span> Artworks • <span style="pointer-events: none;" id="followersNumber" name="followers_number">
                         <%=followers%>
                     </span> Followers</div>
                 <br>
                 <%if((!hisProfile)&&isFollowing===true){%>
 
-                    <button name="unfollow" id="follow-button" type="button" value="<%=artist_id%>">unfollow</button>
+                    <button name="unfollow" id="follow-button" type="button" style="color:rgb(150, 150, 150)" value="<%=artist_id%>">unfollow</button>
                     <%}%>
                         <%if((!hisProfile)&&isFollowing==false){%>
                             <button name="follow" id="follow-button" type="button"
@@ -82,7 +82,7 @@
 
         <main>
 
-            <div id="artworks-header">Artworks</div>
+            <div id="artworks-header" style="pointer-events: none;">Artworks</div>
             <hr color="silver">
             <br>
 
@@ -110,7 +110,7 @@
 
                                 </div>
                                 <div class="heart-icon" name="fav_button">
-                                    <span id="<%=blog.design_id%>">
+                                    <span style=" color:#000000;pointer-events: none;" id="<%=blog.design_id%>">
                                         <%if(parseInt(blog.likes)>0){%>
                                             <%=blog.likes%> Likes
 
@@ -129,7 +129,7 @@
 
                                 <div class="artwork-data" name="product_data">
                                     <h4 name="artwork_title">
-                                        <%=blog.design_title%>
+                                       <a href="design/<%=blog.design_id%>"><%=blog.design_title%></a>
                                     </h4>
                                     <p name="artwork_price">
                                         <%=blog.design_price%>$
@@ -150,12 +150,11 @@
 
                                         <div class="image_container">
 
-
-                                            <%if(!(blog.design_source=="local")){%>
+                                            <%if((blog.design_source=="local")){%>
                                                 <img name="design_image" class="design" src="/<%=blog.design_path%>" href="#"
                                                     alt="design image not found" class="design_image">
                                                     <%}%>
-                                                    <%if((blog.design_source=="local")){%>
+                                                    <%if((blog.design_source=="API")){%>
                                                         <img name="design_image" class="design" src="https://www.artic.edu/iiif/2/<%=blog.design_path%>/full/843,/0/default.jpg" href="#"
                                                             alt="design image not found" class="design_image">
                                                             <%}%>
@@ -163,7 +162,7 @@
                                         </div>
                                         <%if(likedDesigns.indexOf(blog.design_id)!==-1){%>
                                             <div class="heart-icon" name="fav_button">
-                                                <span id="<%=blog.design_id%>">
+                                                <span style=" color:#000000;pointer-events: none;" id="<%=blog.design_id%>" style=" color:#000000;pointer-events: none;">
                                                     <%if(parseInt(blog.likes)>0){%>
                                                         <%=blog.likes%>
 
@@ -174,9 +173,9 @@
 
 
                                                 </span>
-                                                <span>Likes</span>
+                                               
                                                 <button name="liked" class='bx bx-heart' id="<%=blog.design_id%>"
-                                                    value="Liked" style="color:Tomato;"> </button>
+                                                    value="Liked" style="border: none; outline: none;background-color: transparent; color:Tomato;"> </button>
 
 
 
@@ -185,7 +184,7 @@
                                             <%}%>
                                                 <%if(likedDesigns.indexOf(blog.design_id)===-1){%>
                                                     <div class="heart-icon" name="fav_button">
-                                                        <span id="<%=blog.design_id%>">
+                                                        <span style=" color:#000000;pointer-events: none;"id="<%=blog.design_id%>" style="color:#000000;pointer-events: none;">
                                                             <%if(parseInt(blog.likes)>0){%>
                                                                 <%=blog.likes%>
 
@@ -194,11 +193,11 @@
                                                                             0
                                                                             <%} %>
                                                         </span>
-                                                        <span>Likes</span>
+                                                        
 
                                                         <button name="notliked" class='bx bx-heart'
                                                             id="<%=blog.design_id%>" value="notLiked"
-                                                            style="color:rgb(191, 201, 223);">
+                                                            style="border: none; outline: none;background-color: transparent;color:rgb(0, 5, 15);">
                                                         </button>
 
 

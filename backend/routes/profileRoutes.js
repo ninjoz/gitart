@@ -75,7 +75,7 @@ insertFavorites = (design_id, user_id) => {
 };
 getDesignsByDesignId = (design_id) => {
   return new Promise((resolve, reject) => {
-    database.query('SELECT * FROM gitart.designs WHERE design_id= ?', [design_id], (error, data) => {
+    database.query('SELECT * FROM gitart.designs d join gitart.users u on d.user_id = u.user_id WHERE design_id= ?', [design_id], (error, data) => {
       if (error) {
         return reject(error);
       }
@@ -196,7 +196,7 @@ let blogs = [];
 let design_path = [];
 let artist_id = '';
 let id = '';
-let hisProfile = false;
+let hisProfile;
 let likedDesigns = [];
 let isFollowing = '';
 let likes = [];
@@ -224,7 +224,6 @@ router.get('/:id', async (req, res, next) => {
   design_likes = [];
   design_source = [];
   id = req.params.id;
-  console.log(id)
   if (req.session.user_id) {
     let getUsername1 = await getUsername(req.session.user_id)
     user_name = getUsername1[0].user_name;
@@ -264,7 +263,6 @@ router.get('/:id', async (req, res, next) => {
               };
             }
           }
-console.log(blogs)
           res.render('artistprofile', {
             user_name,
             artist_id,
@@ -449,6 +447,7 @@ console.log(blogs)
     }
     else {
       next();
+      return;
     }
   }
   else {
@@ -562,6 +561,63 @@ router.post('/heartedDesign', async (req, res) => {
 
 })
 
+getFPByDesignId = (design_id) => {
+  return new Promise((resolve, reject) => {
+    database.query('SELECT * FROM gitart.finalproduct fp join gitart.templates t on t.template_id=fp.template_id where design_id=?', [design_id], (error, data) => {
+      if (error) {
+        return reject(error);
+      }
+      return resolve(data);
+    });
+  });
+};
+router.get('/design/:id', async (req, res, next) => {
+  let results=[];
+  id = req.params.id;
+  if (req.session.user_id) {
+  let des_det = await getDesignsByDesignId(id);
+  let fp_det = await getFPByDesignId(id);
+  if(des_det.length>0){
+   
+    blogs = {
+      "design_path": des_det[0].design_path, "design_id": des_det[0].design_id, "design_title": des_det[0].design_title,  "design_likes": des_det[0].design_likes
+      , "design_source": des_det[0].design_source,
+      "description": des_det[0].description,
+      "posting_date":des_det[0].posting_date,
+      "design_price":des_det[0].design_price,
+      "design_privacy":des_det[0].design_privacy,
+"user_name":des_det[0].user_name
+    }
+    for (let i = 0; i < fp_det.length; i += 1) {
+    results[i]={
+"fp_id":fp_det[i].fp_id,
+"fp_price":fp_det[i].fp_price,
+"template_name":fp_det[i].template_name,
+"template_after":fp_det[i].template_after,
+"template_before":fp_det[i].template_before
+
+
+    }
+  }
+  console.log(results)
+    console.log(blogs)
+    console.log(blogs.design_source)
+
+res.render('design_details',{results,blogs});
+
+
+  }
+  else {
+    next();
+    return;
+  }
+
+
+  }
+  else{
+    res.render('404')
+  }
+})
 
 
 

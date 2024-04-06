@@ -13,7 +13,19 @@
 <div class="small-container single-product">
     <div class="col">
       <img name="temp_before_image" src="/<%=product.template_before%>"  alt="before image not found">
+
+
+      <% if (product.design_source=='local') { %>
       <img name="temp_design" class="design" src="/<%=product.design_path%>"  alt="design image not found" class="design_image">
+      <% } %>
+  <% if (product.design_source=='API') { %>
+
+                                      <img name="temp_design" class="design" src="https://www.artic.edu/iiif/2/<%=product.design_path%>/full/843,/0/default.jpg"  alt="design image not found" class="design_image">
+                                        
+                                        <% } %>
+      
+      
+      
       <img name="temp_after_image" src="/<%=product.template_after%>" alt="after image not found">
   </div>
       <div class="col">
@@ -24,7 +36,8 @@
         <button class="btnn" type="submit" id="addToCart" name="add_to_cart" id="add_to_cart">Add to Cart</button>
         <h3>Artwork Description</h3>
         <br>
-        <p name="design_description"><%= product.description%></p><br><br>
+        <p name="design_description"><%= ((product.description).replace("<p>" , '')).replace("</p>" , '')%></p>
+        <br><br>
 
       </div>
     

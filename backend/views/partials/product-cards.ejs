@@ -1,28 +1,91 @@
 <!-- views/partials/product-cards.ejs -->
 
 <% finalProductResults.forEach(result => { %>
+  <%if (result.design_privacy=='Public'){%>
     <div class="product" name="product_card">
       <div class="image_container">
         <% if (result.template_before) { %>
           <img name="temp_before_image" src="<%= result.template_before %>" alt="Template Before Image">
         <% } %>
+        <% if (result.design_source=='local') { %>
         <% if (result.design_path) { %>
           <img name="design_image" src="<%= result.design_path %>" alt="Design Image">
         <% } %>
+        <% } %>
+
+        <% if (result.design_source=='API') { %>
+          <% if (result.design_path) { %>
+            <img name="design_image" src="https://www.artic.edu/iiif/2/<%=result.design_path%>/full/843,/0/default.jpg"  alt="Design Image">
+          <% } %>
+          <% } %>
+
         <% if (result.template_after) { %>
           <img name="temp_after_image" src="<%= result.template_after %>" alt="Template After Image">
         <% } %>
       </div>
+
+
+
+      <%if(likedDesigns.indexOf(result.design_id)!==-1){%>
+                               
+        <div class="heart-icon" name="fav_button">
+            <span id="<%=result.design_id%>" style=" color:#000000;pointer-events: none;">
+                <%if(parseInt(result.design_likes)>0){%>
+                    <%=result.design_likes%>
+
+                        <%} %>
+                            <%if(!(parseInt(result.design_likes)>0)){%>
+                                0
+                                <%} %>
+
+
+            </span>
+            <%if(user_id!=result.user_id){%>
+            <button onclick="likedone()"  name="liked" class='bx bx-heart' id="<%=result.design_id%>"
+                value="Liked" style="border: none; outline: none;background-color: transparent; color:Tomato;"> </button>
+<%}%>
+
+
+        </div>
+
+        <%}%>
+            <%if(likedDesigns.indexOf(result.design_id)===-1){%>
+                <div class="heart-icon" name="fav_button">
+                    <span id="<%=result.design_id%>" style="color:#000000;pointer-events: none;">
+                        <%if(parseInt(result.design_likes)>0){%>
+                            <%=result.design_likes%>
+
+                                <%} %>
+                                    <%if(!(parseInt(result.design_likes)>0)){%>
+                                        0
+                                        <%} %>
+                    </span>
+                    
+                    <%if(user_id!=result.user_id){%>
+                    <button onclick="likedone()" name="notliked" class='bx bx-heart'
+                        id="<%=result.design_id%>" value="notLiked"
+                        style="border: none; outline: none;background-color: transparent;color:rgb(0, 5, 15);">
+                    </button>
+                    <%}%>
+
+
+                </div>
+
+                <%}%>
+
+
+
+                
       <div class="productdata" name="product_data">
         <div class="titles-container">
-          <p name="product_title"> <%= result.design_title %></p>
+          <a href="/product/<%= result.fp_id %>" name="artist_title">
+            <%= result.design_title %>
+        </a>
           <p name="template_name"> <%= result.template_name %></p>
         </div>
         <p name="product_price">$<%= result.fp_price %></p>
       </div>
-      <div class="heart-icon" name="fav_button">
-        <i class='bx bx-heart'></i>
-      </div>
+      
     </div>
-  <% }); %>
+  <% }}); %>
   

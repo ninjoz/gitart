@@ -15,6 +15,76 @@
         integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"> </script>
+    <script src="/home.js"> </script>
+<script>
+
+
+function likedone(){
+    $("button").on('click', function (event) {
+    event.preventDefault();
+    event.stopPropagation();
+
+    let id =  $(this).val();
+   
+      event.preventDefault();
+      event.stopPropagation();
+
+      let isLiked = $(this).val();
+      design_id= $(this).attr('id');
+      let likes = parseInt($(`#${design_id}`).text());
+      console.log(likes)
+      console.log(likes)
+      if (isLiked == 'notLiked') {
+        likes+=1;
+        
+        $(this).attr("value", "Liked");
+        $(this).attr("style", "border: none; outline: none;background-color: transparent; color:Tomato;");
+        $(`#${design_id}`).text(likes)
+
+      }
+      else {
+        likes-=1;
+        $(this).attr("value", "notLiked");
+        $(this).attr("style", "border: none; outline: none;background-color: transparent;color:rgb(0, 5, 15);");
+        $(`#${design_id}`).text(likes)
+      }
+
+      $.ajax({
+
+        url: "/heartedDesign",
+
+        method: "POST",
+
+        contentType: "application/json",
+
+        data: JSON.stringify({
+          "design_id": $(this).attr('id'),
+          "isLiked": $(this).val()
+        }),
+        success: (res) => {
+        
+        }
+      })
+    
+
+
+   
+
+
+
+  }
+    )
+
+
+}
+</script>
+
+
+    <script type="text/javascript">
+
+
+    </script>
 </head>
 
 
@@ -32,7 +102,7 @@
 
                 <form action="/search" method="POST">
                     <div class="search-box">
-                        <input name="search_query" type="search" placeholder="search for products & designs">
+                        <input name="search_query" type="search" placeholder="search for products & designs" required>
                         <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
                     </div>
                 </form>
@@ -88,7 +158,7 @@
         </div>
 
         <div id="products-container">
-            <h1 name="title-of-filter" id="title-of-filter">Explore Products</h1>
+            <h1 name="title-of-filter" id="title-of-filter"><%=resType%></h1>
             <br>
             <br>
 
@@ -100,13 +170,68 @@
                             <div class="image_container">
                                 <img name="temp_before_image" src="/<%= blog.template_before %>"
                                     alt="before image not found">
+                                    <% if (blog.design_source=='local') { %>
                                 <img name="temp_design" class="design" src="/<%= blog.design_path %>"
                                     alt="design image not found" class="design_image">
+                                    <% } %>
+                                    <% if (blog.design_source=='API') { %>
+                                        <img name="temp_design" class="design" src="https://www.artic.edu/iiif/2/<%=blog.design_path%>/full/843,/0/default.jpg"
+                                    alt="design image not found" class="design_image">
+                                          
+                                        
+                                        <% } %>
+
                                 <img name="temp_after_image" src="/<%= blog.template_after %>"
                                     alt="after image not found">
                             </div>
-
                             
+                            <%if(likedDesigns.indexOf(blog.design_id)!==-1){%>
+                               
+                                <div class="heart-icon" name="fav_button">
+                                    <span id="<%=blog.design_id%>" style=" color:#000000;pointer-events: none;">
+                                        <%if(parseInt(blog.likes)>0){%>
+                                            <%=blog.likes%>
+
+                                                <%} %>
+                                                    <%if(!(parseInt(blog.likes)>0)){%>
+                                                        0
+                                                        <%} %>
+
+
+                                    </span>
+                                    <%if(user_id!=blog.user_id){%>
+                                    <button onclick="likedone()" name="liked" class='bx bx-heart' id="<%=blog.design_id%>"
+                                        value="Liked" style="border: none; outline: none;background-color: transparent; color:Tomato;"> </button>
+<%}%>
+
+
+                                </div>
+
+                                <%}%>
+                                    <%if(likedDesigns.indexOf(blog.design_id)===-1){%>
+                                        <div class="heart-icon" name="fav_button">
+                                            <span id="<%=blog.design_id%>" style="color:#000000;pointer-events: none;">
+                                                <%if(parseInt(blog.likes)>0){%>
+                                                    <%=blog.likes%>
+
+                                                        <%} %>
+                                                            <%if(!(parseInt(blog.likes)>0)){%>
+                                                                0
+                                                                <%} %>
+                                            </span>
+                                            
+                                            <%if(user_id!=blog.user_id){%>
+                                            <button onclick="likedone()" name="notliked" class='bx bx-heart'
+                                                id="<%=blog.design_id%>" value="notLiked"
+                                                style="border: none; outline: none;background-color: transparent;color:rgb(0, 5, 15);">
+                                            </button>
+                                            <%}%>
+
+
+                                        </div>
+
+                                        <%}%>
+                                       
 
 
                             <div class="productdata" name="product_data">
@@ -124,6 +249,7 @@
             </div>
         </div>
     </main>
+    <button style="display: none;" id="loadMoreBtn" name="<%= blogs %>" data-start-index="<%= start_index %>" data-num-record="<%= num_record %>">Load More</button>
 </body>
 
 </html>
