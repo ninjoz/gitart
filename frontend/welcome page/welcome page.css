@@ -1,0 +1,71 @@
+body {
+    overflow-y: hidden; 
+    overflow-x: hidden; 
+    height: 100%;
+    background-color: black;
+    font-size: 38px;
+
+  }
+
+*{
+ margin: 0;
+ padding: 0;
+ box-sizing: border-box;
+ font-family: 'Open Sans', sans-serif;
+}
+
+#main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    
+}
+
+video {
+    width: 60%;
+
+    
+   
+
+
+    
+   
+    
+
+}
+img {
+    position: absolute;
+    width: 150px;
+    margin: 10px;
+}
+
+.login {
+
+    text-align: center;
+    width: 100%;
+    top: 75%;  
+}
+
+.register {
+
+
+    text-align: center;
+    width: 100%;
+    top: 80%; 
+}
+
+
+.login a, .register a {
+    color: #10c49d;
+    font-size: 40px;
+    text-decoration: none;
+    font-family: "Sofia";
+}
+
+.register p {
+    color: white;
+    font-family: serif;
+    
+}
+ 
