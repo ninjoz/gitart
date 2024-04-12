@@ -180,3 +180,10 @@ main{
     font-weight: 600;
     margin: 0px;
 }
+
+.design_title {
+    white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 80%;
+}

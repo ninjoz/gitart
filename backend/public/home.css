@@ -378,6 +378,13 @@ header.sticky{
     font-weight: 600;
 }
 
+.design_title {
+    white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 80%;
+}
+
 .first-info i{
     /*color: #565656;*/
     color:#e9eaf0;

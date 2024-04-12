@@ -144,6 +144,13 @@ main{
 
 }
 
+.design_title {
+    white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 80%;
+}
+
 .heart-icon:hover{
     color:red;
 
