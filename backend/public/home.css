@@ -278,8 +278,7 @@ header.sticky{
 
 .products{
     display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(260px,160px));
-    gap:10px;
+    grid-template-columns: auto auto auto auto;
     
 }
 .product{
@@ -295,8 +294,8 @@ header.sticky{
 
 
 .inner{
-    height : 230px;
-    width : 230px;
+    height : 210px;
+    width : 210px;
     position: relative;
     display: flex;
   justify-content: center; /* Horizontally center */
@@ -305,7 +304,7 @@ header.sticky{
 }
 .image_container {
     position: relative;
-    height : 230px;
+    height : 210px;
     width: min-content;
     height: min-content;
    
@@ -316,9 +315,9 @@ header.sticky{
 }
 
 .bottom {
-    max-width: 230px;
+    max-width: 210px;
 
-    max-height: 230px;
+    max-height: 210px;
 
 
 }
