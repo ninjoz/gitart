@@ -277,9 +277,10 @@ header.sticky{
 
 
 .products{
-    display: grid;
-    grid-template-columns: auto auto auto auto;
-    gap: 20px;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
     
 }
 .product{
@@ -289,8 +290,9 @@ header.sticky{
     border-style: solid;
     border-radius: 20px;
     padding: 20px;
-    height : 390px;
+    height : 300px;
     width : 250px;
+    margin: 20px;
 }
 
 
