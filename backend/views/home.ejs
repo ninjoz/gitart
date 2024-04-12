@@ -167,23 +167,27 @@ function likedone(){
                     <% blogs.map((blog)=>{%>
 
                         <div class="product" name="product_card">
+
+
+                            <div class="inner">
                             <div class="image_container">
                                 <img name="temp_before_image" src="/<%= blog.template_before %>"
-                                    alt="before image not found">
+                                    alt="before image not found" class="bottom">
                                     <% if (blog.design_source=='local') { %>
-                                <img name="temp_design" class="design" src="/<%= blog.design_path %>"
-                                    alt="design image not found" class="design_image">
+                                <img name="temp_design" src="/<%= blog.design_path %>"
+                                    alt="design image not found" class="design">
                                     <% } %>
                                     <% if (blog.design_source=='API') { %>
                                         <img name="temp_design" class="design" src="https://www.artic.edu/iiif/2/<%=blog.design_path%>/full/843,/0/default.jpg"
-                                    alt="design image not found" class="design_image">
+                                    alt="design image not found">
                                           
                                         
                                         <% } %>
 
                                 <img name="temp_after_image" src="/<%= blog.template_after %>"
-                                    alt="after image not found">
+                                    alt="after image not found" class="top">
                             </div>
+                        </div>
                             
                             <%if(likedDesigns.indexOf(blog.design_id)!==-1){%>
                                

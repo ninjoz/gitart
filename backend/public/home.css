@@ -293,29 +293,61 @@ header.sticky{
     width : 250px;
 }
 
-.product img{
-    height: auto;
-    transition: all 1s;
+
+.inner{
+    height : 230px;
+    width : 230px;
+    position: relative;
+    display: flex;
+  justify-content: center; /* Horizontally center */
+  align-items: center; /* Vertically center */
+
+}
+.image_container {
+    position: relative;
+    height : 230px;
+    width: min-content;
+    height: min-content;
+   
+    
+    
+
+
+}
+
+.bottom {
+    max-width: 230px;
+
+    max-height: 230px;
+
+
+}
+
+.design{
+    max-width: 100%;
+    max-height: 100%;
     position: absolute;
-    max-width: 250px; 
-    max-height: 250px; 
-    display: block; 
+    left: 0px;
+    top: 0px;
+
+}
+
+
+.top {
+    position: absolute;
+    max-width: 100%;
+    max-height: 100%;
+    left: 0px;
+    top: 0px;
+
 
 
 }
 
-.design {
-    top:100px;
-}
+
+
 .product .image_container:hover{
     transform:scale(0.9);
-
-}
-
-.image_container {
-    height : 320px;
-    align-items: center;
-
 
 }
 
