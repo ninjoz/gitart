@@ -3,26 +3,29 @@
 <% finalProductResults.forEach(result => { %>
   <%if (result.design_privacy=='Public'){%>
     <div class="product" name="product_card">
+
+      <div class="inner">
       <div class="image_container">
         <% if (result.template_before) { %>
-          <img name="temp_before_image" src="<%= result.template_before %>" alt="Template Before Image">
+          <img class="bottom" name="temp_before_image" src="<%= result.template_before %>" alt="Template Before Image">
         <% } %>
         <% if (result.design_source=='local') { %>
         <% if (result.design_path) { %>
-          <img name="design_image" src="<%= result.design_path %>" alt="Design Image">
+          <img class="design" name="design_image" src="<%= result.design_path %>" alt="Design Image">
         <% } %>
         <% } %>
 
         <% if (result.design_source=='API') { %>
           <% if (result.design_path) { %>
-            <img name="design_image" src="https://www.artic.edu/iiif/2/<%=result.design_path%>/full/843,/0/default.jpg"  alt="Design Image">
+            <img class="design" name="design_image" src="https://www.artic.edu/iiif/2/<%=result.design_path%>/full/843,/0/default.jpg"  alt="Design Image">
           <% } %>
           <% } %>
 
         <% if (result.template_after) { %>
-          <img name="temp_after_image" src="<%= result.template_after %>" alt="Template After Image">
+          <img class="top" name="temp_after_image" src="<%= result.template_after %>" alt="Template After Image">
         <% } %>
       </div>
+    </div>
 
 
 
