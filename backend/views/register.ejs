@@ -3,42 +3,38 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-    <style> 
-  form {
-  margin:0 auto;
-  width:300px
-}
-input {
-  margin-bottom:3px;
-  padding:10px;
-  width: 100%;
-  border:1px solid #CCC
-}
-button {
-  padding:10px
-}
-p {
-  cursor:pointer
-}
-
-  </style>
+  <title>Register</title>
+ <link rel="stylesheet" href="/register.css">
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"> </script>
 <script  src="/register.js"> </script>
 </head>
 <body>
+    <br>
+    <br>
   <form id='register-form' method='post'>
+    <h2>Welcome to Gitart!</h2>
     <input type="text" id= "new_user_name" name= "new_user_name" class="form-control" placeholder="Username" required>
-    <input type="radio" class="gender" name="gender" value="male" required> Male
-<input type="radio" class="gender" name="gender" value="female" required> Female
-<input type="radio" class="accType" name="accType" value="artist" required> Artist
-<input type="radio" class="accType" name="accType" value="customer" required> Customer
 
     <input type="email" class="form-control" id= "new_user_email_address" name= "new_user_email_address" placeholder="Email" required>
     <input type="password" id="new_user_password" name="new_user_password" class="form-control" placeholder="Password" required>
     <input type="password" class="form-control"  id="re_new_user_password" name="re_new_user_password" placeholder="Re Password" required>
+    <br> <br>
+    <div>
+        <input class="rad" type="radio" class="gender" name="gender" value="male" required> Male
+    </div>
+    <div>
+        <input class="rad" type="radio" class="gender" name="gender" value="female" required> Female
+    </div>
+    <br>
+    <div>
+        <input class="rad" type="radio" class="accType" name="accType" value="artist" required> Artist
+    </div>
+    <div>
+        <input class="rad" type="radio" class="accType" name="accType" value="customer" required> Customer
+    </div>
+    <br>
     <button type='submit' class="btn btn-primary"  value="Register">Register</button>
     <h4 id="message"></h4>
     <br>
