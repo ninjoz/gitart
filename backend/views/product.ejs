@@ -38,7 +38,9 @@
         <button class="btnn" type="submit" id="addToCart" name="add_to_cart" id="add_to_cart">Add to Cart</button>
         <h3>Artwork Description</h3>
         <br>
+        <%if(((product.description).replace("<p>" , '')).replace("</p>" , '')!="null"){%>
         <p name="design_description"><%= ((product.description).replace("<p>" , '')).replace("</p>" , '')%></p>
+        <%}%>
         <br><br>
 
       </div>

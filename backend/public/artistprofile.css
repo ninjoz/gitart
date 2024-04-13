@@ -139,7 +139,7 @@ main{
     position: absolute;
     max-width: 250px; 
     max-height: 250px; 
-    display: block; 
+    margin-top: 50px; 
 
 
 }
@@ -149,6 +149,9 @@ main{
 
 .image_container {
     height : 310px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
 }
 

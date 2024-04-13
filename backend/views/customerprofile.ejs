@@ -103,7 +103,7 @@
                         <%blogs.map((blog)=>{%>
 
                             <div class="artwork" name="artwork_card" id="<%=blog.design_id%>">
-<button id="remove" name="<%=blog.design_id%>" onclick="return confirm('Are you sure?')">x</button>
+<button id="remove" style="margin-right: 10px; margin-top: 10px; border: none; outline: none;background-color: transparent; font-size: 20px;"  name="<%=blog.design_id%>" onclick="return confirm('Are you sure?')">x</button>
                                 <div class="image_container">
 
 
@@ -124,7 +124,7 @@
 
                                 <div class="artwork-data" name="product_data">
                                     <h4 name="artwork_title">
-                                        <%=blog.design_title%>
+                                        <a href="design/<%=blog.design_id%>"><%=blog.design_title%></a>
                                     </h4>
                                     
                                 </div>
@@ -203,7 +203,7 @@
 
                                                         <div class="artwork-data" name="product_data">
                                                             <h4 name="artwork_title">
-                                                                <%=blog.design_title%>
+                                                                <a href="design/<%=blog.design_id%>"><%=blog.design_title%></a>
                                                             </h4>
                                                             <p name="artwork_price">
                                                                 <%=blog.design_price%>$
