@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>explore</title>
+    <title>Cart</title>
     <link rel="stylesheet" href="cart.css">
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 </head>
@@ -18,13 +18,13 @@
             <div id="cart-item-<%= item.fp_id %>" class="cart-item">
                 <div class="images-part-container">
                     <div class="images-part">
-                        <img src="/<%= item.template_before %>" alt="product before image not found"
+                        <img class="bottom" src="/<%= item.template_before %>" alt="product before image not found"
                             name="product_before_image">
 
 
 
                             <%if((item.design_source=="local")){%>
-                                <img class="top-img" src="/<%= item.design_path %>" alt="design image not found"
+                                <img class="design" src="/<%= item.design_path %>" alt="design image not found"
                                 name="design_image">
 
 
@@ -34,7 +34,7 @@
 
 
                                     <%if((item.design_source=="API")){%>
-                                        <img class="top-img" src="https://www.artic.edu/iiif/2/<%=item.design_path%>/full/843,/0/default.jpg" alt="design image not found"
+                                        <img class="design" src="https://www.artic.edu/iiif/2/<%=item.design_path%>/full/843,/0/default.jpg" alt="design image not found"
                             name="design_image">
                                             <%}%>
 
