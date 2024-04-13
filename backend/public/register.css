@@ -19,7 +19,11 @@ form {
     cursor:pointer
   }
   
-  .rad{
+  .gender{
       width: 40px;
+  }
+
+  .accType{
+    width: 40px;
   }
   
