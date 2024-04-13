@@ -4,6 +4,7 @@
 
 ## 🔥 Features
 - **User Authentication:** Users can sign up, log in, and manage their profiles. Artists have special accounts to post their artworks.
+  ![screenshot](https://github.com/ninjoz/gitart/blob/main/documentations/images/Screenshot%202024-04-13%20173542.png)
 - **Product Exploration:** Users can browse through thousands of artworks printed on various products.
 - **Product Search:** Search for products with their titles, then sort based on their price.
 - **Product Filtration:** Filter products based on their category (e.g., t-shirts, mugs, phone cases, etc).
@@ -28,7 +29,7 @@ Some artworks are from pinterest. Other artworks are made by members of our team
 - **Backend:** Node.js, Express.js, Ajax.
 - **Database:** MySQL
 
-- 💫 For more details please visit the [documentations](https://github.com/ninjoz/gitart/tree/main/documentations).
+💫 For more details please visit the [documentations](https://github.com/ninjoz/gitart/tree/main/documentations).
 
 
 ✨ Thank you for exploring our project! If you have any questions or feedback, please don't hesitate to reach out.
