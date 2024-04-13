@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>explore</title>
+        <title>Product Details</title>
         <link rel="stylesheet" href="/product_details.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"> </script>
     <script src="/product.js"> </script>
@@ -11,22 +11,24 @@
      
 
 <div class="small-container single-product">
-    <div class="col">
-      <img name="temp_before_image" src="/<%=product.template_before%>"  alt="before image not found">
+    <div class="images-part-container">
+      <div class="images-part">
+      <img class="bottom" name="temp_before_image" src="/<%=product.template_before%>"  alt="before image not found">
 
 
       <% if (product.design_source=='local') { %>
-      <img name="temp_design" class="design" src="/<%=product.design_path%>"  alt="design image not found" class="design_image">
+      <img class="design" name="temp_design" src="/<%=product.design_path%>"  alt="design image not found" >
       <% } %>
   <% if (product.design_source=='API') { %>
 
-                                      <img name="temp_design" class="design" src="https://www.artic.edu/iiif/2/<%=product.design_path%>/full/843,/0/default.jpg"  alt="design image not found" class="design_image">
+                                      <img name="temp_design" class="design" src="https://www.artic.edu/iiif/2/<%=product.design_path%>/full/843,/0/default.jpg"  alt="design image not found" >
                                         
                                         <% } %>
       
       
       
-      <img name="temp_after_image" src="/<%=product.template_after%>" alt="after image not found">
+      <img class="top-img" name="temp_after_image" src="/<%=product.template_after%>" alt="after image not found">
+  </div>
   </div>
       <div class="col">
         <h1><span name="design_title"><%= product.design_title %></span> <span name="product"><%= product.poduct_id %></span></h1>
