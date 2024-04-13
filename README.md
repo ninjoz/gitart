@@ -54,6 +54,8 @@ This is a full-stack project that aims to replicate the functionality of Redbubb
   
 **💫 and many more exciting features!**
 
+## [🚲 Website Tour](https://github.com/ninjoz/gitart/blob/main/documentations/GitArt.mp4)
+
 ## 🎨 Artworks
 We used the public API of the Art Institute of Chicago as the main source for artworks. The API contains artwork images, titles and other data we scrapped and used in this project. You can find more information about the API [here](https://api.artic.edu/docs/#introduction).
 Some artworks are from pinterest. Other artworks are made by members of our team. 
