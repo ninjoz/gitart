@@ -101,13 +101,6 @@
     border-bottom: 1px solid #adadadd0;
 }
 
-.uploader{
-
- position : absolute;
- left : 13%;
- top : 23%;
-    
-}
 
 #drop-area{
 
@@ -227,7 +220,7 @@ justify-content: center;
 .card{
 position: relative;
 width: max-content;
-width: 30%;
+width: 400px;
 padding: 10px;
 box-shadow: rgba(99 ,99 ,99 ,0.2) 0px 2px 8px 0px;
 display: flex;
@@ -344,7 +337,7 @@ justify-content: center;
 .images-part-container{
     margin: 20px;
 
-    width : 200px;
+    width : 400px;
     position: relative;
     display: flex;
     justify-content: center; /* Horizontally center */
@@ -360,9 +353,9 @@ justify-content: center;
 }
 
 .bottom{
-    max-width: 200px;
+    max-width: 400px;
 
-    max-height: 200px;
+    max-height: 400px;
 }
 
 .design{
@@ -387,6 +380,20 @@ justify-content: center;
     left: 0px;
 
     
+}
+
+
+#first-part {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
+
+
+}
+
+#uploader {
+    width: 40%;
 }
 
  

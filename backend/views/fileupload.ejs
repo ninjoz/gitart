@@ -26,8 +26,8 @@
 
 
 
-            <main>
-            <div class="uploader">
+            <div id="first-part">
+            <div id="uploader">
                 <label for="input-file" id="drop-area">
                     <input type="file" name="uploadDesign" accept="image/*" id="input-file"  hidden required/>
                <!--  <input type="submit" name="submit" class="btn btn-success" value="Upload image" />-->  
@@ -41,7 +41,7 @@
                 </label>
             </div>
 
-            <div>
+            <div id="text-place">
 
             <label for="textfield">
                 <h2>Title</h2>
@@ -74,7 +74,7 @@
 <input type="number" id="pricefield" name="price_field" placeholder="Example: 100" required>
 </div>
 
-</main>
+</div>
 
 
     
@@ -117,15 +117,13 @@
 
               <!--tote-->
         <div class="card" name="tote_card">
-            <div class="imge">
-                <img src="toteBefore.png" name="tote_before_image" alt="tote_before_image not found">
+            <div class="images-part-container">
+                <div class="images-part">
+                <img class="bottom" src="toteBefore.png" name="tote_before_image" alt="tote_before_image not found">
+                <img class="design" id="tote-image" alt="design image not found">
+                <img class="top-img" src="toteAfter.png" name="tote_after_image" alt="tote_After_image not found">
             </div>
-            <div class="overlay-image"  id="overlay-img1">
-                <img id="tote-image" alt="design image not found">
-            </div>
-            <div class="afterimage">
-                <img src="toteAfter.png" name="tote_after_image" alt="tote_After_image not found">
-            </div>
+        </div>
             <p>Tote Bag</p>
             <div class="slide-container">
                 <input type="range" name="range" min="1" max="100" value="100" class="slider" id="myRange1" oninput="updateOverlaySize(this.value, 'overlay-img1') ">
@@ -141,15 +139,13 @@
 
  <!--sticker-->
         <div class="card" name="sticker_card">
-            <div class="imge">
-                <img src="stickerBefore.png" name="sticker_before_image" alt="sticker_before_image not found">
+            <div class="images-part-container">
+                <div class="images-part">
+                <img class="bottom" src="stickerBefore.png" name="sticker_before_image" alt="sticker_before_image not found">
+                <img class="design" id="sticker-image" alt="design image not found">
+                <img class="top-img" src="stickerAfter.png" name="sticker_after_image" alt="sticker_After_image not found">
             </div>
-            <div class="overlay-image"  id="overlay-img1">
-                <img id="sticker-image" alt="design image not found">
-            </div>
-            <div class="afterimage">
-                <img src="stickerAfter.png" name="sticker_after_image" alt="sticker_After_image not found">
-            </div>
+        </div>
             <p>Sticker</p>
             <div class="slide-container">
                 <input type="range" name="range" min="1" max="100" value="100" class="slider" id="myRange1" oninput="updateOverlaySize(this.value, 'overlay-img1') ">
@@ -164,15 +160,13 @@
 
           <!--poster-->
         <div class="card" name="poster_card">
-            <div class="imge">
-                <img src="posterBefore.png" name="poster_before_image" alt="poster_before_image not found">
+            <div class="images-part-container">
+                <div class="images-part">
+                <img class="bottom" src="posterBefore.png" name="poster_before_image" alt="poster_before_image not found">
+                <img class="design" id="poster-image" alt="design image not found">
+                <img class="top-img" src="posterAfter.png" name="poster_after_image" alt="poster_After_image not found">
             </div>
-            <div class="overlay-image"  id="overlay-img1">
-                <img id="poster-image" alt="design image not found">
-            </div>
-            <div class="afterimage">
-                <img src="posterAfter.png" name="poster_after_image" alt="poster_After_image not found">
-            </div>
+        </div>
             <p>Poster</p>
             <div class="slide-container">
                 <input type="range" name="range" min="1" max="100" value="100" class="slider" id="myRange1" oninput="updateOverlaySize(this.value, 'overlay-img1') ">
@@ -189,15 +183,15 @@
 
           <!--phoneCover-->
         <div class="card" name="phoneCover_card">
-            <div class="imge">
-                <img src="phoneCoverBefore.png" name="phoneCover_before_image" alt="phoneCover_before_image not found">
+            <div class="images-part-container">
+                <div class="images-part">
+                <img class="bottom" src="phoneCoverBefore.png" name="phoneCover_before_image" alt="phoneCover_before_image not found">
+
+                <img class="design" id="phoneCover-image" alt="design image not found">
+
+                <img class="top-img" src="phoneCoverAfter.png" name="phoneCover_after_image" alt="phoneCover_After_image not found">
             </div>
-            <div class="overlay-image"  id="overlay-img1">
-                <img id="phoneCover-image" alt="design image not found">
-            </div>
-            <div class="afterimage">
-                <img src="phoneCoverAfter.png" name="phoneCover_after_image" alt="phoneCover_After_image not found">
-            </div>
+        </div>
             <p>Phone Cover</p>
             <div class="slide-container">
                 <input type="range" name="range" min="1" max="100" value="100" class="slider" id="myRange1" oninput="updateOverlaySize(this.value, 'overlay-img1') ">
@@ -212,15 +206,13 @@
 
               <!--notebook-->
         <div class="card" name="notebook_card">
-            <div class="imge">
-                <img src="notebookBefore.png" name="notebook_before_image" alt="notebook_before_image not found">
+            <div class="images-part-container">
+                <div class="images-part">
+                <img class="bottom" src="notebookBefore.png" name="notebook_before_image" alt="notebook_before_image not found">
+                <img class="design" id="notebook-image" alt="design image not found">
+                <img class="top-img" src="notebookAfter.png" name="notebook_after_image" alt="notebook_After_image not found">
             </div>
-            <div class="overlay-image"  id="overlay-img1">
-                <img id="notebook-image" alt="design image not found">
-            </div>
-            <div class="afterimage">
-                <img src="notebookAfter.png" name="notebook_after_image" alt="notebook_After_image not found">
-            </div>
+        </div>
             <p>NoteBook</p>
             <div class="slide-container">
                 <input type="range" name="range" min="1" max="100" value="100" class="slider" id="myRange1" oninput="updateOverlaySize(this.value, 'overlay-img1') ">
@@ -234,15 +226,13 @@
 
          <!--mug-->
         <div class="card" name="mug_card">
-            <div class="imge">
-                <img src="mugBefore.png" name="mug_before_image" alt="mug_before_image not found">
+            <div class="images-part-container">
+                <div class="images-part">
+                <img class="bottom" src="mugBefore.png" name="mug_before_image" alt="mug_before_image not found">
+                <img class="design" id="mug-image" alt="design image not found">
+                <img class="top-img" src="mugAfter.png" name="mug_after_image" alt="mug_After_image not found">
             </div>
-            <div class="overlay-image"  id="overlay-img1">
-                <img id="mug-image" alt="design image not found">
-            </div>
-            <div class="afterimage">
-                <img src="mugAfter.png" name="mug_after_image" alt="mug_After_image not found">
-            </div>
+        </div>
             <p>Mug</p>
             <div class="slide-container">
                 <input type="range" name="range" min="1" max="100" value="100" class="slider" id="myRange1" oninput="updateOverlaySize(this.value, 'overlay-img1') ">
@@ -255,15 +245,13 @@
         </div>
                    <!--laptopsleeve-->
         <div class="card" name="laptopSleeve_card">
-            <div class="imge">
-                <img src="laptopSleeveBefore.png" name="laptopSleeve_before_image" alt="laptopSleeve_before_image not found">
+            <div class="images-part-container">
+                <div class="images-part">
+                <img class="bottom" src="laptopSleeveBefore.png" name="laptopSleeve_before_image" alt="laptopSleeve_before_image not found">
+                <img class="design" id="laptopSleeve-image" alt="design image not found">
+                <img class="top-img" src="laptopSleeveAfter.png" name="laptopSleeve_after_image" alt="laptopSleeve_After_image not found">
             </div>
-            <div class="overlay-image"  id="overlay-img1">
-                <img id="laptopSleeve-image" alt="design image not found">
-            </div>
-            <div class="afterimage">
-                <img src="laptopSleeveAfter.png" name="laptopSleeve_after_image" alt="laptopSleeve_After_image not found">
-            </div>
+        </div>
             <p>LaptopSleeve</p>
             <div class="slide-container">
                 <input type="range" name="range" min="1" max="100" value="100" class="slider" id="myRange1" oninput="updateOverlaySize(this.value, 'overlay-img1') ">
@@ -278,15 +266,13 @@
 
         <!--laptopSkin-->
         <div class="card" name="laptopSkin_card">
-            <div class="imge">
-                <img src="laptopSkinBefore.png" name="laptopSkin_before_image" alt="laptopSkin_before_image not found">
+            <div class="images-part-container">
+                <div class="images-part">
+                <img class="bottom" src="laptopSkinBefore.png" name="laptopSkin_before_image" alt="laptopSkin_before_image not found">
+                <img class="design" id="laptopSkin-image" alt="design image not found">
+                <img class="top-img" src="laptopSkinAfter.png" name="laptopSkin_after_image" alt="laptopSkin_After_image not found">
             </div>
-            <div class="overlay-image"  id="overlay-img1">
-                <img id="laptopSkin-image" alt="design image not found">
-            </div>
-            <div class="afterimage">
-                <img src="laptopSkinAfter.png" name="laptopSkin_after_image" alt="laptopSkin_After_image not found">
-            </div>
+        </div>
             <p>laptopSkin</p>
             <div class="slide-container">
                 <input type="range" name="range" min="1" max="100" value="100" class="slider" id="myRange1" oninput="updateOverlaySize(this.value, 'overlay-img1') ">
@@ -304,15 +290,13 @@
         <div class="card" name="ipadCase_card">
 
 
-            <div class="imge">
-                <img src="ipadCaseBefore.png" name="ipadCase_before_image" alt="ipadCase_before_image not found">
+            <div class="images-part-container">
+                <div class="images-part">
+                <img class="bottom" src="ipadCaseBefore.png" name="ipadCase_before_image" alt="ipadCase_before_image not found">
+                <img class="design" id="ipadCase-image" alt="design image not found">
+                <img class="top-img" src="ipadCaseAfter.png" name="ipadCase_after_image" alt="ipadCase_After_image not found">
             </div>
-            <div class="overlay-image"  id="overlay-img1">
-                <img id="ipadCase-image" alt="design image not found">
-            </div>
-            <div class="afterimage">
-                <img src="ipadCaseAfter.png" name="ipadCase_after_image" alt="ipadCase_After_image not found">
-            </div>
+        </div>
 
 
             <p>ipadCase</p>
@@ -328,15 +312,13 @@
 
         <!--frame-->
         <div class="card" name="frame_card">
-            <div class="imge">
-                <img src="frameBefore.png" name="frame_before_image" alt="frame_before_image not found">
+            <div class="images-part-container">
+                <div class="images-part">
+                <img class="bottom" src="frameBefore.png" name="frame_before_image" alt="frame_before_image not found">
+                <img class="design" id="frame-image" alt="design image not found">
+                <img class="top-img" src="frameAfter.png" name="frame_after_image" alt="frame_After_image not found">
             </div>
-            <div class="overlay-image"  id="overlay-img1">
-                <img id="frame-image" alt="design image not found">
-            </div>
-            <div class="afterimage">
-                <img src="frameAfter.png" name="frame_after_image" alt="frame_After_image not found">
-            </div>
+        </div>
             <p>frame</p>
             <div class="slide-container">
                 <input type="range" name="range" min="1" max="100" value="100" class="slider" id="myRange1" oninput="updateOverlaySize(this.value, 'overlay-img1') ">
@@ -351,15 +333,13 @@
 
         <!--coaster-->
         <div class="card" name="coaster_card">
-            <div class="imge">
-                <img src="coasterBefore.png" name="coaster_before_image" alt="coaster_before_image not found">
+            <div class="images-part-container">
+                <div class="images-part">
+                <img class="bottom" src="coasterBefore.png" name="coaster_before_image" alt="coaster_before_image not found">
+                <img class="design" id="coaster-image" alt="design image not found">
+                <img class="top-img" src="coasterAfter.png" name="coaster_after_image" alt="coaster_After_image not found">
             </div>
-            <div class="overlay-image"  id="overlay-img1">
-                <img id="coaster-image" alt="design image not found">
-            </div>
-            <div class="afterimage">
-                <img src="coasterAfter.png" name="coaster_after_image" alt="coaster_After_image not found">
-            </div>
+           </div>
             <p>Coaster</p>
             <div class="slide-container">
                 <input type="range" name="range" min="1" max="100" value="100" class="slider" id="myRange1" oninput="updateOverlaySize(this.value, 'overlay-img1') ">
@@ -373,14 +353,12 @@
 
         <!--a4-->
         <div class="card" name="a4_card">
-            <div class="imge">
-                <img src="a4Before.png" name="a4_before_image" alt="a4_before_image not found">
+            <div class="images-part-container">
+                <div class="images-part">
+                <img class="bottom" src="a4Before.png" name="a4_before_image" alt="a4_before_image not found">
+                <img class="design" id="a4-image" alt="design image not found">
+                <img class="top-img" src="a4After.png" name="a4_after_image" alt="a4_After_image not found">
             </div>
-            <div class="overlay-image"  id="overlay-img1">
-                <img id="a4-image" alt="design image not found">
-            </div>
-            <div class="afterimage">
-                <img src="a4After.png" name="a4_after_image" alt="a4_After_image not found">
             </div>
             <p>a4</p>
             <div class="slide-container">
