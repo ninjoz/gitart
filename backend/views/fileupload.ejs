@@ -90,15 +90,15 @@
         <div class="cards">
             <!-- tshirt -->
             <div class="card" name="tshirt_card">
-                <div class="imge">
-                    <img src="tshirtBefore.png" name="tshirt_before_image" alt="tshirt_before_image not found">
+                <div class="images-part-container">
+                    <div class="images-part">
+
+                    
+                    <img class="bottom" src="tshirtBefore.png" name="tshirt_before_image" alt="tshirt_before_image not found">
+                    <img class="design" id="tshirt-image" alt="design image not found">
+                    <img class="top-img" src="tshirtAfter.png" name="tshirt_after_image" alt="tshirt_After_image not found">
                 </div>
-                <div class="overlay-image" id="overlay-img1">
-                    <img id="tshirt-image" alt="design image not found">
-                </div>
-                <div class="afterimage">
-                    <img src="tshirtAfter.png" name="tshirt_after_image" alt="tshirt_After_image not found">
-                </div>
+            </div>
                 <p>T-shirt</p>
             <div class="slide-container">
                 <input type="range" name="range" min="1" max="100" value="100" class="slider" id="myRange1" oninput="updateOverlaySize(this.value, 'overlay-img1') ">
