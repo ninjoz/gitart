@@ -21,10 +21,39 @@ body {
   width: 100%;
   height: 100%;
 }
-#cover input{
+
+#coverButton input{
+  display: none;
+
+}
+
+#coverButton label{
+
   position: absolute;
-top: 15%;
-left: 15%;
+  top: 5%;
+  left: 5%;
+
+  background-color: #10c49d;
+  border-radius: 20px;
+  cursor: pointer;
+  padding: 5px;
+
+
+}
+
+
+
+#profileButton input{
+  display: none;
+
+}
+
+#profileButton label{
+  background-color: #10c49d;
+  border-radius: 20px;
+  cursor: pointer;
+  padding: 5px;
+  
 
 }
 
@@ -179,4 +208,11 @@ main{
   font-size: 14px;
   font-weight: 600;
   margin: 0px;
+}
+
+.design_title {
+  white-space: nowrap;
+overflow: hidden;
+text-overflow: ellipsis;
+width: 80%;
 }
