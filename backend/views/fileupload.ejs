@@ -21,8 +21,12 @@
 
     <h1>Upload Your Artwork!</h1>
 
-    <main>
+    
         <form enctype="multipart/form-data" action="/fileupload" method="post" id="uploadForm">
+
+
+
+            <main>
             <div class="uploader">
                 <label for="input-file" id="drop-area">
                     <input type="file" name="uploadDesign" accept="image/*" id="input-file"  hidden required/>
@@ -36,6 +40,8 @@
 
                 </label>
             </div>
+
+            <div>
 
             <label for="textfield">
                 <h2>Title</h2>
@@ -66,8 +72,12 @@
     <small>Enter the price for your artwork</small>
 </label>
 <input type="number" id="pricefield" name="price_field" placeholder="Example: 100" required>
+</div>
 
-    </main>
+</main>
+
+
+    
 
 
 
@@ -292,6 +302,8 @@
         <!--ipadCase-->
 
         <div class="card" name="ipadCase_card">
+
+
             <div class="imge">
                 <img src="ipadCaseBefore.png" name="ipadCase_before_image" alt="ipadCase_before_image not found">
             </div>
@@ -301,6 +313,8 @@
             <div class="afterimage">
                 <img src="ipadCaseAfter.png" name="ipadCase_after_image" alt="ipadCase_After_image not found">
             </div>
+
+
             <p>ipadCase</p>
             <div class="slide-container">
                 <input type="range" name="range" min="1" max="100" value="100" class="slider" id="myRange1" oninput="updateOverlaySize(this.value, 'overlay-img1') ">
