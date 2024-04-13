@@ -35,6 +35,7 @@
             <img name="artist_cover_image" src="/<%=cover_photo%>" href="#" alt="cover image not found">
             <form id="coverButton" method="post" enctype="multipart/form-data" action="/coverPic">
             <%if(hisProfile){%>
+                <label for="changeCover">change</label>
 <input class="coverBtn" type="file" id="changeCover" name="changeCover" accept="image/png, image/jpeg" onchange="form.submit()">
                 
                 <%}%>
@@ -45,7 +46,7 @@
                 <img name="artist_profile_photo" src="/<%=profile_photo%>" href="#" alt="profile image not found" />
                 <form id="profileButton" method="post" enctype="multipart/form-data" action="/profilePic">
                 <%if(hisProfile){%>
-
+                    <label for="changeProfile">change</label>
                     <input  type="file" id="changeProfile" name="changeProfile" accept="image/png, image/jpeg" onchange="form.submit()">
                     <%}%>
                 </form>
@@ -123,7 +124,7 @@
 
 
                                 <div class="artwork-data" name="product_data">
-                                    <h4 name="artwork_title">
+                                    <h4 class="design_title" name="artwork_title">
                                         <a href="design/<%=blog.design_id%>"><%=blog.design_title%></a>
                                     </h4>
                                     
@@ -202,7 +203,7 @@
 
 
                                                         <div class="artwork-data" name="product_data">
-                                                            <h4 name="artwork_title">
+                                                            <h4 class="design_title" name="artwork_title">
                                                                 <a href="design/<%=blog.design_id%>"><%=blog.design_title%></a>
                                                             </h4>
                                                             <p name="artwork_price">
