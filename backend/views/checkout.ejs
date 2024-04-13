@@ -48,7 +48,7 @@
                 <input type="text" name="postalCode" id="postalCode" required>
                 <label>Postal Code</label>
             </div>
-            <button type="submit" name="confirm_button" id="confirm-button" onClick="this.disabled=true;">Confirm Order</button>
+            <button type="submit" name="confirm_button" id="confirm-button" onClick="this.form.submit(); this.disabled=true;">Confirm Order</button>
             <br>
             <p><%=message%></p>
         </form>
