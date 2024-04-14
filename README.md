@@ -1,4 +1,4 @@
-# 🖌️ Gitart - Redbubble Clone
+# 🖌️ GitArt - Redbubble Clone
 
 🌟 Welcome to gitart! 🌟\
 This is a full-stack project that aims to replicate the functionality of Redbubble, an e-commerce website where artists can sell their artworks printed on various products. Users can explore different products, add them to their favorites, add products to their cart, and place orders. The project includes many exciting features such as user authentication, product search, artists' portofolios, order tracking, in addition to an admin panel to manage orders.
